@@ -1,0 +1,28 @@
+.venv-basket/
+__pycache__/
+.pytest_cache/
+
+# Development environments and generated Python files
+.venv/
+.venv-*/
+venv/
+*.py[cod]
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+# Local credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Runtime and training outputs
+/runs/
+/logs/
+/outputs/
+/checkpoints/
+/wandb/
+# macOS metadata
+.DS_Store
+._*
+__MACOSX/

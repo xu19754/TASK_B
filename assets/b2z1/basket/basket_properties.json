@@ -1,0 +1,170 @@
+{
+  "source_file": "/Users/yxh/Desktop/share_wind/零件1.SLDPRT",
+  "source_sha256": "58c0635490086f19748a099d40264c15bc0282c921a1042e295eea40f7aa1c49",
+  "original_urdf": "b2z1_0815.urdf",
+  "original_urdf_sha256": "5f286dbd2644bc60a115f00f4ebd7442736bce4f3a6935e7979f8dbcd18b8e90",
+  "variant_urdf": "b2z1_0815_with_basket.urdf",
+  "variant_urdf_sha256": "5bfb30720e6dad747bfcc3e1d53f65f62c03405258656c6147495e56dd6bb005",
+  "conversion": {
+    "tool": "XRTC5/sldprt-export",
+    "url": "https://github.com/XRTC5/sldprt-export",
+    "commit": "9c91ea0fd94090ce88efd6d37b61ba091243c715",
+    "method": "saved CAD display mesh; DisplayLists block CRC verified",
+    "source_to_basket_rotation": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        1,
+        0
+      ]
+    ],
+    "source_to_basket_translation_m": [
+      0.08735737577080727,
+      0.125,
+      0.10000000149011612
+    ]
+  },
+  "basket_frame": "X forward, Y left, Z up; origin at outer floor height and XY bounding-box centre",
+  "dimensions_m": [
+    0.2799999937415123,
+    0.25,
+    0.10000000149011612
+  ],
+  "wall_thickness_m": 0.002,
+  "outer_ramp_radius_m": 0.1,
+  "rear_ramp_direction": "-X (tail)",
+  "mount_parent": "base",
+  "mount_xyz_m": [
+    -0.3,
+    0.0,
+    0.13
+  ],
+  "mount_rpy_rad": [
+    0,
+    0,
+    0
+  ],
+  "mass_kg": 0.2,
+  "center_of_mass_basket_m": [
+    0.013578116128504028,
+    -3.841530708157733e-08,
+    0.03407186854156704
+  ],
+  "center_of_mass_base_m": [
+    -0.286421883871496,
+    -3.841530708157733e-08,
+    0.16407186854156705
+  ],
+  "inertia_about_com_kg_m2": [
+    [
+      0.0018972295350808044,
+      -2.999743366402116e-11,
+      8.299786224804501e-05
+    ],
+    [
+      -2.9997432860878914e-11,
+      0.001997331142064684,
+      1.473436182316972e-10
+    ],
+    [
+      8.299786224804514e-05,
+      1.4734361809784015e-10,
+      0.0034671425181399575
+    ]
+  ],
+  "inertia_method": "uniform mass distribution in the CAD solid shell, normalized to requested 0.2 kg; exact tetrahedral integration of cached tessellation",
+  "shell_volume_m3": 0.0003163946203568539,
+  "effective_density_kg_m3": 632.1219993387524,
+  "collision": {
+    "boxes": [
+      {
+        "name": "bottom",
+        "origin": [
+          0.049,
+          0,
+          0.001
+        ],
+        "size": [
+          0.178,
+          0.246,
+          0.002
+        ]
+      },
+      {
+        "name": "front_wall",
+        "origin": [
+          0.139,
+          0,
+          0.05
+        ],
+        "size": [
+          0.002,
+          0.246,
+          0.1
+        ]
+      }
+    ],
+    "convex_mesh_parts": [
+      "side_left",
+      "side_right",
+      "ramp_01",
+      "ramp_02",
+      "ramp_03",
+      "ramp_04",
+      "ramp_05",
+      "ramp_06",
+      "ramp_07",
+      "ramp_08",
+      "ramp_09",
+      "ramp_10",
+      "ramp_11",
+      "ramp_12"
+    ],
+    "total_shapes": 16,
+    "total_volume_m3": 0.0003163943233806639,
+    "relative_volume_error_against_visual": 9.38625914908531e-07,
+    "method": "2 boxes + 2 convex side walls + 12 convex arc segments; open cavity retained"
+  },
+  "basket_bounds_in_base_m": [
+    [
+      -0.43999999687075614,
+      -0.125,
+      0.13
+    ],
+    [
+      -0.16000000312924384,
+      0.125,
+      0.23000000149011612
+    ]
+  ],
+  "verification": {
+    "source_geometry_block_crc": true,
+    "visual_closed_and_consistently_wound": true,
+    "collision_meshes_closed_convex_and_consistently_wound": true,
+    "inertia_positive_definite_and_triangle_inequality": true,
+    "original_urdf_elements_unchanged": true,
+    "original_file_hash_unchanged": true,
+    "all_mesh_references_resolve": true,
+    "movable_joints": 19,
+    "isaac_sim_runtime_tested": false,
+    "inertia_integrator_matches_analytic_translated_box": true,
+    "central_loading_space_and_top_opening_clear": true,
+    "floor_support_samples_solid": true,
+    "collision_vs_visual_random_samples": 24000,
+    "collision_vs_visual_mismatches": 0,
+    "result": "passed"
+  },
+  "material": {
+    "visual": "blue plastic",
+    "physics": "standard URDF material describes appearance only; contact friction/restitution use Isaac Sim physics material binding"
+  }
+}

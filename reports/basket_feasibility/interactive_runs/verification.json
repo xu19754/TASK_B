@@ -1,0 +1,245 @@
+{
+  "passed": true,
+  "pose_cases": [
+    {
+      "scope": "Prescribed URDF-limited link poses + MuJoCo free cargo; not motor/balance/scoring validation",
+      "urdf": "/Users/yxh/Desktop/5810/TaskB/assets/b2z1/b2z1_0815_with_basket.urdf",
+      "urdf_sha256": "5bfb30720e6dad747bfcc3e1d53f65f62c03405258656c6147495e56dd6bb005",
+      "mujoco": "3.17.0",
+      "simulated_time_s": 7.000000000000672,
+      "friction": 0.5,
+      "scenario": "mixed_three",
+      "actual_pitch_deg": 9.999999999999343,
+      "target_pitch_deg": 10.0,
+      "base_x_m": 0.0,
+      "base_height_m": 0.5375,
+      "joint_margin_deg": 10.576063785042997,
+      "rear_lip_world_z_m": 0.6877742331970308,
+      "illegal_body_ground_clearance_m": 0.29482840368949353,
+      "assumed_com_support_margin_m": 0.2396692736601344,
+      "fixed_foot_error_m": 1.6653345369377348e-16,
+      "require_rim": true,
+      "q_rad": {
+        "FR_hip_joint": -0.09183513105322572,
+        "FR_thigh_joint": 0.8310724870544871,
+        "FR_calf_joint": -1.248640805057262,
+        "FL_hip_joint": 0.09183513105322527,
+        "FL_thigh_joint": 0.8310724870544873,
+        "FL_calf_joint": -1.2486408050572624,
+        "RR_hip_joint": -0.11541280770747164,
+        "RR_thigh_joint": 1.0930054840447563,
+        "RR_calf_joint": -1.715938028052625,
+        "RL_hip_joint": 0.11541286505006587,
+        "RL_thigh_joint": 1.0930114606522012,
+        "RL_calf_joint": -1.7159420825686078,
+        "joint1": 0.0,
+        "joint2": 1.48,
+        "joint3": -0.63,
+        "joint4": -0.84,
+        "joint5": 0.0,
+        "joint6": 1.57,
+        "jointGripper": 0.0
+      },
+      "cargo": [
+        {
+          "asset": "004_sugar_box",
+          "below_rim": true,
+          "fully_rear_now": false,
+          "rear_exit_observed": false,
+          "rear_most_x_m": 0.04245615445268897,
+          "front_most_x_m": 0.13750868114932094,
+          "highest_z_m": 0.0471576568216809
+        },
+        {
+          "asset": "006_mustard_bottle",
+          "below_rim": true,
+          "fully_rear_now": false,
+          "rear_exit_observed": false,
+          "rear_most_x_m": -0.05705853680125705,
+          "front_most_x_m": 0.0390269032145053,
+          "highest_z_m": 0.05962383178935507
+        },
+        {
+          "asset": "011_banana",
+          "below_rim": true,
+          "fully_rear_now": false,
+          "rear_exit_observed": false,
+          "rear_most_x_m": 0.05588934648336794,
+          "front_most_x_m": 0.13032633512355238,
+          "highest_z_m": 0.08604109615220414
+        }
+      ],
+      "assumptions": [
+        "19 URDF joint angles bounded externally; robot uses mocap bodies, no motor dynamics",
+        "basket mass 0.2 kg and exact 16 collisions; each cargo 0.5 kg, source-mesh convex hull",
+        "2 degree reserve, 1 cm body clearance, 2 cm assumed COM support margin are screening assumptions",
+        "no reaction-force balance, motor torque or foot-slip validation; no task bucket or score",
+        "mocap motion has no dynamic robot feedback; use only slow tilt, not impact/throw analysis",
+        "robot mesh contacts are convex hulls, not Isaac convex decomposition"
+      ]
+    },
+    {
+      "scope": "Prescribed URDF-limited link poses + MuJoCo free cargo; not motor/balance/scoring validation",
+      "urdf": "/Users/yxh/Desktop/5810/TaskB/assets/b2z1/b2z1_0815_with_basket.urdf",
+      "urdf_sha256": "5bfb30720e6dad747bfcc3e1d53f65f62c03405258656c6147495e56dd6bb005",
+      "mujoco": "3.17.0",
+      "simulated_time_s": 11.999999999998789,
+      "friction": 0.5,
+      "scenario": "mixed_three",
+      "actual_pitch_deg": 20.0,
+      "target_pitch_deg": 20.0,
+      "base_x_m": -0.007499999999999979,
+      "base_height_m": 0.5449999999999999,
+      "joint_margin_deg": 2.010486304392355,
+      "rear_lip_world_z_m": 0.6109824598607904,
+      "illegal_body_ground_clearance_m": 0.2741365048211094,
+      "assumed_com_support_margin_m": 0.23966954556053727,
+      "fixed_foot_error_m": 3.554447978966673e-16,
+      "require_rim": true,
+      "q_rad": {
+        "FR_hip_joint": -0.0859376723289933,
+        "FR_thigh_joint": 0.7935670207483361,
+        "FR_calf_joint": -0.9079934821515433,
+        "FL_hip_joint": 0.08593767232899285,
+        "FL_thigh_joint": 0.7935670207483361,
+        "FL_calf_joint": -0.9079934821515433,
+        "RR_hip_joint": -0.1376841391230088,
+        "RR_thigh_joint": 1.3648962002372989,
+        "RR_calf_joint": -1.8809008570203274,
+        "RL_hip_joint": 0.1376844946135254,
+        "RL_thigh_joint": 1.3649103944221004,
+        "RL_calf_joint": -1.8809086294894792,
+        "joint1": 0.0,
+        "joint2": 1.48,
+        "joint3": -0.63,
+        "joint4": -0.84,
+        "joint5": 0.0,
+        "joint6": 1.57,
+        "jointGripper": 0.0
+      },
+      "cargo": [
+        {
+          "asset": "004_sugar_box",
+          "below_rim": true,
+          "fully_rear_now": false,
+          "rear_exit_observed": false,
+          "rear_most_x_m": 0.04497181034472632,
+          "front_most_x_m": 0.1370317996261951,
+          "highest_z_m": 0.047189203373744985
+        },
+        {
+          "asset": "006_mustard_bottle",
+          "below_rim": true,
+          "fully_rear_now": false,
+          "rear_exit_observed": false,
+          "rear_most_x_m": -0.05217963434900847,
+          "front_most_x_m": 0.045306694265032706,
+          "highest_z_m": 0.06195606859340312
+        },
+        {
+          "asset": "011_banana",
+          "below_rim": true,
+          "fully_rear_now": false,
+          "rear_exit_observed": false,
+          "rear_most_x_m": 0.048058084455006374,
+          "front_most_x_m": 0.12191894187309807,
+          "highest_z_m": 0.08319723762726888
+        }
+      ],
+      "assumptions": [
+        "19 URDF joint angles bounded externally; robot uses mocap bodies, no motor dynamics",
+        "basket mass 0.2 kg and exact 16 collisions; each cargo 0.5 kg, source-mesh convex hull",
+        "2 degree reserve, 1 cm body clearance, 2 cm assumed COM support margin are screening assumptions",
+        "no reaction-force balance, motor torque or foot-slip validation; no task bucket or score",
+        "mocap motion has no dynamic robot feedback; use only slow tilt, not impact/throw analysis",
+        "robot mesh contacts are convex hulls, not Isaac convex decomposition"
+      ]
+    },
+    {
+      "scope": "Prescribed URDF-limited link poses + MuJoCo free cargo; not motor/balance/scoring validation",
+      "urdf": "/Users/yxh/Desktop/5810/TaskB/assets/b2z1/b2z1_0815_with_basket.urdf",
+      "urdf_sha256": "5bfb30720e6dad747bfcc3e1d53f65f62c03405258656c6147495e56dd6bb005",
+      "mujoco": "3.17.0",
+      "simulated_time_s": 16.999999999997794,
+      "friction": 0.5,
+      "scenario": "mixed_three",
+      "actual_pitch_deg": 25.0,
+      "target_pitch_deg": 25.0,
+      "base_x_m": -0.06749999999999999,
+      "base_height_m": 0.55,
+      "joint_margin_deg": 2.0482653201435883,
+      "rear_lip_world_z_m": 0.5729213741142625,
+      "illegal_body_ground_clearance_m": 0.22914702437187656,
+      "assumed_com_support_margin_m": 0.2396696497021656,
+      "fixed_foot_error_m": 2.7894008272968645e-16,
+      "require_rim": true,
+      "q_rad": {
+        "FR_hip_joint": -0.08076044139444338,
+        "FR_thigh_joint": 0.6412798592545674,
+        "FR_calf_joint": -0.6442487733927783,
+        "FL_hip_joint": 0.08076044139444338,
+        "FL_thigh_joint": 0.6412798592545674,
+        "FL_calf_joint": -0.6442487733927783,
+        "RR_hip_joint": -0.14334232538111724,
+        "RR_thigh_joint": 1.364233157626903,
+        "RR_calf_joint": -1.957862502821217,
+        "RL_hip_joint": 0.14334287236152665,
+        "RL_thigh_joint": 1.3642510262090786,
+        "RL_calf_joint": -1.9578721402661152,
+        "joint1": 0.0,
+        "joint2": 1.48,
+        "joint3": -0.63,
+        "joint4": -0.84,
+        "joint5": 0.0,
+        "joint6": 1.57,
+        "jointGripper": 0.0
+      },
+      "cargo": [
+        {
+          "asset": "004_sugar_box",
+          "below_rim": true,
+          "fully_rear_now": false,
+          "rear_exit_observed": false,
+          "rear_most_x_m": 0.04333056086809694,
+          "front_most_x_m": 0.1375883347139033,
+          "highest_z_m": 0.04729838589361282
+        },
+        {
+          "asset": "006_mustard_bottle",
+          "below_rim": true,
+          "fully_rear_now": false,
+          "rear_exit_observed": false,
+          "rear_most_x_m": -0.09671998730865197,
+          "front_most_x_m": 0.0063878375843209245,
+          "highest_z_m": 0.060770667859610834
+        },
+        {
+          "asset": "011_banana",
+          "below_rim": true,
+          "fully_rear_now": false,
+          "rear_exit_observed": false,
+          "rear_most_x_m": -0.006343807904453192,
+          "front_most_x_m": 0.07281665598389186,
+          "highest_z_m": 0.07645498956856954
+        }
+      ],
+      "assumptions": [
+        "19 URDF joint angles bounded externally; robot uses mocap bodies, no motor dynamics",
+        "basket mass 0.2 kg and exact 16 collisions; each cargo 0.5 kg, source-mesh convex hull",
+        "2 degree reserve, 1 cm body clearance, 2 cm assumed COM support margin are screening assumptions",
+        "no reaction-force balance, motor torque or foot-slip validation; no task bucket or score",
+        "mocap motion has no dynamic robot feedback; use only slow tilt, not impact/throw analysis",
+        "robot mesh contacts are convex hulls, not Isaac convex decomposition"
+      ]
+    }
+  ],
+  "checks": [
+    "30 prescribed URDF links, 16 basket colliders, 19 bounded joint targets",
+    "0.2 kg basket and 3 x 0.5 kg dynamic convex-hull cargo",
+    "0 -> 10 -> 20 -> 25 degree path checked at every 1 ms step",
+    "35 degree request rejected; prior valid target preserved",
+    "all four cargo scenarios settle inside the basket at home",
+    "native OpenGL framebuffer rendered and captured; pause button hit-test passed",
+    "scroll zoom and camera-drag callbacks change the camera without errors"
+  ]
+}

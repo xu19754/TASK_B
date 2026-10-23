@@ -1,0 +1,86 @@
+{
+  "source": "/Users/yxh/Desktop/share_wind/零件2.SLDPRT",
+  "source_sha256": "9e402fb1a063a67a0e7e78f056f1b7e45ad72c5e794470a856075664b7d336a2",
+  "variant": "/Users/yxh/Desktop/5810/TaskB/assets/b2z1/b2z1_0815_with_basket_v2.urdf",
+  "variant_sha256": "2c52955d67225a4c2c2026c41de17515fbf4c2b65cfa0e324306e6671d492ec0",
+  "converter": "XRTC5/sldprt-export 9c91ea0fd94090ce88efd6d37b61ba091243c715",
+  "dimensions_m": [
+    0.45000001788139343,
+    0.25,
+    0.20000000298023235
+  ],
+  "wall_thickness_m": 0.0015,
+  "source_mesh_vertices": 38,
+  "source_mesh_triangles": 72,
+  "cad_mesh_closed": true,
+  "crc_verified": true,
+  "rear_sill_m": 0.015,
+  "rear_clear_width_m": 0.21,
+  "front_sill_m": 0.08,
+  "front_clear_width_m": 0.247,
+  "front_window_clear_height_m": 0.12,
+  "rear_chamfer_run_and_rise_m": [
+    0.013,
+    0.013
+  ],
+  "shell_volume_m3": 0.00048769144102026605,
+  "mass_kg": 0.2,
+  "mass_assumption": "Previous requested 0.2 kg retained; not measured",
+  "com_m": [
+    0.0032316149962643426,
+    -1.304736891195384e-09,
+    0.05886760700138303
+  ],
+  "inertia_kg_m2": [
+    [
+      0.0029048653958617405,
+      -4.844240631598595e-11,
+      -3.57651346423351e-05
+    ],
+    [
+      -4.844240596862167e-11,
+      0.00489890675323947,
+      1.1926897802775375e-11
+    ],
+    [
+      -3.5765134642336316e-05,
+      1.1926898014450489e-11,
+      0.006156010494980962
+    ]
+  ],
+  "source_to_basket_rotation": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      1,
+      0
+    ]
+  ],
+  "source_to_basket_translation_m": [
+    0.07500000298023224,
+    0.0,
+    1.1102230246251565e-16
+  ],
+  "collision_tetrahedra": 78,
+  "collision_convex_parts": 30,
+  "collision_volume_m3": 0.0004876914410202667,
+  "collision_visual_random_samples": 30000,
+  "collision_visual_mismatches": 0,
+  "front_and_rear_aperture_samples_clear": true,
+  "fixed_mount_xyz_m": [
+    -0.3,
+    0,
+    0.13
+  ],
+  "unchanged_controllable_joints": 19,
+  "display_mesh_limit": "Checks validate saved planar tessellation, not a licensed CAD B-rep reconstruction"
+}

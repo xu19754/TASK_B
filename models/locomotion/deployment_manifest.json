@@ -1,0 +1,344 @@
+{
+  "current_obs_dim": 52,
+  "environment_contract": {
+    "action_delay_curriculum_enabled": false,
+    "action_delay_one_step_probability": 0.5,
+    "action_delay_real_hardware_status": "source_based_not_measured",
+    "action_delay_resample_on_reset": false,
+    "action_delay_sampling_semantics": "stair_up_stage1_per_environment_uniform_0_or_1_at_start",
+    "action_delay_supported_steps": [
+      0,
+      1
+    ],
+    "action_delay_training_enabled": true,
+    "action_delay_zero_step_probability": 0.5,
+    "action_smoothness_1_masked_episode_steps": 1,
+    "action_smoothness_1_reward_weight": -0.025,
+    "action_smoothness_2_masked_episode_steps": 2,
+    "action_smoothness_2_reward_weight": -0.005,
+    "action_smoothness_signal": "delayed_scaled_final_leg_joint_position_target",
+    "actor_network_input_dim": 88,
+    "asset_root_body": "base",
+    "asset_swap_scope": "b2z1_geometry_dynamics_fixed_payload_and_source_leg_actuation",
+    "automatic_deployment_export_available": true,
+    "command_update_semantics": "direct_resample_5s_mode_stratified",
+    "contact_observation_source": "absent",
+    "critic_obs_dim": 93,
+    "critic_retains_simulator_contact": true,
+    "current_obs_dim": 52,
+    "current_segments": {
+      "base_ang_vel_b": [
+        0,
+        3
+      ],
+      "gait_clock": [
+        46,
+        50
+      ],
+      "gait_phase": [
+        45,
+        46
+      ],
+      "joint_pos_error": [
+        9,
+        21
+      ],
+      "joint_velocity": [
+        21,
+        33
+      ],
+      "previous_delayed_policy_action": [
+        33,
+        45
+      ],
+      "projected_gravity_b": [
+        3,
+        6
+      ],
+      "pure_vx_segment_heading_sin_cos": [
+        50,
+        52
+      ],
+      "velocity_command": [
+        6,
+        9
+      ]
+    },
+    "deployment_blockers": [
+      "supported_robot_lowcmd_handover_validation",
+      "actuation_parameters_approval"
+    ],
+    "deployment_controller_delay_steps": "select_0_or_1",
+    "deployment_environment_delay_steps": 0,
+    "deployment_fixed_arm_execution": "default_joint_position_hold",
+    "deployment_phase_1": "nominal_q0_reset_fixed_z1_no_randomization",
+    "deployment_policy_action_count": 12,
+    "deployment_profile": "b2z1_r2_b1z1_wtw_domain_rand_r0",
+    "deployment_randomization_rule": "disable_all_training_randomization_and_observation_noise",
+    "deployment_requirements": [
+      "use_history_only_jit_export",
+      "use_external_joint_target_rate_soft_limit_and_torque_safety_chain",
+      "pass_real_robot_shadow_and_supported_lowcmd_preflight"
+    ],
+    "dof_acc_l2_reward_weight": -2.5e-07,
+    "dof_vel_l1_reward_weight": -0.0004,
+    "feet_contact_force_delta_reward": {
+      "reset_previous_to_current": true,
+      "warmup_steps": 50,
+      "weight": -0.0001
+    },
+    "fixed_arm_default_q0": [
+      0.0,
+      1.48,
+      -0.63,
+      -0.84,
+      0.0,
+      1.57,
+      0.0
+    ],
+    "fixed_arm_default_q0_by_joint": {
+      "joint1": 0.0,
+      "joint2": 1.48,
+      "joint3": -0.63,
+      "joint4": -0.84,
+      "joint5": 0.0,
+      "joint6": 1.57,
+      "jointGripper": 0.0
+    },
+    "fixed_arm_joint_count": 7,
+    "fixed_arm_joint_names": [
+      "joint1",
+      "joint2",
+      "joint3",
+      "joint4",
+      "joint5",
+      "joint6",
+      "jointGripper"
+    ],
+    "foot_placement_profile": "walk_these_ways_raibert_b2z1_q0_fk",
+    "gait_frequency_hz": 2.0,
+    "hip_deviation_reward_weight": -0.048,
+    "history_latent_dim": 20,
+    "history_length": 10,
+    "joint_velocity_observation_scale": 1.0,
+    "leg_action_scale": [
+      0.4,
+      0.45,
+      0.45,
+      0.4,
+      0.45,
+      0.45,
+      0.4,
+      0.45,
+      0.45,
+      0.4,
+      0.45,
+      0.45
+    ],
+    "leg_action_scale_by_joint": {
+      "FL_calf_joint": 0.45,
+      "FL_hip_joint": 0.4,
+      "FL_thigh_joint": 0.45,
+      "FR_calf_joint": 0.45,
+      "FR_hip_joint": 0.4,
+      "FR_thigh_joint": 0.45,
+      "RL_calf_joint": 0.45,
+      "RL_hip_joint": 0.4,
+      "RL_thigh_joint": 0.45,
+      "RR_calf_joint": 0.45,
+      "RR_hip_joint": 0.4,
+      "RR_thigh_joint": 0.45
+    },
+    "leg_controller_semantics": "b2z1_source_360_5",
+    "leg_default_q0": [
+      -0.1,
+      0.8,
+      -1.5,
+      0.1,
+      0.8,
+      -1.5,
+      -0.1,
+      0.8,
+      -1.5,
+      0.1,
+      0.8,
+      -1.5
+    ],
+    "leg_default_q0_by_joint": {
+      "FL_calf_joint": -1.5,
+      "FL_hip_joint": 0.1,
+      "FL_thigh_joint": 0.8,
+      "FR_calf_joint": -1.5,
+      "FR_hip_joint": -0.1,
+      "FR_thigh_joint": 0.8,
+      "RL_calf_joint": -1.5,
+      "RL_hip_joint": 0.1,
+      "RL_thigh_joint": 0.8,
+      "RR_calf_joint": -1.5,
+      "RR_hip_joint": -0.1,
+      "RR_thigh_joint": 0.8
+    },
+    "leg_effort_limit_by_joint_type": {
+      "calf": 300.0,
+      "hip": 300.0,
+      "thigh": 300.0
+    },
+    "leg_hard_position_max": [
+      0.3,
+      1.4,
+      -0.6,
+      0.3,
+      1.4,
+      -0.6,
+      0.3,
+      1.4,
+      -0.6,
+      0.3,
+      1.4,
+      -0.6
+    ],
+    "leg_hard_position_min": [
+      -0.3,
+      0.0,
+      -2.6,
+      -0.3,
+      0.0,
+      -2.6,
+      -0.3,
+      0.0,
+      -2.6,
+      -0.3,
+      0.0,
+      -2.6
+    ],
+    "leg_joint_names": [
+      "FR_hip_joint",
+      "FR_thigh_joint",
+      "FR_calf_joint",
+      "FL_hip_joint",
+      "FL_thigh_joint",
+      "FL_calf_joint",
+      "RR_hip_joint",
+      "RR_thigh_joint",
+      "RR_calf_joint",
+      "RL_hip_joint",
+      "RL_thigh_joint",
+      "RL_calf_joint"
+    ],
+    "leg_pd_by_joint_type": {
+      "calf": [
+        360.0,
+        5.0
+      ],
+      "hip": [
+        360.0,
+        5.0
+      ],
+      "thigh": [
+        360.0,
+        5.0
+      ]
+    },
+    "leg_torque_delta_reward": {
+      "reset_previous_to_current": true,
+      "weight": -5e-08
+    },
+    "leg_velocity_limit_by_joint_type": {
+      "calf": 23.0,
+      "hip": 23.0,
+      "thigh": 23.0
+    },
+    "packed_policy_dim": 606,
+    "policy_frequency_hz": 50.0,
+    "privileged_robot_config_used_at_inference": false,
+    "raibert_foot_order": [
+      "FL_foot",
+      "FR_foot",
+      "RL_foot",
+      "RR_foot"
+    ],
+    "raibert_foot_placement_reward_weight": -10.0,
+    "raibert_gait_frequency_hz": 2.0,
+    "raibert_reference_xy_b_m": [
+      [
+        0.302901558718,
+        0.242114296248
+      ],
+      [
+        0.302901558718,
+        -0.242114294258
+      ],
+      [
+        -0.354098441282,
+        0.242114296248
+      ],
+      [
+        -0.354098441282,
+        -0.2422008437
+      ]
+    ],
+    "raibert_stance_length_m": 0.657,
+    "raw_policy_action_rate_reward_enabled": true,
+    "raw_policy_action_rate_reward_weight": -0.01,
+    "raw_policy_action_rate_signal": "raw_actor_action_before_delay",
+    "requires_fixed_stand_history_initialization": true,
+    "requires_matching_command_slew_rate": false,
+    "requires_segment_heading_latch_from_imu": true,
+    "robot_asset": "b2z1_nolidar",
+    "runtime_action_safety_applied": false,
+    "solver_velocity_iteration_count": 1,
+    "startup_handoff_contract": "nominal_q0_policy_gain_then_optional_alore_standdown",
+    "swing_foot_inner_barrier_reward_weight": -0.01,
+    "swing_foot_outer_barrier_reward_weight": -0.01,
+    "teacher_oracle_deployment_rule": "constant_zero",
+    "teacher_oracle_dim": 16,
+    "teacher_oracle_training_source": "constant_zero",
+    "temporal_smoothness_profile": "b2z1_upstream_plus_wtw_delayed_joint_target",
+    "touchdown_foot_inner_corridor_reward_weight": -0.03,
+    "training_domain_randomization": {
+      "actor_observation_noise": {
+        "angular_velocity": 0.2,
+        "joint_position": 0.01,
+        "joint_velocity": 1.5,
+        "projected_gravity": 0.05
+      },
+      "added_base_mass_range_kg": [
+        0.0,
+        15.0
+      ],
+      "base_com_axis_range_m": [
+        -0.15,
+        0.15
+      ],
+      "friction_range": [
+        0.3,
+        3.0
+      ],
+      "leg_target_scale_range": [
+        0.7,
+        1.3
+      ],
+      "max_push_velocity_xy_mps": 0.5,
+      "motor_position_offset_range_rad": [
+        -0.02,
+        0.02
+      ],
+      "motor_torque_multiplier_range": [
+        0.9,
+        1.1
+      ],
+      "push_interval_s": 8.0
+    },
+    "training_observation_noise_enabled": true
+  },
+  "format": "b0_gait_adaptive_history_only_v1",
+  "history_latent_dim": 20,
+  "history_length": 10,
+  "input_contract": "single_robot_current_observation",
+  "num_actions": 12,
+  "oracle_obs_dim": 16,
+  "privileged_inputs_required": false,
+  "recurrent_hidden_dim": 256,
+  "recurrent_type": "lstm",
+  "torch_version": "2.7.0+cu128"
+}
