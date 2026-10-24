@@ -2,6 +2,8 @@
 
 本工程是学生作业的基础工程，仅包含 Task B。指定机器人为 **Unitree B2 + Z1**，任务 ID 为 `Student-TaskB-B2Z1-v0`。
 
+项目维护与接续见 [交接文档](handoff.md)，其中记录当前开发进度、独立实验边界、运行状态与验证结果。
+
 ## 作业内容
 
 工程提供机器人与场景、物理仿真、雷达与 RGB-D、区域计分器、底层行走 policy，以及 `demo/solution.py` 学生策略模板。
@@ -151,6 +153,8 @@ bash scripts/run_taskb.sh --headless --enable_cameras --steps 500 \
 当前单环境教学包默认使用 **CPU PhysX + GPU 图像渲染**，启动器也会拒绝 `--device cuda:0`，避免这台镜像中雷达停在出生点的 GPU 位姿回读问题。CPU 并不意味着不用 Isaac，也不意味着用 CPU 渲染 RGB-D。不要直接套用大批量行走训练中关闭场景查询、只保留 GPU/Fabric 位姿的设置；若日后改成 GPU 物理，需要先验证传感器随机器人移动、动态物体更新和深度一致性，不能仅检查输出形状。
 
 ## 学生实现入口
+
+若要先单独搭建机械狗与物体场景，可运行 `bash scripts/run_perception.sh --real-time`。该独立场景包含 B2+Z1 和三类物体，当前仅用于场景搭建与查看，使用说明见 [训练场景](training/perception/README.md)。
 
 在 `demo/solution.py` 中实现 `AlgSolution.select_command()` 与 `select_arm_target()`，已有底层控制器负责生成 19 维动作。也可以扩展 `predicts(obs, current_score)`，但需要保持返回格式：
 
