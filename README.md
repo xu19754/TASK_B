@@ -154,6 +154,8 @@ bash scripts/run_taskb.sh --headless --enable_cameras --steps 500 \
 
 ## 学生实现入口
 
+开发仓库保留了远端已有的[独立感知场景](training/perception/README.md)和[独立 MuJoCo 卸料训练](training/basket_unload/README.md)，入口分别为 `scripts/run_perception.sh` 与 `scripts/run_basket_unload.sh`。这些实验不产生正式 Task B 得分；本次统一示范采集复用下面的正式入口。
+
 ### 示范采集准备
 
 相机校验和录制复用上面的正式场景与启动入口，现有相机安装参数保持一致：

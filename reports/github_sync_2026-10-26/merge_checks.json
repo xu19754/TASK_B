@@ -1,0 +1,16 @@
+{
+  "remote_base": "b1fb4629a99b611a6ee3503ca11d855f2f4f4981",
+  "local_snapshot": "b3affac08bc7a701b7c9fdd3c58ebcb325cdefa4",
+  "remote_files": 480,
+  "staged_files_before_sync_report": 579,
+  "missing_remote_paths": [],
+  "preserved_remote_asset_model_training_and_workflow_files": 324,
+  "historical_handoff_preserved_byte_for_byte": true,
+  "formal_launcher_and_camera_config_match_tested_local_snapshot": true,
+  "case_conflicts": [],
+  "release_inputs": 216,
+  "release_missing_inputs": [],
+  "release_excludes_independent_training_and_diagnostics": true,
+  "syntax_checked_tracked_python_files": 73,
+  "scope": "Merge inventory, source/asset preservation, release allowlist and Python syntax; no GPU physics or training."
+}
