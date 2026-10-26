@@ -1,0 +1,168 @@
+{
+  "scenario": "mixed_three",
+  "label": "混合三件",
+  "seed": 20261026,
+  "original_trajectory_duration_s": 156.510360332952,
+  "simulated_time_s": 162.5110000004119,
+  "walltime_s": 38.438,
+  "trajectory_started": true,
+  "motion_completed": true,
+  "all_three_unloaded": false,
+  "rear_exit_observed": [
+    true,
+    true,
+    false
+  ],
+  "fully_rear_at_end": [
+    true,
+    true,
+    false
+  ],
+  "rear_exit_time_s": [
+    0.62,
+    90.9,
+    null
+  ],
+  "exited_count": 2,
+  "escaped_before_sweep": [
+    true,
+    false,
+    false
+  ],
+  "settled_cargo": [
+    {
+      "asset": "004_sugar_box",
+      "below_rim": false,
+      "rear_exit_observed": true,
+      "front_most_x_m": -0.3924836081867769,
+      "rear_most_x_m": -0.4650741796035968,
+      "highest_z_m": -0.43324817452735553
+    },
+    {
+      "asset": "006_mustard_bottle",
+      "below_rim": true,
+      "rear_exit_observed": false,
+      "front_most_x_m": 0.060390663162223135,
+      "rear_most_x_m": -0.13232178938196357,
+      "highest_z_m": 0.0972514054825742
+    },
+    {
+      "asset": "011_banana",
+      "below_rim": true,
+      "rear_exit_observed": false,
+      "front_most_x_m": 0.19028962358833612,
+      "rear_most_x_m": 0.01533050597437069,
+      "highest_z_m": 0.03799686796785303
+    }
+  ],
+  "final_cargo": [
+    {
+      "asset": "004_sugar_box",
+      "below_rim": false,
+      "rear_exit_observed": true,
+      "front_most_x_m": -0.3924836032027732,
+      "rear_most_x_m": -0.46507416799473456,
+      "highest_z_m": -0.43324817745472244
+    },
+    {
+      "asset": "006_mustard_bottle",
+      "below_rim": false,
+      "rear_exit_observed": true,
+      "front_most_x_m": -0.45114884065051686,
+      "rear_most_x_m": -0.6472334280166618,
+      "highest_z_m": -0.39539787774816443
+    },
+    {
+      "asset": "011_banana",
+      "below_rim": true,
+      "rear_exit_observed": false,
+      "front_most_x_m": 0.16350999903948696,
+      "rear_most_x_m": -0.03395003666718936,
+      "highest_z_m": 0.03799624643743976
+    }
+  ],
+  "constraint_violation": null,
+  "rejected_next_step": null,
+  "preflight_rejection": null,
+  "actual_joint_min_rad": [
+    -0.00011933659052565412,
+    0.6183661746403964,
+    -4.748504555299805,
+    -1.4441780475403405,
+    -0.009021780871718321,
+    -0.0023930856079398747,
+    -0.0926740158727843
+  ],
+  "actual_joint_max_rad": [
+    0.012937575629449374,
+    1.683606400989754,
+    -4.393048240920746,
+    0.6039610749464955,
+    0.00022215875045577597,
+    0.0002788717433351614,
+    -0.07652196950805364
+  ],
+  "peak_velocity_rad_s": [
+    0.10671713627087245,
+    0.21206124239892588,
+    0.12960243647951458,
+    0.09869903653236349,
+    0.08272203857637142,
+    0.01931034292937312,
+    0.07987903042248834
+  ],
+  "peak_torque_Nm": [
+    6.904942602466412,
+    17.175642958424305,
+    11.573842526662702,
+    5.69258050100774,
+    5.36036237144716,
+    0.9136007051220414,
+    1.009735958575547
+  ],
+  "velocity_limits_rad_s": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    0.25
+  ],
+  "effort_limits_Nm": [
+    30.0,
+    60.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    5.0
+  ],
+  "deepest_arm_environment_contact_m": 0.0,
+  "observed_arm_environment_pairs": [],
+  "observed_arm_cargo_pairs": [
+    [
+      "collision_gripperMover_0",
+      "cargo_geom_2"
+    ],
+    [
+      "collision_gripperMover_3",
+      "cargo_geom_2"
+    ],
+    [
+      "collision_gripperStator_0",
+      "cargo_geom_1"
+    ],
+    [
+      "collision_gripperStator_4",
+      "cargo_geom_1"
+    ],
+    [
+      "collision_gripperStator_4",
+      "cargo_geom_2"
+    ]
+  ],
+  "layout_file": "layout.json",
+  "trace_file": "trace.json",
+  "replay_file": "replay.npz"
+}

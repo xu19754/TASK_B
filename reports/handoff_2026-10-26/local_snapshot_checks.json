@@ -1,0 +1,13 @@
+{
+  "tests": {
+    "tests": 30,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "candidate_files": 536,
+  "candidate_bytes": 537368207,
+  "scanned_text_files": 191,
+  "credential_pattern_findings_without_values": [],
+  "scope": "Candidate inventory and known credential-pattern checks; not an Isaac runtime check."
+}

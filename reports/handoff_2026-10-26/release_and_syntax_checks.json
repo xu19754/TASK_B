@@ -1,0 +1,8 @@
+{
+  "release_inputs": 216,
+  "release_missing": [],
+  "includes_handoff_docs": true,
+  "excludes_diagnostic_reports_scripts_and_launchers": true,
+  "syntax_checked_python_files": 31,
+  "scope": "Static release input and syntax checks; no Isaac runtime or new release archive."
+}

@@ -1,0 +1,387 @@
+{
+  "capacity": {
+    "outer_dimensions_cm": [
+      28,
+      25,
+      10
+    ],
+    "opening_cm": [
+      27.6,
+      24.6
+    ],
+    "inner_height_cm": 9.8,
+    "flat_floor_cm": [
+      17.79999993,
+      24.6
+    ],
+    "inner_cavity_litres_to_rim": 6.141498396459015,
+    "inner_profile_xz_m": [
+      [
+        0.1379999965,
+        0.1000000015
+      ],
+      [
+        -0.1380000077,
+        0.1000000015
+      ],
+      [
+        -0.1371615939,
+        0.0872084349
+      ],
+      [
+        -0.134660732,
+        0.0746357348
+      ],
+      [
+        -0.1305402033,
+        0.0624970235
+      ],
+      [
+        -0.1248704903,
+        0.0510000028
+      ],
+      [
+        -0.1177486293,
+        0.040341381
+      ],
+      [
+        -0.1092964672,
+        0.0307035372
+      ],
+      [
+        -0.0996586196,
+        0.022251375
+      ],
+      [
+        -0.0889999978,
+        0.015129514
+      ],
+      [
+        -0.0775029771,
+        0.0094598085
+      ],
+      [
+        -0.0653642677,
+        0.0053392723
+      ],
+      [
+        -0.0527915768,
+        0.002838403
+      ],
+      [
+        -0.0400000028,
+        0.0020000041
+      ],
+      [
+        0.1379999965,
+        0.0020000041
+      ]
+    ]
+  },
+  "nominal_base_height_m": 0.5370399931224108,
+  "fixed_foot_centres_world_m": [
+    [
+      0.3029015587183589,
+      -0.2421142803278578,
+      0.0399978286231879
+    ],
+    [
+      0.3029015587183589,
+      0.2421142803278578,
+      0.0399978286231879
+    ],
+    [
+      -0.3540984412816411,
+      -0.242200845690237,
+      0.040006514130436155
+    ],
+    [
+      -0.3540984412816411,
+      0.2421142803278578,
+      0.0399978286231879
+    ]
+  ],
+  "posture_scan_assumptions": {
+    "base_x_range_m": [
+      -0.15,
+      0.15
+    ],
+    "base_z_range_m": [
+      0.3,
+      0.65
+    ],
+    "grid_step_m": 0.0025,
+    "joint_limit_reserve_deg": 2,
+    "rim_min_height_m": 0.57,
+    "bucket_rim_height_m": 0.55,
+    "body_collision_min_ground_clearance_m": 0.01,
+    "payload_kg": 1.5,
+    "payload_com_basket_m": [
+      -0.1,
+      0,
+      0.075
+    ],
+    "foot_centres_fixed": true,
+    "scope": "geometric necessary conditions only; no torques, foot slip, support-force distribution, self-collision, or closed-loop control validation; empty result is not a universal impossibility proof"
+  },
+  "postures": [
+    {
+      "nose_up_deg": 0,
+      "hard_limit_grid_points": 16276,
+      "rim_clearance_and_joint_reserve_grid_points": 14702,
+      "selected_pose": {
+        "base_x_m": 0.0,
+        "base_height_m": 0.5375,
+        "rear_lip_height_m": 0.7675,
+        "joint_limit_margin_deg": 11.46429512761194,
+        "illegal_body_min_height_m": 0.3213667562876022,
+        "com_support_margin_m": 0.2396690533774181,
+        "com_world_m": [
+          0.0050664335554911465,
+          0.002445226950439721,
+          0.5365882914642232
+        ],
+        "mass_with_payload_kg": 77.3864698,
+        "foot_error_m": 2.7894008272968645e-16,
+        "leg_targets_rad": [
+          -0.09991030360282815,
+          0.7990203461365889,
+          -1.4981278495307475,
+          0.09991030360282771,
+          0.7990203461365891,
+          -1.498127849530748,
+          -0.0999103036021447,
+          0.7990203632476315,
+          -1.4981278822325073,
+          0.09991030360282771,
+          0.799020346136589,
+          -1.498127849530748
+        ]
+      }
+    },
+    {
+      "nose_up_deg": 5,
+      "hard_limit_grid_points": 14985,
+      "rim_clearance_and_joint_reserve_grid_points": 12373,
+      "selected_pose": {
+        "base_x_m": 0.0,
+        "base_height_m": 0.5375,
+        "rear_lip_height_m": 0.7283634094948795,
+        "joint_limit_margin_deg": 11.074160525685278,
+        "illegal_body_min_height_m": 0.3074147657545311,
+        "com_support_margin_m": 0.23966915891099755,
+        "com_world_m": [
+          0.003531558326868365,
+          0.002445121416860261,
+          0.5381883224791435
+        ],
+        "mass_with_payload_kg": 77.3864698,
+        "foot_error_m": 2.2887833992611187e-16,
+        "leg_targets_rad": [
+          -0.09535078621096815,
+          0.818918938774923,
+          -1.3776256854327227,
+          0.09535078621096815,
+          0.818918938774923,
+          -1.3776256854327227,
+          -0.10671942551160196,
+          0.9453015914467215,
+          -1.610863192740137,
+          0.10671943693240582,
+          0.9453043137314325,
+          -1.6108651917030943
+        ]
+      }
+    },
+    {
+      "nose_up_deg": 10,
+      "hard_limit_grid_points": 12351,
+      "rim_clearance_and_joint_reserve_grid_points": 8937,
+      "selected_pose": {
+        "base_x_m": 0.0,
+        "base_height_m": 0.5375,
+        "rear_lip_height_m": 0.6877742331970254,
+        "joint_limit_margin_deg": 10.57606378504292,
+        "illegal_body_min_height_m": 0.29482840368949204,
+        "com_support_margin_m": 0.2396692736601344,
+        "com_world_m": [
+          0.001954575781858192,
+          0.0024450066677233983,
+          0.5396803543985585
+        ],
+        "mass_with_payload_kg": 77.3864698,
+        "foot_error_m": 1.7554167342883506e-16,
+        "leg_targets_rad": [
+          -0.09183513105322483,
+          0.8310724870544882,
+          -1.2486408050572444,
+          0.09183513105322483,
+          0.8310724870544882,
+          -1.2486408050572444,
+          -0.11541280770747298,
+          1.0930054840447758,
+          -1.7159380280526384,
+          0.1154128650500672,
+          1.0930114606522208,
+          -1.7159420825686214
+        ]
+      }
+    },
+    {
+      "nose_up_deg": 15,
+      "hard_limit_grid_points": 8589,
+      "rim_clearance_and_joint_reserve_grid_points": 4884,
+      "selected_pose": {
+        "base_x_m": 0.0,
+        "base_height_m": 0.5375,
+        "rear_lip_height_m": 0.6460413792464791,
+        "joint_limit_margin_deg": 9.002103378336045,
+        "illegal_body_min_height_m": 0.28403093699786,
+        "com_support_margin_m": 0.23966940621671348,
+        "com_world_m": [
+          0.00035292891987149367,
+          0.002444874111144338,
+          0.5410708825751424
+        ],
+        "mass_with_payload_kg": 77.3864698,
+        "foot_error_m": 1.7554167342883506e-16,
+        "leg_targets_rad": [
+          -0.0892052253810176,
+          0.8348701847366649,
+          -1.1089774788725044,
+          0.0892052253810176,
+          0.8348701847366649,
+          -1.1089774788725044,
+          -0.1266149693125902,
+          1.2428736697812104,
+          -1.8135011928821048,
+          0.12661513672818492,
+          1.2428836564431311,
+          -1.8135073695424166
+        ]
+      }
+    },
+    {
+      "nose_up_deg": 20,
+      "hard_limit_grid_points": 4938,
+      "rim_clearance_and_joint_reserve_grid_points": 1664,
+      "selected_pose": {
+        "base_x_m": -0.007499999999999979,
+        "base_height_m": 0.5449999999999999,
+        "rear_lip_height_m": 0.6109824598607903,
+        "joint_limit_margin_deg": 2.010486304392355,
+        "illegal_body_min_height_m": 0.2741365048211094,
+        "com_support_margin_m": 0.23966954556053727,
+        "com_world_m": [
+          -0.008225704582649014,
+          0.0024447347673205544,
+          0.549298438135247
+        ],
+        "mass_with_payload_kg": 77.3864698,
+        "foot_error_m": 3.554447978966673e-16,
+        "leg_targets_rad": [
+          -0.0859376723289933,
+          0.7935670207483361,
+          -0.9079934821515433,
+          0.08593767232899285,
+          0.7935670207483361,
+          -0.9079934821515433,
+          -0.1376841391230088,
+          1.3648962002372989,
+          -1.8809008570203274,
+          0.1376844946135254,
+          1.3649103944221004,
+          -1.8809086294894792
+        ]
+      }
+    },
+    {
+      "nose_up_deg": 25,
+      "hard_limit_grid_points": 2325,
+      "rim_clearance_and_joint_reserve_grid_points": 14,
+      "selected_pose": {
+        "base_x_m": -0.06749999999999999,
+        "base_height_m": 0.55,
+        "rear_lip_height_m": 0.5729213741142625,
+        "joint_limit_margin_deg": 2.0482653201435883,
+        "illegal_body_min_height_m": 0.22914702437187656,
+        "com_support_margin_m": 0.2396696497021656,
+        "com_world_m": [
+          -0.06707439734051678,
+          0.0024446306256922334,
+          0.5536461940417341
+        ],
+        "mass_with_payload_kg": 77.3864698,
+        "foot_error_m": 2.7894008272968645e-16,
+        "leg_targets_rad": [
+          -0.08076044139444338,
+          0.6412798592545674,
+          -0.6442487733927783,
+          0.08076044139444338,
+          0.6412798592545674,
+          -0.6442487733927783,
+          -0.14334232538111724,
+          1.364233157626903,
+          -1.957862502821217,
+          0.14334287236152665,
+          1.3642510262090786,
+          -1.9578721402661152
+        ]
+      }
+    },
+    {
+      "nose_up_deg": 30,
+      "hard_limit_grid_points": 604,
+      "rim_clearance_and_joint_reserve_grid_points": 0,
+      "selected_pose": null
+    },
+    {
+      "nose_up_deg": 35,
+      "hard_limit_grid_points": 0,
+      "rim_clearance_and_joint_reserve_grid_points": 0,
+      "selected_pose": null
+    },
+    {
+      "nose_up_deg": 40,
+      "hard_limit_grid_points": 0,
+      "rim_clearance_and_joint_reserve_grid_points": 0,
+      "selected_pose": null
+    },
+    {
+      "nose_up_deg": 45,
+      "hard_limit_grid_points": 0,
+      "rim_clearance_and_joint_reserve_grid_points": 0,
+      "selected_pose": null
+    }
+  ],
+  "ideal_point_barriers": [
+    {
+      "nose_up_deg": 0,
+      "ideal_point_potential_barrier_m": 0.09799999590000001
+    },
+    {
+      "nose_up_deg": 15,
+      "ideal_point_potential_barrier_m": 0.07263573074653869
+    },
+    {
+      "nose_up_deg": 20,
+      "ideal_point_potential_barrier_m": 0.06438874939405878
+    },
+    {
+      "nose_up_deg": 30,
+      "ideal_point_potential_barrier_m": 0.04899999580753156
+    },
+    {
+      "nose_up_deg": 45,
+      "ideal_point_potential_barrier_m": 0.028703536071230842
+    },
+    {
+      "nose_up_deg": 60,
+      "ideal_point_potential_barrier_m": 0.013129509660565794
+    },
+    {
+      "nose_up_deg": 75,
+      "ideal_point_potential_barrier_m": 0.003339269696690461
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "v2": {
+    "motion_completed": false,
+    "constraint_violation": "实际机械臂速度超限",
+    "simulated_time_s": 101.3330000001198,
+    "rear_exited": 2,
+    "first_exit_seen_at_1s_sampling_s": {
+      "006_mustard_bottle": 79.00100000001316,
+      "011_banana": 94.00100000008479
+    },
+    "arm_peak_speed_rad_s": [
+      0.02508176658598454,
+      0.10709865466976624,
+      0.07881305464672565,
+      0.11322908567389861,
+      0.06810025955751838,
+      0.048605723686883165,
+      0.06345531397182126
+    ],
+    "arm_peak_torque_Nm": [
+      1.217095674040628,
+      23.82717230345588,
+      15.964522873783608,
+      10.434639956215904,
+      2.3741847072241633,
+      1.1506420099490369,
+      3.7210744673269223
+    ],
+    "edge_angle_max_at_1s_sampling_deg": 0.3150361748189212,
+    "urdf_sha256": "2c52955d67225a4c2c2026c41de17515fbf4c2b65cfa0e324306e6671d492ec0"
+  },
+  "v3": {
+    "motion_completed": true,
+    "constraint_violation": null,
+    "simulated_time_s": 162.5110000004119,
+    "rear_exited": 3,
+    "first_exit_seen_at_1s_sampling_s": {
+      "006_mustard_bottle": 83.00100000003226,
+      "011_banana": 83.00100000003226,
+      "004_sugar_box": 115.00100000018506
+    },
+    "arm_peak_speed_rad_s": [
+      0.023847887082477974,
+      0.12123344260910042,
+      0.14748462054724665,
+      0.09593373886445422,
+      0.02317551628033921,
+      0.017960452942367366,
+      0.17595541962015296
+    ],
+    "arm_peak_torque_Nm": [
+      0.6707657066162733,
+      15.255047581000724,
+      11.122573012428802,
+      5.405598510902685,
+      0.6791604096711457,
+      0.5028901716843649,
+      1.6439528284165954
+    ],
+    "edge_angle_max_at_1s_sampling_deg": 0.01574648249303622,
+    "urdf_sha256": "eb54aefe9c7b34ae18adb3599a6772d20c48b58358a0fd89dfa6ce4cc837e413"
+  },
+  "identical_q_nodes": true,
+  "identical_parameters": true,
+  "identical_duration_s": 156.510360332952,
+  "friction": 0.5,
+  "scenario": "mixed_three",
+  "body": {
+    "pitch_deg": 15,
+    "x_m": 0.1,
+    "height_m": 0.575
+  },
+  "note": "Whole-object rear-plane crossing, not target bucket scoring; comparison changes entire CAD geometry including lower side walls"
+}

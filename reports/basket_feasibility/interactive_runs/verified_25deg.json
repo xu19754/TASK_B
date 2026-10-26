@@ -1,0 +1,77 @@
+{
+  "scope": "Prescribed URDF-limited link poses + MuJoCo free cargo; not motor/balance/scoring validation",
+  "urdf": "/Users/yxh/Desktop/5810/TaskB/assets/b2z1/b2z1_0815_with_basket.urdf",
+  "urdf_sha256": "5bfb30720e6dad747bfcc3e1d53f65f62c03405258656c6147495e56dd6bb005",
+  "mujoco": "3.17.0",
+  "simulated_time_s": 20.00000000000146,
+  "friction": 0.5,
+  "scenario": "mixed_three",
+  "actual_pitch_deg": 25.0,
+  "target_pitch_deg": 25.0,
+  "base_x_m": -0.06749999999999999,
+  "base_height_m": 0.55,
+  "joint_margin_deg": 2.0482653201435883,
+  "rear_lip_world_z_m": 0.5729213741142625,
+  "illegal_body_ground_clearance_m": 0.22914702437187656,
+  "assumed_com_support_margin_m": 0.2396696497021656,
+  "fixed_foot_error_m": 2.7894008272968645e-16,
+  "require_rim": true,
+  "q_rad": {
+    "FR_hip_joint": -0.08076044139444338,
+    "FR_thigh_joint": 0.6412798592545674,
+    "FR_calf_joint": -0.6442487733927783,
+    "FL_hip_joint": 0.08076044139444338,
+    "FL_thigh_joint": 0.6412798592545674,
+    "FL_calf_joint": -0.6442487733927783,
+    "RR_hip_joint": -0.14334232538111724,
+    "RR_thigh_joint": 1.364233157626903,
+    "RR_calf_joint": -1.957862502821217,
+    "RL_hip_joint": 0.14334287236152665,
+    "RL_thigh_joint": 1.3642510262090786,
+    "RL_calf_joint": -1.9578721402661152,
+    "joint1": 0.0,
+    "joint2": 1.48,
+    "joint3": -0.63,
+    "joint4": -0.84,
+    "joint5": 0.0,
+    "joint6": 1.57,
+    "jointGripper": 0.0
+  },
+  "cargo": [
+    {
+      "asset": "004_sugar_box",
+      "below_rim": true,
+      "fully_rear_now": false,
+      "rear_exit_observed": false,
+      "rear_most_x_m": 0.043377798913169605,
+      "front_most_x_m": 0.13707644386826928,
+      "highest_z_m": 0.04723219813705409
+    },
+    {
+      "asset": "006_mustard_bottle",
+      "below_rim": true,
+      "fully_rear_now": false,
+      "rear_exit_observed": false,
+      "rear_most_x_m": -0.09741684282051702,
+      "front_most_x_m": 0.00605097027055634,
+      "highest_z_m": 0.0608841137329297
+    },
+    {
+      "asset": "011_banana",
+      "below_rim": true,
+      "fully_rear_now": false,
+      "rear_exit_observed": false,
+      "rear_most_x_m": -0.006761804088381664,
+      "front_most_x_m": 0.07138321865241548,
+      "highest_z_m": 0.07634553768319745
+    }
+  ],
+  "assumptions": [
+    "19 URDF joint angles bounded externally; robot uses mocap bodies, no motor dynamics",
+    "basket mass 0.2 kg and exact 16 collisions; each cargo 0.5 kg, source-mesh convex hull",
+    "2 degree reserve, 1 cm body clearance, 2 cm assumed COM support margin are screening assumptions",
+    "no reaction-force balance, motor torque or foot-slip validation; no task bucket or score",
+    "mocap motion has no dynamic robot feedback; use only slow tilt, not impact/throw analysis",
+    "robot mesh contacts are convex hulls, not Isaac convex decomposition"
+  ]
+}

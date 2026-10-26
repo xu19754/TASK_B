@@ -1,0 +1,1237 @@
+{
+  "cases": [
+    {
+      "seed": 20261027,
+      "scenario": "mixed_three",
+      "label": "混合三件",
+      "exact_original_rejection_reproduced": true,
+      "final_step": {
+        "time_before_s": 51.397999999970914,
+        "time_after_s": 51.39899999997091,
+        "q_before_rad": -0.02763709891791771,
+        "q_after_rad": -0.028118965503089413,
+        "v_before_rad_s": 0.034108499733387934,
+        "v_after_rad_s": -0.4818665851717024,
+        "command_rad": -0.08,
+        "control_rad": -0.07994295697964454,
+        "command_error_rad": -0.05236290108208229,
+        "proportional_torque_Nm": -4.184468644938146,
+        "damping_torque_Nm": -0.2728679978671035,
+        "motor_torque_used_Nm": -4.4573366428052505,
+        "constraint_torque_Nm": 0.0,
+        "bias_torque_Nm": 0.004563441628437248,
+        "smooth_accel_rad_s2": -14305.381680494722,
+        "constrained_accel_rad_s2": -14305.381680494722,
+        "velocity_delta_rad_s": -0.5159750849050904,
+        "grip_contacts": [],
+        "q_all_before": [
+          0.0017443681478478748,
+          1.445202949882441,
+          -4.708155569368119,
+          -0.7565906867497875,
+          -0.00044864192611456677,
+          -0.0010138497602685014,
+          -0.02763709891791771
+        ],
+        "v_all_before": [
+          0.002186003370267784,
+          2.952833078958615e-05,
+          0.014362321265132252,
+          0.03008242509182299,
+          0.008750656378989948,
+          -0.009347048348503882,
+          0.034108499733387934
+        ],
+        "v_all_after": [
+          -0.0017432360571650683,
+          -0.04467247318477157,
+          -9.36516033730337e-06,
+          -0.07730429781488973,
+          0.0029519737478446418,
+          0.00703479748655671,
+          -0.4818665851717024
+        ]
+      },
+      "preceding_step": {
+        "time_before_s": 51.396999999970916,
+        "time_after_s": 51.397999999970914,
+        "q_before_rad": -0.027671207417651097,
+        "q_after_rad": -0.02763709891791771,
+        "v_before_rad_s": 0.03878139005401416,
+        "v_after_rad_s": 0.034108499733387934,
+        "command_rad": -0.08,
+        "control_rad": -0.07994299146846545,
+        "command_error_rad": -0.052328792582348904,
+        "proportional_torque_Nm": -4.181742724065148,
+        "damping_torque_Nm": -0.3102511204321133,
+        "motor_torque_used_Nm": -4.491993844497261,
+        "constraint_torque_Nm": 4.462271267060527,
+        "bias_torque_Nm": 0.004560682522764092,
+        "smooth_accel_rad_s2": -14427.089811387748,
+        "constrained_accel_rad_s2": -134.83674978223192,
+        "velocity_delta_rad_s": -0.004672890320626226,
+        "grip_contacts": [
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_0"
+            ],
+            "distance_m": -1.4059979206455802e-05,
+            "normal_force_N": 27.737605657586688,
+            "gripper_generalized_torque_Nm": 2.1333519797448015
+          },
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_0"
+            ],
+            "distance_m": -1.6556252864710398e-05,
+            "normal_force_N": 29.395402229572518,
+            "gripper_generalized_torque_Nm": 2.328919287315725
+          }
+        ],
+        "q_all_before": [
+          0.001742182144477607,
+          1.4452029203541101,
+          -4.708169931689384,
+          -0.7566207691748793,
+          -0.00045739258249355674,
+          -0.0010045027119199976,
+          -0.027671207417651097
+        ],
+        "v_all_before": [
+          0.0018062101304824026,
+          -0.0020375351336310737,
+          0.012756565096629754,
+          0.029437721603985875,
+          0.009210649750416515,
+          -0.00929623289495279,
+          0.03878139005401416
+        ],
+        "v_all_after": [
+          0.002186003370267784,
+          2.952833078958615e-05,
+          0.014362321265132252,
+          0.03008242509182299,
+          0.008750656378989948,
+          -0.009347048348503882,
+          0.034108499733387934
+        ]
+      },
+      "gripper_effective_inertia_kg_m2": 0.00029012123892542747,
+      "damping_time_constant_s": 3.626515486567843e-05,
+      "free_servo_velocity_estimate_rad_s": -0.5236290108208229,
+      "local_timestep_sensitivity": [
+        {
+          "timestep_s": 0.001,
+          "substeps": 1,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.4818665851717024,
+          "peak_speed_rad_s": 0.4818665851717024
+        },
+        {
+          "timestep_s": 0.0005,
+          "substeps": 2,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.424654159837205,
+          "peak_speed_rad_s": 0.46081403254542486
+        },
+        {
+          "timestep_s": 0.00025,
+          "substeps": 4,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.33755091879590504,
+          "peak_speed_rad_s": 0.4259424412140785
+        },
+        {
+          "timestep_s": 0.000125,
+          "substeps": 8,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.23153861823972952,
+          "peak_speed_rad_s": 0.3715185311599148
+        },
+        {
+          "timestep_s": 6.25e-05,
+          "substeps": 16,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.19203132946753668,
+          "peak_speed_rad_s": 0.4181244027333478
+        },
+        {
+          "timestep_s": 3.125e-05,
+          "substeps": 32,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.1312250902300951,
+          "peak_speed_rad_s": 0.4064216864116036
+        },
+        {
+          "timestep_s": 1.5625e-05,
+          "substeps": 64,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.10209955281983918,
+          "peak_speed_rad_s": 0.426246914801803
+        }
+      ]
+    },
+    {
+      "seed": 20261028,
+      "scenario": "mixed_three",
+      "label": "混合三件",
+      "exact_original_rejection_reproduced": true,
+      "final_step": {
+        "time_before_s": 30.602000000014417,
+        "time_after_s": 30.60300000001442,
+        "q_before_rad": -0.013720992861107926,
+        "q_after_rad": -0.013470121029570892,
+        "v_before_rad_s": 0.23781167625008937,
+        "v_after_rad_s": 0.25087183153703363,
+        "command_rad": -0.08,
+        "control_rad": -0.08000173187835413,
+        "command_error_rad": -0.06627900713889208,
+        "proportional_torque_Nm": -5.302459121379696,
+        "damping_torque_Nm": -1.902493410000715,
+        "motor_torque_used_Nm": -5.0,
+        "constraint_torque_Nm": 5.001650981320786,
+        "bias_torque_Nm": -0.00013855026833076156,
+        "smooth_accel_rad_s2": -15908.836683866173,
+        "constrained_accel_rad_s2": 13.175573707714593,
+        "velocity_delta_rad_s": 0.013060155286944264,
+        "grip_contacts": [
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_1"
+            ],
+            "distance_m": -0.00011949528559936822,
+            "normal_force_N": 48.674676872006216,
+            "gripper_generalized_torque_Nm": 2.7139790500721994
+          },
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_1"
+            ],
+            "distance_m": -0.00010705001460679016,
+            "normal_force_N": 43.20790072882395,
+            "gripper_generalized_torque_Nm": 2.2876719312485867
+          }
+        ],
+        "q_all_before": [
+          0.0010340910876605715,
+          1.582542902664282,
+          -4.660627630800231,
+          -1.0818756411935762,
+          0.007374873370896802,
+          -0.006575516551267426,
+          -0.013720992861107926
+        ],
+        "v_all_before": [
+          0.0052891173376118225,
+          -0.010191489832131414,
+          -0.03154176338316407,
+          0.017390326814277532,
+          -0.006220250134288387,
+          0.0002629758232762402,
+          0.23781167625008937
+        ],
+        "v_all_after": [
+          0.0055630329583796646,
+          -0.010465190426251035,
+          -0.033138569567292706,
+          0.01741295532023385,
+          -0.006557340102453777,
+          0.00031165913084057686,
+          0.25087183153703363
+        ]
+      },
+      "preceding_step": {
+        "time_before_s": 30.601000000014416,
+        "time_after_s": 30.602000000014417,
+        "q_before_rad": -0.013958804537358016,
+        "q_after_rad": -0.013720992861107926,
+        "v_before_rad_s": 0.22541330621404673,
+        "v_after_rad_s": 0.23781167625008937,
+        "command_rad": -0.08,
+        "control_rad": -0.08000182946540722,
+        "command_error_rad": -0.06604119546264199,
+        "proportional_torque_Nm": -5.283441994243937,
+        "damping_torque_Nm": -1.8033064497123739,
+        "motor_torque_used_Nm": -5.0,
+        "constraint_torque_Nm": 5.001553460178917,
+        "bias_torque_Nm": -0.00014635723257727662,
+        "smooth_accel_rad_s2": -15908.823290815135,
+        "constrained_accel_rad_s2": 12.511200119285432,
+        "velocity_delta_rad_s": 0.012398370036042633,
+        "grip_contacts": [
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_1"
+            ],
+            "distance_m": -0.00011967718507945927,
+            "normal_force_N": 48.747866854231646,
+            "gripper_generalized_torque_Nm": 2.7163509381117175
+          },
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_1"
+            ],
+            "distance_m": -0.00010706744183374568,
+            "normal_force_N": 43.21535916462813,
+            "gripper_generalized_torque_Nm": 2.2852025220671988
+          }
+        ],
+        "q_all_before": [
+          0.0010288019703229598,
+          1.5825530941541142,
+          -4.660596089036847,
+          -1.0818930315203905,
+          0.00738109362103109,
+          -0.006575779527090702,
+          -0.013958804537358016
+        ],
+        "v_all_before": [
+          0.005030185104179999,
+          -0.009934788474887678,
+          -0.03002659252229303,
+          0.017369878749727567,
+          -0.005899837962779804,
+          0.00021653218591703558,
+          0.22541330621404673
+        ],
+        "v_all_after": [
+          0.0052891173376118225,
+          -0.010191489832131414,
+          -0.03154176338316407,
+          0.017390326814277532,
+          -0.006220250134288387,
+          0.0002629758232762402,
+          0.23781167625008937
+        ]
+      },
+      "gripper_effective_inertia_kg_m2": 0.00029080945982097535,
+      "damping_time_constant_s": 3.635118247762192e-05,
+      "free_servo_velocity_estimate_rad_s": -0.6627900713889208,
+      "local_timestep_sensitivity": [
+        {
+          "timestep_s": 0.001,
+          "substeps": 1,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.25087183153703363,
+          "peak_speed_rad_s": 0.25087183153703363
+        },
+        {
+          "timestep_s": 0.0005,
+          "substeps": 2,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.25100118081263867,
+          "peak_speed_rad_s": 0.25100118081263867
+        },
+        {
+          "timestep_s": 0.00025,
+          "substeps": 4,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.25104111977905613,
+          "peak_speed_rad_s": 0.25104111977905613
+        },
+        {
+          "timestep_s": 0.000125,
+          "substeps": 8,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.2510483958396242,
+          "peak_speed_rad_s": 0.2510483958396242
+        },
+        {
+          "timestep_s": 6.25e-05,
+          "substeps": 16,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.2510471077296433,
+          "peak_speed_rad_s": 0.2510471077296433
+        },
+        {
+          "timestep_s": 3.125e-05,
+          "substeps": 32,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.2510449135163424,
+          "peak_speed_rad_s": 0.2510449135163424
+        },
+        {
+          "timestep_s": 1.5625e-05,
+          "substeps": 64,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.25104338297600126,
+          "peak_speed_rad_s": 0.25104338297600126
+        }
+      ]
+    },
+    {
+      "seed": 20261126,
+      "scenario": "004_sugar_box",
+      "label": "三个糖盒",
+      "exact_original_rejection_reproduced": true,
+      "final_step": {
+        "time_before_s": 96.4960000000967,
+        "time_after_s": 96.4970000000967,
+        "q_before_rad": -0.27899242723187956,
+        "q_after_rad": -0.27872159794698653,
+        "v_before_rad_s": 0.14567348955958226,
+        "v_after_rad_s": 0.2708292848930327,
+        "command_rad": -0.08,
+        "control_rad": -0.07991521088293795,
+        "command_error_rad": 0.19899242723187954,
+        "proportional_torque_Nm": 15.926177307915328,
+        "damping_torque_Nm": -1.165387916476658,
+        "motor_torque_used_Nm": 5.0,
+        "constraint_torque_Nm": -4.947523995980612,
+        "bias_torque_Nm": 0.006783129364964946,
+        "smooth_accel_rad_s2": 16113.41779590736,
+        "constrained_accel_rad_s2": 117.68510871475306,
+        "velocity_delta_rad_s": 0.12515579533345045,
+        "grip_contacts": [
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "collision_tail_basket_15"
+            ],
+            "distance_m": -4.2200188478810164e-05,
+            "normal_force_N": 55.637793722078726,
+            "gripper_generalized_torque_Nm": 2.271372920957566
+          },
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_1"
+            ],
+            "distance_m": -0.00016157101663710557,
+            "normal_force_N": 74.84324423641509,
+            "gripper_generalized_torque_Nm": -7.218896916938178
+          }
+        ],
+        "q_all_before": [
+          0.01679038823329148,
+          1.1118238170401997,
+          -4.704657777588928,
+          -0.11488234539760593,
+          -0.005753048481016699,
+          0.003776439357742697,
+          -0.27899242723187956
+        ],
+        "v_all_before": [
+          0.0455738115082242,
+          -0.03088024243938016,
+          0.00933560941521743,
+          0.02210140650409688,
+          -0.02796173139535834,
+          -0.005266758904495807,
+          0.14567348955958226
+        ],
+        "v_all_after": [
+          0.04989001913504912,
+          -0.021884263145858358,
+          0.008019492858394489,
+          0.020835377029374505,
+          -0.04386995340372815,
+          -0.009111687435738739,
+          0.2708292848930327
+        ]
+      },
+      "preceding_step": {
+        "time_before_s": 96.4950000000967,
+        "time_after_s": 96.4960000000967,
+        "q_before_rad": -0.27913810072143913,
+        "q_after_rad": -0.27899242723187956,
+        "v_before_rad_s": 0.17794784624889676,
+        "v_after_rad_s": 0.14567348955958226,
+        "command_rad": -0.08,
+        "control_rad": -0.07991529408084574,
+        "command_error_rad": 0.19913810072143912,
+        "proportional_torque_Nm": 15.937824531247472,
+        "damping_torque_Nm": -1.423582769991174,
+        "motor_torque_used_Nm": 5.0,
+        "constraint_torque_Nm": -5.005909829547387,
+        "bias_torque_Nm": 0.006776473532340455,
+        "smooth_accel_rad_s2": 16121.698907475855,
+        "constrained_accel_rad_s2": -22.758198184435596,
+        "velocity_delta_rad_s": -0.0322743566893145,
+        "grip_contacts": [
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "collision_tail_basket_15"
+            ],
+            "distance_m": -4.560642378113772e-05,
+            "normal_force_N": 39.30285925690989,
+            "gripper_generalized_torque_Nm": 1.488504225819706
+          },
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_1"
+            ],
+            "distance_m": -0.0001682780436557937,
+            "normal_force_N": 81.3292472422153,
+            "gripper_generalized_torque_Nm": -6.494414055367094
+          }
+        ],
+        "q_all_before": [
+          0.016744814421783254,
+          1.111854697282639,
+          -4.704667113198343,
+          -0.11490444680411002,
+          -0.005725086749621341,
+          0.003781706116647193,
+          -0.27913810072143913
+        ],
+        "v_all_before": [
+          0.039987986677595844,
+          -0.04793038571494895,
+          0.01699502630955228,
+          0.02739535600665864,
+          -0.037713748526128646,
+          -0.0017370116643533578,
+          0.17794784624889676
+        ],
+        "v_all_after": [
+          0.0455738115082242,
+          -0.03088024243938016,
+          0.00933560941521743,
+          0.02210140650409688,
+          -0.02796173139535834,
+          -0.005266758904495807,
+          0.14567348955958226
+        ]
+      },
+      "gripper_effective_inertia_kg_m2": 0.0002931886404352668,
+      "damping_time_constant_s": 3.664858005440835e-05,
+      "free_servo_velocity_estimate_rad_s": 1.9899242723187953,
+      "local_timestep_sensitivity": [
+        {
+          "timestep_s": 0.001,
+          "substeps": 1,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.2708292848930327,
+          "peak_speed_rad_s": 0.2708292848930327
+        },
+        {
+          "timestep_s": 0.0005,
+          "substeps": 2,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.22657722445105122,
+          "peak_speed_rad_s": 0.22657722445105122
+        },
+        {
+          "timestep_s": 0.00025,
+          "substeps": 4,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.23108305337595314,
+          "peak_speed_rad_s": 0.23108305337595314
+        },
+        {
+          "timestep_s": 0.000125,
+          "substeps": 8,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.2466724133545096,
+          "peak_speed_rad_s": 0.2466724133545096
+        },
+        {
+          "timestep_s": 6.25e-05,
+          "substeps": 16,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.25410939656312936,
+          "peak_speed_rad_s": 0.25410939656312936
+        },
+        {
+          "timestep_s": 3.125e-05,
+          "substeps": 32,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.25374024234486936,
+          "peak_speed_rad_s": 0.25374024234486936
+        },
+        {
+          "timestep_s": 1.5625e-05,
+          "substeps": 64,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.25346886994153595,
+          "peak_speed_rad_s": 0.25346886994153595
+        }
+      ]
+    },
+    {
+      "seed": 20261128,
+      "scenario": "004_sugar_box",
+      "label": "三个糖盒",
+      "exact_original_rejection_reproduced": true,
+      "final_step": {
+        "time_before_s": 98.14300000010456,
+        "time_after_s": 98.14400000010457,
+        "q_before_rad": -0.12424148762880255,
+        "q_after_rad": -0.1238254702144215,
+        "v_before_rad_s": -0.00192835170494352,
+        "v_after_rad_s": 0.41601741438105294,
+        "command_rad": -0.08,
+        "control_rad": -0.07984315822201452,
+        "command_error_rad": 0.04424148762880255,
+        "proportional_torque_Nm": 3.5518663525430427,
+        "damping_torque_Nm": 0.01542681363954816,
+        "motor_torque_used_Nm": 3.5672931661825906,
+        "constraint_torque_Nm": 0.0,
+        "bias_torque_Nm": 0.012547342238838577,
+        "smooth_accel_rad_s2": 11842.9577442842,
+        "constrained_accel_rad_s2": 11770.17034811733,
+        "velocity_delta_rad_s": 0.4179457660859965,
+        "grip_contacts": [],
+        "q_all_before": [
+          -0.001495343977995273,
+          1.0825800896069104,
+          -4.68843333930828,
+          -0.0946601398466549,
+          -0.0016207003088612902,
+          -0.002625464987890142,
+          -0.12424148762880255
+        ],
+        "v_all_before": [
+          -0.10023750249222556,
+          -0.1463717353440108,
+          0.1521159149185487,
+          0.09449190009610885,
+          0.07636546719478621,
+          0.010645892340084855,
+          -0.00192835170494352
+        ],
+        "v_all_after": [
+          -0.09898538401519837,
+          -0.1675335506032575,
+          0.17600746640950837,
+          0.14953206655203202,
+          0.05849953477417663,
+          0.031876443926205214,
+          0.41601741438105294
+        ]
+      },
+      "preceding_step": {
+        "time_before_s": 98.14200000010456,
+        "time_after_s": 98.14300000010456,
+        "q_before_rad": -0.12423955927709761,
+        "q_after_rad": -0.12424148762880255,
+        "v_before_rad_s": -0.010952476898622865,
+        "v_after_rad_s": -0.00192835170494352,
+        "command_rad": -0.08,
+        "control_rad": -0.07984316973440263,
+        "command_error_rad": 0.044239559277097606,
+        "proportional_torque_Nm": 3.5517111634155984,
+        "damping_torque_Nm": 0.08761981518898292,
+        "motor_torque_used_Nm": 3.6393309786045807,
+        "constraint_torque_Nm": -3.5228005923342387,
+        "bias_torque_Nm": 0.01254642124778993,
+        "smooth_accel_rad_s2": 12032.388662662453,
+        "constrained_accel_rad_s2": 202.45416211201885,
+        "velocity_delta_rad_s": 0.009024125193679344,
+        "grip_contacts": [
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_0"
+            ],
+            "distance_m": -1.9033889581392496e-05,
+            "normal_force_N": 24.776156877584594,
+            "gripper_generalized_torque_Nm": -3.5228005923342387
+          }
+        ],
+        "q_all_before": [
+          -0.0013951064755030474,
+          1.0827264613422545,
+          -4.6885854552231985,
+          -0.09475463174675101,
+          -0.0016970657760560764,
+          -0.002636110880230227,
+          -0.12423955927709761
+        ],
+        "v_all_before": [
+          -0.09604328771169139,
+          -0.12934184591923042,
+          0.13895222884762626,
+          0.07054789182509269,
+          0.11072482527824648,
+          -0.0007704673970170704,
+          -0.010952476898622865
+        ],
+        "v_all_after": [
+          -0.10023750249222556,
+          -0.1463717353440108,
+          0.1521159149185487,
+          0.09449190009610885,
+          0.07636546719478621,
+          0.010645892340084855,
+          -0.00192835170494352
+        ]
+      },
+      "gripper_effective_inertia_kg_m2": 0.00029109797208785475,
+      "damping_time_constant_s": 3.638724651098184e-05,
+      "free_servo_velocity_estimate_rad_s": 0.44241487628802545,
+      "local_timestep_sensitivity": [
+        {
+          "timestep_s": 0.001,
+          "substeps": 1,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.41601741438105294,
+          "peak_speed_rad_s": 0.41601741438105294
+        },
+        {
+          "timestep_s": 0.0005,
+          "substeps": 2,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.42934488379749364,
+          "peak_speed_rad_s": 0.42934488379749364
+        },
+        {
+          "timestep_s": 0.00025,
+          "substeps": 4,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.4308893001692177,
+          "peak_speed_rad_s": 0.4308893001692177
+        },
+        {
+          "timestep_s": 0.000125,
+          "substeps": 8,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.4306829615385009,
+          "peak_speed_rad_s": 0.4307843038543157
+        },
+        {
+          "timestep_s": 6.25e-05,
+          "substeps": 16,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.43053377293534056,
+          "peak_speed_rad_s": 0.43069317850441347
+        },
+        {
+          "timestep_s": 3.125e-05,
+          "substeps": 32,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.4304625299961859,
+          "peak_speed_rad_s": 0.4306449978484728
+        },
+        {
+          "timestep_s": 1.5625e-05,
+          "substeps": 64,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.43043017589154486,
+          "peak_speed_rad_s": 0.430625360885675
+        }
+      ]
+    },
+    {
+      "seed": 20261228,
+      "scenario": "006_mustard_bottle",
+      "label": "三个芥末瓶",
+      "exact_original_rejection_reproduced": true,
+      "final_step": {
+        "time_before_s": 90.28000000006702,
+        "time_after_s": 90.28100000006702,
+        "q_before_rad": -0.12166236864627364,
+        "q_after_rad": -0.12127564372562664,
+        "v_before_rad_s": 0.008023133845266104,
+        "v_after_rad_s": 0.38672492064699826,
+        "command_rad": -0.08,
+        "control_rad": -0.07987084648636081,
+        "command_error_rad": 0.04166236864627364,
+        "proportional_torque_Nm": 3.3433217727930264,
+        "damping_torque_Nm": -0.06418507076212883,
+        "motor_torque_used_Nm": 3.2791367020308986,
+        "constraint_torque_Nm": 0.0,
+        "bias_torque_Nm": 0.010332281091135265,
+        "smooth_accel_rad_s2": 10707.004051784237,
+        "constrained_accel_rad_s2": 10428.703841973273,
+        "velocity_delta_rad_s": 0.37870178680173217,
+        "grip_contacts": [],
+        "q_all_before": [
+          0.0037769290920155562,
+          1.17193478963203,
+          -4.750503099385847,
+          -0.1884528749111747,
+          -0.00047534390209045673,
+          0.000463675954660867,
+          -0.12166236864627364
+        ],
+        "v_all_before": [
+          0.02969604558829412,
+          -0.07400616270491674,
+          0.06459716572524488,
+          0.06143596481252579,
+          0.005157903094716206,
+          -0.0043783263148467625,
+          0.008023133845266104
+        ],
+        "v_all_after": [
+          0.030643405607258006,
+          -0.09419864044192292,
+          0.08826121624039406,
+          0.14913803910553097,
+          0.010211129839543219,
+          -0.01732555659912379,
+          0.38672492064699826
+        ]
+      },
+      "preceding_step": {
+        "time_before_s": 90.27900000006701,
+        "time_after_s": 90.28000000006702,
+        "q_before_rad": -0.1216703917801189,
+        "q_after_rad": -0.12166236864627364,
+        "v_before_rad_s": 0.007741223787851268,
+        "v_after_rad_s": 0.008023133845266104,
+        "command_rad": -0.08,
+        "control_rad": -0.07987089777269538,
+        "command_error_rad": 0.0416703917801189,
+        "proportional_torque_Nm": 3.343959520593882,
+        "damping_torque_Nm": -0.06192979030281014,
+        "motor_torque_used_Nm": 3.2820297302910717,
+        "constraint_torque_Nm": -3.265382473047891,
+        "bias_torque_Nm": 0.010328178184370596,
+        "smooth_accel_rad_s2": 10728.371566500173,
+        "constrained_accel_rad_s2": 22.160658325959194,
+        "velocity_delta_rad_s": 0.0002819100574148357,
+        "grip_contacts": [
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_0"
+            ],
+            "distance_m": -6.0335962695451776e-06,
+            "normal_force_N": 18.015916998170106,
+            "gripper_generalized_torque_Nm": -1.6326912365239454
+          },
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_0"
+            ],
+            "distance_m": -6.0335962695451776e-06,
+            "normal_force_N": 18.015916998170106,
+            "gripper_generalized_torque_Nm": -1.6326912365239454
+          }
+        ],
+        "q_all_before": [
+          0.003747233046427262,
+          1.172008795794735,
+          -4.750567696551572,
+          -0.18851431087598725,
+          -0.0004805018051851729,
+          0.00046805428097571375,
+          -0.1216703917801189
+        ],
+        "v_all_before": [
+          0.024242121637061104,
+          -0.08672164173080603,
+          0.06834921242567862,
+          0.0642438289718607,
+          -0.006826074944865194,
+          -0.005273689936401895,
+          0.007741223787851268
+        ],
+        "v_all_after": [
+          0.02969604558829412,
+          -0.07400616270491674,
+          0.06459716572524488,
+          0.06143596481252579,
+          0.005157903094716206,
+          -0.0043783263148467625,
+          0.008023133845266104
+        ]
+      },
+      "gripper_effective_inertia_kg_m2": 0.0002908670544961444,
+      "damping_time_constant_s": 3.635838181201805e-05,
+      "free_servo_velocity_estimate_rad_s": 0.4166236864627364,
+      "local_timestep_sensitivity": [
+        {
+          "timestep_s": 0.001,
+          "substeps": 1,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.38672492064699826,
+          "peak_speed_rad_s": 0.38672492064699826
+        },
+        {
+          "timestep_s": 0.0005,
+          "substeps": 2,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.3520702580225058,
+          "peak_speed_rad_s": 0.3710872048616898
+        },
+        {
+          "timestep_s": 0.00025,
+          "substeps": 4,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.31432770988503117,
+          "peak_speed_rad_s": 0.34523509379451994
+        },
+        {
+          "timestep_s": 0.000125,
+          "substeps": 8,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.2609339783020859,
+          "peak_speed_rad_s": 0.3049941400805184
+        },
+        {
+          "timestep_s": 6.25e-05,
+          "substeps": 16,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.1967228432700487,
+          "peak_speed_rad_s": 0.24904634740106674
+        },
+        {
+          "timestep_s": 3.125e-05,
+          "substeps": 32,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.1323244152997063,
+          "peak_speed_rad_s": 0.18366809162808453
+        },
+        {
+          "timestep_s": 1.5625e-05,
+          "substeps": 64,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.1348938952880536,
+          "peak_speed_rad_s": 0.20400801474001493
+        }
+      ]
+    },
+    {
+      "seed": 20261326,
+      "scenario": "011_banana",
+      "label": "三根香蕉",
+      "exact_original_rejection_reproduced": true,
+      "final_step": {
+        "time_before_s": 41.28899999999447,
+        "time_after_s": 41.28999999999447,
+        "q_before_rad": -0.026278664213240557,
+        "q_after_rad": -0.0267743673948961,
+        "v_before_rad_s": -0.0023275371148769874,
+        "v_after_rad_s": -0.4957031816555416,
+        "command_rad": -0.08,
+        "control_rad": -0.07999096595428623,
+        "command_error_rad": -0.053721335786759444,
+        "proportional_torque_Nm": -4.296984139283654,
+        "damping_torque_Nm": 0.0186202969190159,
+        "motor_torque_used_Nm": -4.278363842364638,
+        "constraint_torque_Nm": 0.0,
+        "bias_torque_Nm": 0.000722723657101465,
+        "smooth_accel_rad_s2": -13553.719765895432,
+        "constrained_accel_rad_s2": -13553.719765895432,
+        "velocity_delta_rad_s": -0.4933756445406646,
+        "grip_contacts": [],
+        "q_all_before": [
+          -1.2191664659372615e-05,
+          1.5010478026181757,
+          -4.709152195092226,
+          -0.9162123305063054,
+          0.0020659115271589056,
+          -0.0023804511450809343,
+          -0.026278664213240557
+        ],
+        "v_all_before": [
+          0.0052969319642828736,
+          -0.0075143501229008175,
+          0.03058114066944162,
+          0.03692177925649607,
+          0.020459596115134707,
+          -0.027689008195562716,
+          -0.0023275371148769874
+        ],
+        "v_all_after": [
+          -0.00231663129734048,
+          -0.04367425087217304,
+          0.008972339080764342,
+          -0.0757333051827667,
+          -0.015431651670027139,
+          0.019663151885832526,
+          -0.4957031816555416
+        ]
+      },
+      "preceding_step": {
+        "time_before_s": 41.287999999994476,
+        "time_after_s": 41.28899999999447,
+        "q_before_rad": -0.02627633667612568,
+        "q_after_rad": -0.026278664213240557,
+        "v_before_rad_s": 0.015288108843917753,
+        "v_after_rad_s": -0.0023275371148769874,
+        "command_rad": -0.08,
+        "control_rad": -0.07999100725747765,
+        "command_error_rad": -0.05372366332387432,
+        "proportional_torque_Nm": -4.297173646508158,
+        "damping_torque_Nm": -0.12230487075134203,
+        "motor_torque_used_Nm": -4.4194785172595,
+        "constraint_torque_Nm": 4.259451090767598,
+        "bias_torque_Nm": 0.0007194194017874356,
+        "smooth_accel_rad_s2": -14114.520397075617,
+        "constrained_accel_rad_s2": -576.2975359611264,
+        "velocity_delta_rad_s": -0.01761564595879474,
+        "grip_contacts": [
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_1"
+            ],
+            "distance_m": -1.7365252857091785e-05,
+            "normal_force_N": 41.88558929833408,
+            "gripper_generalized_torque_Nm": 4.259451090767598
+          }
+        ],
+        "q_all_before": [
+          -1.7488596623655488e-05,
+          1.5010553169682985,
+          -4.709182776232896,
+          -0.9162492522855619,
+          0.002045451931043771,
+          -0.0023527621368853715,
+          -0.02627633667612568
+        ],
+        "v_all_before": [
+          0.0034719753764342587,
+          0.0016484556132297212,
+          0.03702864744362517,
+          0.038154025181002374,
+          0.0064520323303425865,
+          -0.00440061834848115,
+          0.015288108843917753
+        ],
+        "v_all_after": [
+          0.0052969319642828736,
+          -0.0075143501229008175,
+          0.03058114066944162,
+          0.03692177925649607,
+          0.020459596115134707,
+          -0.027689008195562716,
+          -0.0023275371148769874
+        ]
+      },
+      "gripper_effective_inertia_kg_m2": 0.0002904815292349803,
+      "damping_time_constant_s": 3.631019115437254e-05,
+      "free_servo_velocity_estimate_rad_s": -0.5372133578675944,
+      "local_timestep_sensitivity": [
+        {
+          "timestep_s": 0.001,
+          "substeps": 1,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.4957031816555416,
+          "peak_speed_rad_s": 0.4957031816555416
+        },
+        {
+          "timestep_s": 0.0005,
+          "substeps": 2,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.44026884951962475,
+          "peak_speed_rad_s": 0.4751764049492831
+        },
+        {
+          "timestep_s": 0.00025,
+          "substeps": 4,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.4298188178446604,
+          "peak_speed_rad_s": 0.501330888476894
+        },
+        {
+          "timestep_s": 0.000125,
+          "substeps": 8,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.38671806923530344,
+          "peak_speed_rad_s": 0.5084915083734258
+        },
+        {
+          "timestep_s": 6.25e-05,
+          "substeps": 16,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.34730636213894955,
+          "peak_speed_rad_s": 0.5107603579201202
+        },
+        {
+          "timestep_s": 3.125e-05,
+          "substeps": 32,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.2893266377796509,
+          "peak_speed_rad_s": 0.5105982896695279
+        },
+        {
+          "timestep_s": 1.5625e-05,
+          "substeps": 64,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": -0.25352818348814704,
+          "peak_speed_rad_s": 0.510690990286802
+        }
+      ]
+    },
+    {
+      "seed": 20261327,
+      "scenario": "011_banana",
+      "label": "三根香蕉",
+      "exact_original_rejection_reproduced": true,
+      "final_step": {
+        "time_before_s": 90.50100000006807,
+        "time_after_s": 90.50200000006808,
+        "q_before_rad": -0.10810325009264926,
+        "q_after_rad": -0.10783505349803263,
+        "v_before_rad_s": 0.10922331957996498,
+        "v_after_rad_s": 0.26819659461662815,
+        "command_rad": -0.08,
+        "control_rad": -0.07986141888729975,
+        "command_error_rad": 0.02810325009264926,
+        "proportional_torque_Nm": 2.259346496427961,
+        "damping_torque_Nm": -0.8737865566397198,
+        "motor_torque_used_Nm": 1.3855599397882417,
+        "constraint_torque_Nm": 0.0,
+        "bias_torque_Nm": 0.011086489016019496,
+        "smooth_accel_rad_s2": 4427.115800955463,
+        "constrained_accel_rad_s2": 4427.115800955463,
+        "velocity_delta_rad_s": 0.15897327503666317,
+        "grip_contacts": [],
+        "q_all_before": [
+          0.012940696643516833,
+          1.1636862270958432,
+          -4.741857052015708,
+          -0.18081072302954507,
+          -0.010763027149977686,
+          0.00042268485211803704,
+          -0.10810325009264926
+        ],
+        "v_all_before": [
+          -0.011858764547104219,
+          -0.10462066693536388,
+          0.057497742935076215,
+          0.042909035468749544,
+          0.19901527117236736,
+          -0.027634552161021148,
+          0.10922331957996498
+        ],
+        "v_all_after": [
+          -0.034586905681005406,
+          -0.1503631808024022,
+          0.08566507178140252,
+          0.09039744281812,
+          0.14303705586968443,
+          -0.005010006141359148,
+          0.26819659461662815
+        ]
+      },
+      "preceding_step": {
+        "time_before_s": 90.50000000006807,
+        "time_after_s": 90.50100000006807,
+        "q_before_rad": -0.10821247341222923,
+        "q_after_rad": -0.10810325009264926,
+        "v_before_rad_s": 0.04576314459262795,
+        "v_after_rad_s": 0.10922331957996498,
+        "command_rad": -0.08,
+        "control_rad": -0.07986120838361098,
+        "command_error_rad": 0.028212473412229225,
+        "proportional_torque_Nm": 2.2681012022894596,
+        "damping_torque_Nm": -0.3661051567410236,
+        "motor_torque_used_Nm": 1.9019960455484357,
+        "constraint_torque_Nm": -1.350729770376648,
+        "bias_torque_Nm": 0.01110332931112179,
+        "smooth_accel_rad_s2": 6104.466359697438,
+        "constrained_accel_rad_s2": 1712.8367078741376,
+        "velocity_delta_rad_s": 0.06346017498733703,
+        "grip_contacts": [
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_2"
+            ],
+            "distance_m": -2.5727587783391346e-06,
+            "normal_force_N": 11.51868479611234,
+            "gripper_generalized_torque_Nm": -0.7336540175634757
+          },
+          {
+            "geoms": [
+              "collision_gripperMover_3",
+              "cargo_geom_2"
+            ],
+            "distance_m": -9.489587721561069e-07,
+            "normal_force_N": 9.710258855020209,
+            "gripper_generalized_torque_Nm": -0.6170757528131723
+          }
+        ],
+        "q_all_before": [
+          0.012952555408063938,
+          1.1637908477627785,
+          -4.741914549758643,
+          -0.18085363206501381,
+          -0.010962042421150054,
+          0.00045031940427905817,
+          -0.10821247341222923
+        ],
+        "v_all_before": [
+          0.0046323634081495415,
+          -0.062463588878052284,
+          0.03555982672261041,
+          0.024159615015385365,
+          0.06611793812084266,
+          -0.011256704513750382,
+          0.04576314459262795
+        ],
+        "v_all_after": [
+          -0.011858764547104219,
+          -0.10462066693536388,
+          0.057497742935076215,
+          0.042909035468749544,
+          0.19901527117236736,
+          -0.027634552161021148,
+          0.10922331957996498
+        ]
+      },
+      "gripper_effective_inertia_kg_m2": 0.0002907257701599589,
+      "damping_time_constant_s": 3.634072126999486e-05,
+      "free_servo_velocity_estimate_rad_s": 0.28103250092649257,
+      "local_timestep_sensitivity": [
+        {
+          "timestep_s": 0.001,
+          "substeps": 1,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.26819659461662815,
+          "peak_speed_rad_s": 0.26819659461662815
+        },
+        {
+          "timestep_s": 0.0005,
+          "substeps": 2,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.2725827954542432,
+          "peak_speed_rad_s": 0.2725827954542432
+        },
+        {
+          "timestep_s": 0.00025,
+          "substeps": 4,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.273097027605728,
+          "peak_speed_rad_s": 0.273097027605728
+        },
+        {
+          "timestep_s": 0.000125,
+          "substeps": 8,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.2730605139811523,
+          "peak_speed_rad_s": 0.2730605139811523
+        },
+        {
+          "timestep_s": 6.25e-05,
+          "substeps": 16,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.27301983543376895,
+          "peak_speed_rad_s": 0.27303208019790326
+        },
+        {
+          "timestep_s": 3.125e-05,
+          "substeps": 32,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.27299682470237174,
+          "peak_speed_rad_s": 0.27302120997375334
+        },
+        {
+          "timestep_s": 1.5625e-05,
+          "substeps": 64,
+          "horizon_s": 0.001,
+          "end_velocity_rad_s": 0.27298456403933774,
+          "peak_speed_rad_s": 0.27301689335823526
+        }
+      ]
+    }
+  ],
+  "protected_files_unchanged": true,
+  "scope": "Same-layout baseline replay plus separate local timestep sensitivity; no path repairs"
+}

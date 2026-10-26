@@ -1,0 +1,1170 @@
+{
+  "rows": [
+    {
+      "q_rad": [
+        -1.498236092002215e-06,
+        1.6012616552280647,
+        -4.739999999999999,
+        -1.0648920714537684,
+        -1.8985404706793585e-06,
+        -1.738412772270081e-06,
+        -0.08
+      ],
+      "position_error_m": 0.03664160760374172,
+      "orientation_error_rad": 1.1420377626342555,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.1388448574687595,
+        3.6928727825890464e-08,
+        0.03441767625114154
+      ],
+      "x_m": 0.16,
+      "tilt_deg": 0,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        2.1467572090046864e-05,
+        1.5926471387914605,
+        -4.739999999999998,
+        -1.072216968095121,
+        2.7053418372489332e-05,
+        2.5681663035614985e-05,
+        -0.08
+      ],
+      "position_error_m": 0.031683923019410164,
+      "orientation_error_rad": 0.9834442501962808,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.14148500873174302,
+        -5.331273033297974e-07,
+        0.03021120526058732
+      ],
+      "x_m": 0.16,
+      "tilt_deg": 10,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        4.301272788845448e-05,
+        1.5839598190564088,
+        -4.739999999999999,
+        -1.0796405636517072,
+        5.379003495181202e-05,
+        5.191455251207406e-05,
+        -0.08
+      ],
+      "position_error_m": 0.026693915410023958,
+      "orientation_error_rad": 0.8250222394644973,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.14421350159012097,
+        -1.0801157280513246e-06,
+        0.02602560305091943
+      ],
+      "x_m": 0.16,
+      "tilt_deg": 20,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -6.090664640404375e-08,
+        1.575192868673452,
+        -4.739999999999999,
+        -1.0871669582585295,
+        -7.633492739790825e-08,
+        -6.980923873804018e-08,
+        -0.08
+      ],
+      "position_error_m": 0.02166923138571863,
+      "orientation_error_rad": 0.6667826603969831,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.1470324085680475,
+        1.224946682750656e-09,
+        0.021860793798146583
+      ],
+      "x_m": 0.16,
+      "tilt_deg": 30,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        1.7137662485218506e-06,
+        1.56634125876497,
+        -4.739999999999999,
+        -1.0947999895880982,
+        2.106172496868494e-06,
+        2.1065434987320128e-06,
+        -0.08
+      ],
+      "position_error_m": 0.01660823834404673,
+      "orientation_error_rad": 0.5087343764346349,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.14994370777691785,
+        -4.4688949162415826e-08,
+        0.01771758554406381
+      ],
+      "x_m": 0.16,
+      "tilt_deg": 40,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        1.275833956940122e-08,
+        1.557399271566425,
+        -4.739999999999999,
+        -1.1025441152751696,
+        1.5262347197255103e-08,
+        1.3191843190030463e-08,
+        -0.08
+      ],
+      "position_error_m": 0.011508983513876067,
+      "orientation_error_rad": 0.35088756412178607,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.15294965577559064,
+        -3.5684610404131275e-10,
+        0.01359666685330447
+      ],
+      "x_m": 0.16,
+      "tilt_deg": 50,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        8.973018620066741e-09,
+        1.5483609766189241,
+        -4.739999999774646,
+        -1.1104042993582501,
+        1.0748581707220598e-08,
+        8.657439433530104e-09,
+        -0.08
+      ],
+      "position_error_m": 0.006369388290027907,
+      "orientation_error_rad": 0.19325311772758186,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.156052736174236,
+        -2.0476187097095896e-10,
+        0.009498821408988284
+      ],
+      "x_m": 0.16,
+      "tilt_deg": 60,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        4.2429349035232727e-10,
+        1.539220138821614,
+        -4.739999999919706,
+        -1.1183860060075002,
+        5.00990529029538e-10,
+        4.5492515506691025e-10,
+        -0.08
+      ],
+      "position_error_m": 0.0011872314910559834,
+      "orientation_error_rad": 0.0358427371197683,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.159255664444865,
+        -1.1447740756058729e-11,
+        0.005424923345319452
+      ],
+      "x_m": 0.16,
+      "tilt_deg": 70,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -7.031964700879105e-07,
+        1.4635922023678454,
+        -4.7399999999999975,
+        -0.797285078746323,
+        -1.0845428100922517e-06,
+        -8.240494925632611e-07,
+        -0.08
+      ],
+      "position_error_m": 0.029187047519056073,
+      "orientation_error_rad": 1.0121002227883318,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.06003791178028318,
+        1.7501061551309474e-08,
+        0.02579316267696215
+      ],
+      "x_m": 0.08,
+      "tilt_deg": 0,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -0.008235207805224095,
+        1.4600582632439376,
+        -4.739999999999999,
+        -0.8070479676329179,
+        -0.01262136500243036,
+        -0.009713675675394084,
+        -0.08
+      ],
+      "position_error_m": 0.024596561807012987,
+      "orientation_error_rad": 0.8508227690859634,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.06311548003796515,
+        0.00020397449073582328,
+        0.022384692694731593
+      ],
+      "x_m": 0.08,
+      "tilt_deg": 10,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -9.701813807847455e-08,
+        1.4564926029224268,
+        -4.739999999999994,
+        -0.8167798870486552,
+        -1.4909469970603308e-07,
+        -1.1805413765545376e-07,
+        -0.08
+      ],
+      "position_error_m": 0.019988043992953654,
+      "orientation_error_rad": 0.689628780137559,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.06622630541028507,
+        2.0679501350347366e-09,
+        0.01898472436788164
+      ],
+      "x_m": 0.08,
+      "tilt_deg": 20,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        3.9931003760756e-05,
+        1.452780826349413,
+        -4.739999999999999,
+        -0.8265008317809077,
+        6.029971986604532e-05,
+        4.77528467481831e-05,
+        -0.08
+      ],
+      "position_error_m": 0.01535962187205012,
+      "orientation_error_rad": 0.5285285758677459,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.0693745145315725,
+        -1.0114519398012303e-06,
+        0.015591304773991265
+      ],
+      "x_m": 0.08,
+      "tilt_deg": 30,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -2.132584317936887e-08,
+        1.4489614024040343,
+        -4.739999999543418,
+        -0.8362115872325134,
+        -3.178924111106413e-08,
+        -2.0103459459823014e-08,
+        -0.08
+      ],
+      "position_error_m": 0.010710252705151527,
+      "orientation_error_rad": 0.367525829984372,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.07256134933053478,
+        4.673651380724939e-10,
+        0.012205581692894445
+      ],
+      "x_m": 0.08,
+      "tilt_deg": 40,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        3.6134944568910567e-09,
+        1.4450345514423184,
+        -4.739999986227439,
+        -0.8459179285634022,
+        5.330383776740297e-09,
+        2.8761144164045455e-09,
+        -0.08
+      ],
+      "position_error_m": 0.006038655180703351,
+      "orientation_error_rad": 0.20662608376156544,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.07578886479469775,
+        -7.143877298314273e-11,
+        0.00882801301685881
+      ],
+      "x_m": 0.08,
+      "tilt_deg": 50,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -2.3829135174950646e-10,
+        1.4410002807577398,
+        -4.739999999614013,
+        -0.8556255618373647,
+        -3.6746043026844073e-10,
+        -5.08772550473714e-11,
+        -0.08
+      ],
+      "position_error_m": 0.0013435003087043668,
+      "orientation_error_rad": 0.04583507590724759,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.07905915585870325,
+        -3.818445914270304e-12,
+        0.005459064847273792
+      ],
+      "x_m": 0.08,
+      "tilt_deg": 60,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -1.803248896467543e-11,
+        1.3482292398625757,
+        -4.534197771545399,
+        -1.0973643303110747,
+        -7.491127411399702e-12,
+        1.0466218042805451e-11,
+        -0.08
+      ],
+      "position_error_m": 3.1638574208277947e-07,
+      "orientation_error_rad": 9.732008073888171e-06,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        0.0799997068114326,
+        5.187345606190475e-12,
+        0.004500118913421071
+      ],
+      "x_m": 0.08,
+      "tilt_deg": 70,
+      "edge_gap_m": 0.003,
+      "accepted": true
+    },
+    {
+      "q_rad": [
+        5.49369592748299e-07,
+        1.31585230087884,
+        -4.739999999999791,
+        -0.4980801767718943,
+        9.954845171442356e-07,
+        5.970617647781925e-07,
+        -0.08
+      ],
+      "position_error_m": 0.02412692858849499,
+      "orientation_error_rad": 0.860635222302902,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.018912143641101067,
+        -1.3513059296401444e-08,
+        0.01948130521725379
+      ],
+      "x_m": 0.0,
+      "tilt_deg": 0,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        7.265817889956283e-08,
+        1.316517288309411,
+        -4.739999999999999,
+        -0.5114918545618611,
+        1.3159348876955318e-07,
+        8.842890483737516e-08,
+        -0.08
+      ],
+      "position_error_m": 0.019578468018831077,
+      "orientation_error_rad": 0.6988489874632221,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.01533877260587203,
+        -1.7635106850163127e-09,
+        0.016667105855943665
+      ],
+      "x_m": 0.0,
+      "tilt_deg": 10,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -5.01014856361366e-09,
+        1.3169959115331065,
+        -4.73999999999999,
+        -0.5246875722689411,
+        -9.024331342009e-09,
+        -5.807421879145975e-09,
+        -0.08
+      ],
+      "position_error_m": 0.015037987998667486,
+      "orientation_error_rad": 0.5370331567471661,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.011777036211691494,
+        1.1135071139998033e-10,
+        0.01385106951725711
+      ],
+      "x_m": 0.0,
+      "tilt_deg": 20,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -1.0297240286109363e-08,
+        1.31729567121437,
+        -4.739999999999999,
+        -0.5376838179763472,
+        -1.7957607554111595e-08,
+        -6.960290078579138e-09,
+        -0.08
+      ],
+      "position_error_m": 0.010503113726337351,
+      "orientation_error_rad": 0.3751967175738847,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.008223672712256682,
+        2.472804971583932e-10,
+        0.011033498685242171
+      ],
+      "x_m": 0.0,
+      "tilt_deg": 30,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        3.387739068793823e-09,
+        1.317425294283288,
+        -4.739999999994287,
+        -0.5504977865958464,
+        5.805001802055338e-09,
+        1.8080279393208784e-09,
+        -0.08
+      ],
+      "position_error_m": 0.005971610815050337,
+      "orientation_error_rad": 0.21334813791931972,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.0046751557112707535,
+        -8.779232834720773e-11,
+        0.008215246263950584
+      ],
+      "x_m": 0.0,
+      "tilt_deg": 40,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -5.974762981406129e-10,
+        1.3173910850620758,
+        -4.739999999999998,
+        -0.563143735340386,
+        -1.025926382658724e-09,
+        -6.74838360886881e-10,
+        -0.08
+      ],
+      "position_error_m": 0.0014413915773437292,
+      "orientation_error_rad": 0.05149537069135075,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.0011285240596660777,
+        2.0910396798245374e-11,
+        0.005396684518653179
+      ],
+      "x_m": 0.0,
+      "tilt_deg": 50,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -9.186659693819788e-14,
+        1.2571912855775733,
+        -4.531688584032888,
+        -0.8343044359376339,
+        -1.5248376521291075e-13,
+        -6.580032081049879e-14,
+        -0.08
+      ],
+      "position_error_m": 3.397902052742657e-07,
+      "orientation_error_rad": 1.1529606558165702e-05,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -3.0889493059276027e-07,
+        3.748921362388622e-15,
+        0.00450014156731778
+      ],
+      "x_m": 0.0,
+      "tilt_deg": 60,
+      "edge_gap_m": 0.003,
+      "accepted": true
+    },
+    {
+      "q_rad": [
+        -2.1754560211830273e-07,
+        1.1399673100647825,
+        -4.739999999999991,
+        -0.13932231851840907,
+        -4.510245995448147e-07,
+        -1.8869571669973255e-07,
+        -0.08
+      ],
+      "position_error_m": 0.020728123778381423,
+      "orientation_error_rad": 0.6777623548638269,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.09824938288611194,
+        5.235315811740087e-09,
+        0.014329300058903417
+      ],
+      "x_m": -0.08,
+      "tilt_deg": 0,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        4.177978292066374e-08,
+        1.1462522811456541,
+        -4.739999999999999,
+        -0.16087687719686666,
+        8.556329723430377e-08,
+        3.3471080655968183e-08,
+        -0.08
+      ],
+      "position_error_m": 0.015712015838071223,
+      "orientation_error_rad": 0.5184990172619868,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.09378612857654177,
+        -1.0582096849108468e-09,
+        0.012037247545812611
+      ],
+      "x_m": -0.08,
+      "tilt_deg": 10,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        3.396647218642888e-08,
+        1.1519874127832037,
+        -4.739999999999984,
+        -0.18148309005961488,
+        6.905786056063774e-08,
+        2.579972074839181e-08,
+        -0.08
+      ],
+      "position_error_m": 0.010783876714376125,
+      "orientation_error_rad": 0.3588371732877375,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.08943221673547366,
+        -8.245144724780167e-10,
+        0.00972735922296465
+      ],
+      "x_m": -0.08,
+      "tilt_deg": 20,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        6.275324030573568e-09,
+        1.1572346025516573,
+        -4.739999999999999,
+        -0.20125991624470688,
+        1.2469961998946365e-08,
+        4.2348173847935145e-09,
+        -0.08
+      ],
+      "position_error_m": 0.005930708988659122,
+      "orientation_error_rad": 0.19883388450495718,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.0851722021795664,
+        -1.96083267689227e-10,
+        0.00740200512092084
+      ],
+      "x_m": -0.08,
+      "tilt_deg": 30,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        4.96312857822682e-10,
+        1.1620457708071132,
+        -4.7399999583181005,
+        -0.2203068254596489,
+        9.864385642079029e-10,
+        1.475926294510569e-10,
+        -0.08
+      ],
+      "position_error_m": 0.0011415943636357995,
+      "orientation_error_rad": 0.03853665858311109,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.08099289132422004,
+        -9.085568661521466e-12,
+        0.005063386642878249
+      ],
+      "x_m": -0.08,
+      "tilt_deg": 40,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -1.1866599107881105e-13,
+        1.1359867183596077,
+        -4.5136720700002,
+        -0.5565850929905785,
+        -2.308897351948737e-13,
+        -7.145550333973113e-14,
+        -0.08
+      ],
+      "position_error_m": 3.658295704572586e-07,
+      "orientation_error_rad": 1.3165044213030967e-05,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.0800003306959375,
+        4.30532206543987e-15,
+        0.004500156433601065
+      ],
+      "x_m": -0.08,
+      "tilt_deg": 50,
+      "edge_gap_m": 0.003,
+      "accepted": true
+    },
+    {
+      "q_rad": [
+        9.617081560871501e-08,
+        0.8809297341370019,
+        -4.739999999999999,
+        0.38468356123003045,
+        2.2409248715513894e-07,
+        4.592490145719359e-08,
+        -0.08
+      ],
+      "position_error_m": 0.01955743060862276,
+      "orientation_error_rad": 0.4127940510431888,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.1790197811253148,
+        -2.143543164797313e-09,
+        0.009054230775466873
+      ],
+      "x_m": -0.16,
+      "tilt_deg": 0,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -3.0109293666427404e-08,
+        0.9093248696147649,
+        -4.739999999999999,
+        0.321617635703413,
+        -6.847689703533245e-08,
+        -1.2587856713830439e-08,
+        -0.08
+      ],
+      "position_error_m": 0.0119281527616759,
+      "orientation_error_rad": 0.2729319158925981,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.1715167178132369,
+        8.862049586988617e-10,
+        0.0076058073211563776
+      ],
+      "x_m": -0.16,
+      "tilt_deg": 10,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -3.5283162083182293e-09,
+        0.9310740623668259,
+        -4.739999999999999,
+        0.2714570934916258,
+        -7.81619856325277e-09,
+        -1.6209227230742485e-09,
+        -0.08
+      ],
+      "position_error_m": 0.0052339231642734045,
+      "orientation_error_rad": 0.1268103401528886,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.1650225584612158,
+        1.4392589231904627e-10,
+        0.005972364830192458
+      ],
+      "x_m": -0.16,
+      "tilt_deg": 20,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -2.1955867279136402e-13,
+        0.9571247110002596,
+        -4.707409947720128,
+        0.1650766004402845,
+        -4.926770648179923e-13,
+        -9.032281817039496e-14,
+        -0.08
+      ],
+      "position_error_m": 4.7009189700118626e-07,
+      "orientation_error_rad": 1.7207091492274063e-05,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.16000042313466645,
+        5.808534922726412e-15,
+        0.00450020480099048
+      ],
+      "x_m": -0.16,
+      "tilt_deg": 30,
+      "edge_gap_m": 0.003,
+      "accepted": true
+    },
+    {
+      "q_rad": [
+        -6.475788586642289e-13,
+        0.48687034582238764,
+        -4.704058162172636,
+        1.155583662294359,
+        -1.5385169537830803e-12,
+        1.0735936818805613e-13,
+        -0.08
+      ],
+      "position_error_m": 6.313245234713194e-07,
+      "orientation_error_rad": 1.1500466096473522e-05,
+      "min_contact_distance_m": -0.03578564939246164,
+      "collision_pairs": [
+        [
+          -0.03578564939246164,
+          [
+            "collision_link03_1",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.016000910146533653,
+          [
+            "collision_link06_0",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.011966319334696794,
+          [
+            "collision_link06_0",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.012601248895230772,
+          [
+            "collision_gripperStator_5",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.007318261265301933,
+          [
+            "collision_gripperStator_5",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.012489621156002672,
+          [
+            "collision_gripperStator_5",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.0002993583342162256,
+          [
+            "collision_gripperMover_0",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.00029935833421460933,
+          [
+            "collision_gripperMover_0",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.006405036831799692,
+          [
+            "collision_gripperMover_1",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.006404788425257782,
+          [
+            "collision_gripperMover_1",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.0064047884153929134,
+          [
+            "collision_gripperMover_1",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.006405036824723117,
+          [
+            "collision_gripperMover_1",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.007341512672363223,
+          [
+            "collision_gripperMover_2",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.007341512672361621,
+          [
+            "collision_gripperMover_2",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.00187955658746041,
+          [
+            "collision_gripperMover_4",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.0018761893192021542,
+          [
+            "collision_gripperMover_4",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.001876343639292028,
+          [
+            "collision_gripperMover_4",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.0018795979218081214,
+          [
+            "collision_gripperMover_4",
+            "collision_tail_basket_0"
+          ]
+        ]
+      ],
+      "tool_center_basket_m": [
+        -0.22000061922834513,
+        2.2955920198245706e-14,
+        0.014000122991505905
+      ],
+      "x_m": -0.22,
+      "tilt_deg": 0,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        4.623140541882138e-13,
+        0.6563267401688195,
+        -4.70240222478557,
+        0.8099348153209388,
+        1.1085511961484952e-12,
+        2.4923883252891954e-16,
+        -0.08
+      ],
+      "position_error_m": 5.738470025983502e-07,
+      "orientation_error_rad": 1.509050658575233e-05,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.22000054847302178,
+        -1.5231737059964067e-14,
+        0.014000168753449572
+      ],
+      "x_m": -0.22,
+      "tilt_deg": 10,
+      "edge_gap_m": 0.003,
+      "accepted": true
+    },
+    {
+      "q_rad": [
+        -9.895018394387405e-14,
+        0.44922786556102773,
+        -4.458391168263555,
+        0.9475606182815913,
+        -2.465025391470396e-13,
+        1.7163164048731142e-14,
+        -0.08
+      ],
+      "position_error_m": 5.700881580148808e-07,
+      "orientation_error_rad": 1.0030831142814451e-05,
+      "min_contact_distance_m": -0.033275557404364844,
+      "collision_pairs": [
+        [
+          -0.033275557404364844,
+          [
+            "collision_link03_1",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.012001272525877972,
+          [
+            "collision_link06_0",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.007966606997566343,
+          [
+            "collision_link06_0",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.0033184667794468148,
+          [
+            "collision_gripperStator_5",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.008489923584675046,
+          [
+            "collision_gripperStator_5",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.008601551310747793,
+          [
+            "collision_gripperStator_5",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.00662589424022645,
+          [
+            "collision_gripperMover_0",
+            "collision_tail_basket_1"
+          ]
+        ],
+        [
+          -0.007107883670888812,
+          [
+            "collision_gripperMover_0",
+            "collision_tail_basket_9"
+          ]
+        ],
+        [
+          -0.007107883713021729,
+          [
+            "collision_gripperMover_0",
+            "collision_tail_basket_23"
+          ]
+        ],
+        [
+          -0.0071078837130180645,
+          [
+            "collision_gripperMover_0",
+            "collision_tail_basket_23"
+          ]
+        ],
+        [
+          -0.0024051496293344098,
+          [
+            "collision_gripperMover_1",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.0024049329669942666,
+          [
+            "collision_gripperMover_1",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.0024049329634772553,
+          [
+            "collision_gripperMover_1",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.0024051496286916687,
+          [
+            "collision_gripperMover_1",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.0033416747798797673,
+          [
+            "collision_gripperMover_2",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.0033416747798800106,
+          [
+            "collision_gripperMover_2",
+            "collision_tail_basket_0"
+          ]
+        ],
+        [
+          -0.004069718021058364,
+          [
+            "collision_gripperMover_4",
+            "collision_tail_basket_1"
+          ]
+        ],
+        [
+          -0.0035359193529164883,
+          [
+            "collision_gripperMover_4",
+            "collision_tail_basket_1"
+          ]
+        ],
+        [
+          -0.0048911256123115865,
+          [
+            "collision_gripperMover_4",
+            "collision_tail_basket_9"
+          ]
+        ],
+        [
+          -0.004851361810520246,
+          [
+            "collision_gripperMover_4",
+            "collision_tail_basket_9"
+          ]
+        ],
+        [
+          -0.0050774105426276426,
+          [
+            "collision_gripperMover_4",
+            "collision_tail_basket_23"
+          ]
+        ]
+      ],
+      "tool_center_basket_m": [
+        -0.270000560385467,
+        5.1664514133346585e-15,
+        0.018000104731257245
+      ],
+      "x_m": -0.27,
+      "tilt_deg": 0,
+      "edge_gap_m": 0.003,
+      "accepted": false
+    },
+    {
+      "q_rad": [
+        -2.5533332493166746e-13,
+        0.59657904940914,
+        -4.450816627117288,
+        0.618098967104666,
+        -6.638714851478234e-13,
+        -1.597798698701669e-14,
+        -0.08
+      ],
+      "position_error_m": 5.195432460556442e-07,
+      "orientation_error_rad": 1.3031814256447711e-05,
+      "min_contact_distance_m": 1.0,
+      "collision_pairs": [],
+      "tool_center_basket_m": [
+        -0.2700005003656303,
+        6.749517042218133e-15,
+        0.018000139854998112
+      ],
+      "x_m": -0.27,
+      "tilt_deg": 10,
+      "edge_gap_m": 0.003,
+      "accepted": true
+    }
+  ],
+  "angular_grid_deg": 10,
+  "ik_joint_reserve_rad": 0.04,
+  "scope": "edge always transverse; face angle may vary; numerical IK, not a global infeasibility proof"
+}

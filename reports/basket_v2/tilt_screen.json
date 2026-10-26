@@ -1,0 +1,198 @@
+{
+  "scope": "Prescribed gravity direction, fixed basket, no robot/arm, no task bucket or score",
+  "timestep_s": 0.001,
+  "gravity_update_s": 0.01,
+  "settle_s": 2,
+  "ramp_s": 5,
+  "hold_s": 3,
+  "cargo": "Source-object convex hulls, 3 x 0.5 kg, same mixed initial packing as original screen",
+  "cavity_slice_volume_litres": {
+    "0.015": 1.442287067386108,
+    "0.08": 8.475387618298932,
+    "0.2": 21.45957325075338
+  },
+  "volume_caveat": "Only 15 mm is the lowest unobstructed sill; 80/200 mm volumes are geometric slices, not liquid retention or safe load",
+  "cases": [
+    {
+      "friction": 0.2,
+      "angle_deg": 0,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 0.2,
+      "angle_deg": 5,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 0.2,
+      "angle_deg": 10,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 0.2,
+      "angle_deg": 15,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 0.2,
+      "angle_deg": 20,
+      "rear_exit_count": 1,
+      "exited": [
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "friction": 0.2,
+      "angle_deg": 30,
+      "rear_exit_count": 2,
+      "exited": [
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "friction": 0.5,
+      "angle_deg": 0,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 0.5,
+      "angle_deg": 5,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 0.5,
+      "angle_deg": 10,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 0.5,
+      "angle_deg": 15,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 0.5,
+      "angle_deg": 20,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 0.5,
+      "angle_deg": 30,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 1.0,
+      "angle_deg": 0,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 1.0,
+      "angle_deg": 5,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 1.0,
+      "angle_deg": 10,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 1.0,
+      "angle_deg": 15,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 1.0,
+      "angle_deg": 20,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "friction": 1.0,
+      "angle_deg": 30,
+      "rear_exit_count": 0,
+      "exited": [
+        false,
+        false,
+        false
+      ]
+    }
+  ],
+  "rear_exit_definition": "All source hull vertices behind local X=-0.23 m at any sampled time"
+}

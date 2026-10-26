@@ -1,0 +1,191 @@
+{
+  "scope": "Part-2 CAD, prescribed B2 carrier + real dynamic 7-joint Z1 + free cargo; not full-robot balance",
+  "urdf": "/Users/yxh/Desktop/5810/TaskB/assets/b2z1/b2z1_0815_with_basket_v2.urdf",
+  "urdf_sha256": "2c52955d67225a4c2c2026c41de17515fbf4c2b65cfa0e324306e6671d492ec0",
+  "mujoco": "3.17.0",
+  "simulated_time_s": 8.865000000000526,
+  "friction": 0.5,
+  "scenario": "mixed_three",
+  "actual_pitch_deg": 0,
+  "target_pitch_deg": 0,
+  "base_x_m": 0,
+  "base_height_m": 0.5370399931224108,
+  "joint_margin_deg": 11.459155902616434,
+  "rear_lip_world_z_m": 0.6820399931224108,
+  "illegal_body_ground_clearance_m": 0.32114429687575574,
+  "assumed_com_support_margin_m": 0.2396690099544337,
+  "fixed_foot_error_m": 2.2887833992611187e-16,
+  "require_rim": true,
+  "q_rad": {
+    "FR_hip_joint": -0.10000000000000009,
+    "FR_thigh_joint": 0.8,
+    "FR_calf_joint": -1.5,
+    "FL_hip_joint": 0.10000000000000009,
+    "FL_thigh_joint": 0.8,
+    "FL_calf_joint": -1.5,
+    "RR_hip_joint": -0.10000000000000053,
+    "RR_thigh_joint": 0.7999999999999999,
+    "RR_calf_joint": -1.5,
+    "RL_hip_joint": 0.10000000000000009,
+    "RL_thigh_joint": 0.7999999999999999,
+    "RL_calf_joint": -1.5,
+    "joint1": 0.3810849712342791,
+    "joint2": 1.4643392568586,
+    "joint3": -4.713557802592502,
+    "joint4": -0.8767239568909527,
+    "joint5": 0.6647610809524364,
+    "joint6": 0.9446464730450875,
+    "jointGripper": -0.012816330314106141
+  },
+  "cargo": [
+    {
+      "asset": "004_sugar_box",
+      "below_rim": true,
+      "rear_exit_observed": false,
+      "front_most_x_m": 0.1185565331607073,
+      "rear_most_x_m": 0.023153341211664513,
+      "highest_z_m": 0.05292176499335388
+    },
+    {
+      "asset": "006_mustard_bottle",
+      "below_rim": true,
+      "rear_exit_observed": false,
+      "front_most_x_m": 0.02227218778718304,
+      "rear_most_x_m": -0.0769151519099926,
+      "highest_z_m": 0.05913957118271185
+    },
+    {
+      "asset": "011_banana",
+      "below_rim": true,
+      "rear_exit_observed": false,
+      "front_most_x_m": 0.09346052510990083,
+      "rear_most_x_m": 0.005647787537335913,
+      "highest_z_m": 0.08007718458492719
+    }
+  ],
+  "assumptions": [
+    "19 original controllable joint names preserved in the URDF; legs prescribed by bounded IK",
+    "7 arm joints use actual rigid-body dynamics, torque caps and measured speed/position monitors",
+    "gripper uses runtime 5 Nm / 0.25 rad/s, stricter than URDF 30 Nm / 3 rad/s",
+    "no cargo force, weld, attachment or teleport during arm motion; reset initializes only",
+    "arm vs basket/body collisions enabled as extra diagnostic guard; runtime self_collision is off",
+    "base receives no arm reaction feedback; feet, torque/power and full-robot stability unverified",
+    "30 convex basket partitions of CAD solid, source-object hull contacts, MuJoCo not PhysX",
+    "0.2 kg basket mass retained as an assumption; conservative COM uses fixed 1.5 kg payload",
+    "geometry-only end-effector presets can be blocked during dynamic execution"
+  ],
+  "arm_target_rad": [
+    0.3767591965563984,
+    1.4086692796513463,
+    -4.72,
+    -0.6375992626953585,
+    0.6568605011536837,
+    0.941100516707773,
+    -0.04
+  ],
+  "arm_velocity_rad_s": [
+    -0.030524113637963052,
+    -0.06385952048881795,
+    0.02682234553005809,
+    0.09905480240114765,
+    0.03561353266198068,
+    -0.032923712279667505,
+    0.045881341283200615
+  ],
+  "arm_torque_Nm": [
+    -1.433379325943065,
+    -9.407081713922253,
+    -5.63425965452825,
+    -2.694344535761388,
+    -3.945529078867736,
+    -0.06491778799303916,
+    -2.541744305137114
+  ],
+  "arm_peak_speed_rad_s": [
+    0.12905993638191052,
+    0.15393984052689555,
+    0.16870545567067977,
+    0.13482143866967006,
+    0.10171440725791092,
+    0.10582140457172984,
+    0.24066143457602404
+  ],
+  "arm_peak_torque_Nm": [
+    4.1733642463583465,
+    9.480138970895496,
+    6.778087978515941,
+    3.3334472957454864,
+    4.100995500517257,
+    0.4649034576664235,
+    2.956897810171889
+  ],
+  "arm_velocity_limit_rad_s": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    0.25
+  ],
+  "arm_effort_limit_Nm": [
+    30.0,
+    60.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    5.0
+  ],
+  "constraint_violation": "实际机械臂速度超限",
+  "rejected_next_step": {
+    "reason": "实际机械臂速度超限",
+    "time_s": 8.866000000000525,
+    "q_rad": [
+      0.3810334146534781,
+      1.4642492995590934,
+      -4.713546053156449,
+      -0.8766515762843482,
+      0.6647039503548465,
+      0.9446108071789622,
+      -0.01306721652950072
+    ],
+    "velocity_rad_s": [
+      -0.05155658080097911,
+      -0.08995729950664373,
+      0.011749436052652624,
+      0.07238060660457599,
+      -0.057130597589799784,
+      -0.03566586612532682,
+      -0.25088621539457967
+    ],
+    "torque_Nm": [
+      -0.8685511971997641,
+      -8.746691365044853,
+      -5.2574167387952,
+      -1.9973439939506648,
+      -1.549341194947658,
+      0.014411812183936945,
+      -0.14753295448330528
+    ]
+  },
+  "tip_basket_m": [
+    0.04776530582947902,
+    0.018748613906171954,
+    0.10425342482137923
+  ],
+  "recorded_action_targets_rad": [
+    [
+      0.15,
+      1.48,
+      -0.63,
+      -0.84,
+      0.0,
+      1.57,
+      0.0
+    ]
+  ],
+  "basket_colliders": 30,
+  "arm_dynamic_joints": 7,
+  "robot_prescribed_links": 21
+}

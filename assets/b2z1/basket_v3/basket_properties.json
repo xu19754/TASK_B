@@ -1,0 +1,268 @@
+{
+  "source": "assets/b2z1/basket_v3/零件2.SLDPRT",
+  "source_sha256": "75ff5e19bf2b46551fd26042d03f5224faa94e827795f2acbb84448dda3fbb25",
+  "variant": "assets/b2z1/b2z1_0815_with_basket_v3.urdf",
+  "variant_sha256": "eb54aefe9c7b34ae18adb3599a6772d20c48b58358a0fd89dfa6ce4cc837e413",
+  "converter": "XRTC5/sldprt-export 9c91ea0fd94090ce88efd6d37b61ba091243c715",
+  "dimensions_m": [
+    0.45000001788139343,
+    0.25,
+    0.15999999642372137
+  ],
+  "wall_thickness_m": 0.0015,
+  "source_mesh_vertices": 92,
+  "source_mesh_triangles": 180,
+  "cad_mesh_closed": true,
+  "crc_verified": true,
+  "rear_sill_m": 0.015,
+  "rear_clear_width_m": 0.21,
+  "front_sill_m": 0.08,
+  "front_clear_width_m": 0.247,
+  "front_window_clear_height_m": 0.07999999642372137,
+  "shell_volume_m3": 0.0004610710828290565,
+  "mass_kg": 0.2,
+  "mass_assumption": "Previous requested 0.2 kg retained; not measured",
+  "com_m": [
+    -0.0007114689230501292,
+    1.5952039853657957e-05,
+    0.04126864978665993
+  ],
+  "inertia_kg_m2": [
+    [
+      0.002459777088775389,
+      -1.7561034689996743e-07,
+      -8.664485065158007e-05
+    ],
+    [
+      -1.7561034690033488e-07,
+      0.004747164040198693,
+      1.177530031775914e-07
+    ],
+    [
+      -8.66448506515801e-05,
+      1.1775300317739622e-07,
+      0.0062170963904738365
+    ]
+  ],
+  "source_to_basket_rotation": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      1,
+      0
+    ]
+  ],
+  "source_to_basket_translation_m": [
+    0.07500000298023224,
+    0.0,
+    5.551115123125783e-17
+  ],
+  "collision_tetrahedra": 229,
+  "collision_convex_parts": 103,
+  "collision_volume_m3": 0.0004610710828290559,
+  "collision_visual_random_samples": 30000,
+  "collision_visual_mismatches": 0,
+  "front_and_rear_aperture_samples_clear": true,
+  "fixed_mount_xyz_m": [
+    -0.3,
+    0,
+    0.13
+  ],
+  "unchanged_controllable_joints": 19,
+  "display_mesh_limit": "Checks validate saved planar tessellation, not a licensed CAD B-rep reconstruction",
+  "floor_profile_xz_m": [
+    [
+      -0.2250000089,
+      0.014999999664723929
+    ],
+    [
+      -0.2242500037,
+      0.014999999664723929
+    ],
+    [
+      -0.2234999985,
+      0.014999999664723929
+    ],
+    [
+      -0.2134949234,
+      0.008723563401651436
+    ],
+    [
+      -0.2033038586,
+      0.0028397459536791403
+    ],
+    [
+      -0.2025145115,
+      0.0024716725866631858
+    ],
+    [
+      -0.2017240375,
+      0.002103073755279239
+    ],
+    [
+      -0.2008828206,
+      0.0018776693421510115
+    ],
+    [
+      -0.2000403255,
+      0.0016519224736840088
+    ],
+    [
+      -0.1991727583,
+      0.0015760206207317692
+    ],
+    [
+      -0.1983038336,
+      0.0015000000130385716
+    ],
+    [
+      -0.1867361467,
+      0.0015000000130385716
+    ],
+    [
+      -0.1749251783,
+      0.0015000000130385716
+    ],
+    [
+      0.0242874101,
+      0.0015000000130385716
+    ],
+    [
+      0.2234999985,
+      0.0015000000130385716
+    ]
+  ],
+  "bounds_m": [
+    [
+      -0.22500000894069672,
+      -0.125,
+      0.0
+    ],
+    [
+      0.22500000894069672,
+      0.125,
+      0.15999999642372137
+    ]
+  ],
+  "revision": "v3",
+  "source_snapshot": "assets/b2z1/basket_v3/零件2.SLDPRT",
+  "rear_main_ramp_angle_deg": 30.000014515131717,
+  "rear_floor_transition_start_x_m": -0.1983038336,
+  "model_label": "零件2 最新设计 v3",
+  "verification_scope": "CAD display tessellation and offline geometry checks only; Isaac/PhysX with this basket not yet tested",
+  "mesh_sha256": {
+    "basket_v3/basket_visual.obj": "b3c649b2dd9877bb2492dcf77e94776c9c9cfb8f7249203bfcb54c08f24b4623",
+    "basket_v3/collision_00.obj": "543bedd72c3c8828378551e7b959a8a82d06c5a8c02c32265b9ed2abd8748637",
+    "basket_v3/collision_01.obj": "262082e53c4d6737e11f4023a5f93b74c037d9103b7451e4b9501b21c2962c33",
+    "basket_v3/collision_02.obj": "0be2ccb5ca3288b3c9e28fb81d20bd394c77c0256edeba1fbd76279a29e47e18",
+    "basket_v3/collision_03.obj": "0ff6ca62d344ef47b856e8aba3fcce5e572e4e1a0bd872a298ece3bc8b286f65",
+    "basket_v3/collision_04.obj": "f14fd6527ecd074e40a8e6671cda19511f3dda85945d1e6fc8fe2b6fae827b75",
+    "basket_v3/collision_05.obj": "6220eaa52ec2cb930a6e8221559aa9435fe84c71b498e63111ec9ad5b631cbd4",
+    "basket_v3/collision_06.obj": "c3def84ead31b06302d4d8c402e1e0ec801328aece2749b4fb57069e113ea6b8",
+    "basket_v3/collision_07.obj": "15f3abe5c098ef683bf901c13f76ec7e84ddb843c140fa29e8022c82de0735c5",
+    "basket_v3/collision_08.obj": "8b50931f8ef4acc862b50a0a29134f37c7102e344942991a83acd39f7985a328",
+    "basket_v3/collision_09.obj": "a981b131cf7d5d27375cd2779787f78f4f03fcb3c36b182acdf0e445c901cf72",
+    "basket_v3/collision_10.obj": "ac1129ecb25e58599e5f714733980d596a516525698c0cdb851b715cf208f2af",
+    "basket_v3/collision_100.obj": "a07151fbcec788c8315b6fdcb2b763a3b6cae548f1508ee8994f5f3c2baab4b1",
+    "basket_v3/collision_101.obj": "0a5d06a4be2443f9b15b54608a217f2075d02354310a3fa530bc97b693c44815",
+    "basket_v3/collision_102.obj": "5abae71462d3f428ad70f55723aa036a2cb6a83f8832ed02d21173b4bf55fbd6",
+    "basket_v3/collision_11.obj": "d1d454d27f82d918dcc2c7082c34fc487bd11bc944ae4e23099d26465e72f1c8",
+    "basket_v3/collision_12.obj": "4c3dccf0479658ff998684f737922a716fa7f54c7abb5b7b2c7e04dba37be86d",
+    "basket_v3/collision_13.obj": "3dc27aa5282ad2d686fbb29ba53be7fb7360df0b97afb85681f575de8b4896f5",
+    "basket_v3/collision_14.obj": "09c0904e973fbe940dcf33cc90e48741d61254119487537629375dce20b40fc3",
+    "basket_v3/collision_15.obj": "3f02f56dd0e638670261db438f4f43ca50b7d881bfc1747d098c5a5f8d31e327",
+    "basket_v3/collision_16.obj": "ea0fa9b3845f4143a5b4e2a4fbbf0ccb5f12b2d942ce910a1a5cd5765aacc9de",
+    "basket_v3/collision_17.obj": "c8607c8349396e5286cf0ebaf1a210ba468137082984060c092e7557576bf15d",
+    "basket_v3/collision_18.obj": "5867cd9bf3dbd349f37d91de2fb571938fd8b6084ff333cf898b6068e98d398e",
+    "basket_v3/collision_19.obj": "1835d905aa0669a66d6696ae0a31049c6511e6420aa298193cbe51fd534b0d85",
+    "basket_v3/collision_20.obj": "0cb9b661ee54cef1b5396505c175e518f8b0a8f2fee69402fd4e328c9bf41e12",
+    "basket_v3/collision_21.obj": "0ada4e8f8397d478c7ebbc67035d848169602d271391b0c5562d13e1d1664f8c",
+    "basket_v3/collision_22.obj": "c1f2acf58d1093a074d29597872880628028f7065bed0403eff09b27089da982",
+    "basket_v3/collision_23.obj": "0e6720dd49fecfd4f56cbc6cbafacdaa5d1e3bd209f30893de7dafe90976611e",
+    "basket_v3/collision_24.obj": "98c2a231a545e937fe3535a2e798ca6c29f39cbda4988e9456cb8fa02144fd73",
+    "basket_v3/collision_25.obj": "2de2b473454168e5386af75c2a1f46ed418e081241c472fb48dff72d23296632",
+    "basket_v3/collision_26.obj": "d043d45f7eec48e795937283e4294b05420a924c601d184c6a5398a1251f5189",
+    "basket_v3/collision_27.obj": "c2d11266f897130d8831faa76b46ebff9e090f0775c25884600c457b6f34e966",
+    "basket_v3/collision_28.obj": "322cb17e12fb0b545d8f28fbf925910881655e0d9491dee316370fe04116e5a0",
+    "basket_v3/collision_29.obj": "1ca3855330147fe944daa8a4e1b4691d6dcba09f6f683bc2d68354939b8e14b6",
+    "basket_v3/collision_30.obj": "caa7b277018c3e6e83186de99d8da79f1f6dbc0dced74041f92f8262c4307c22",
+    "basket_v3/collision_31.obj": "cc259d9e8b88cf984f131b230802ac6d77eb7c8ba3232fe635d3c23163908b0a",
+    "basket_v3/collision_32.obj": "924fbacc44c3b582198dcd4e3770ecbf86c52d26151b7446ec491bab8f34c30b",
+    "basket_v3/collision_33.obj": "8cc2a3997034579dc1bbdf7bcd9feb396aaecaf8d9c881f5c6532f201ef182f6",
+    "basket_v3/collision_34.obj": "0f641ab0a05bd7c8fefb67af07c552d8f329d53c4aa1f1c73ca479f4fb0246f4",
+    "basket_v3/collision_35.obj": "1366eb80ea148ac916d226bfc737d8e9c618877243e19d2eacd229f188e8ee20",
+    "basket_v3/collision_36.obj": "5d735166fbb6546080d897f97f61d21754f771138ce4adaa54c602b9ddd63822",
+    "basket_v3/collision_37.obj": "eb9ba0740062f126268d13b8faf53c9d7fd8837be9cf3ae2920f18a38f307dc9",
+    "basket_v3/collision_38.obj": "d24a795252a80cf857782e7b3d49d1ba53b2160ae3cea27148b6e460179784fb",
+    "basket_v3/collision_39.obj": "83bad53937d5dc64db6b2cbc33c28ebb5cfe827d73b0f166218641fb37f52e1b",
+    "basket_v3/collision_40.obj": "0f73fc03219b15e1d2c403680a4cccad7522e912d4dcc16a77b5fd2462d01e5c",
+    "basket_v3/collision_41.obj": "7fca959db7d56b83737a146b4944fe3db816291beaab8923ea50259f46f7b0ed",
+    "basket_v3/collision_42.obj": "e37848141ef1783d6d66d27e63132b38b197e0577ab05f378adc47ba685db6eb",
+    "basket_v3/collision_43.obj": "66ba43d45f630f1063331b4b80e0d98a0082cf25a72a3a372ee8849c974cf1f5",
+    "basket_v3/collision_44.obj": "2d454bd3847b658d3ab9bfd1d56073b12d2ff7de84099d08021bb155094096ad",
+    "basket_v3/collision_45.obj": "513bd8207a1c6e45302cccfdaac41b96be1e36c7a79c1c872a7315c5cfab7bfd",
+    "basket_v3/collision_46.obj": "5a76187ba183943b6d4ccc3f2d7935f018c43fb4755344b73807b1d3453c0a8d",
+    "basket_v3/collision_47.obj": "c615c2a39590481d477cfdef4c004fee1f37a450fae94c13f6660e63bd94dbf2",
+    "basket_v3/collision_48.obj": "401ec1b23c1b69165497dbc94858630e7914ff0720f64043a340125b6e47857d",
+    "basket_v3/collision_49.obj": "253642272e8c045086dce57113b28dde37cee3f25c347f7b57c587abd74f4855",
+    "basket_v3/collision_50.obj": "8526a31d5a045f7637105b1a7c3619b18dcc74008b9544fdf4f754fb763f977d",
+    "basket_v3/collision_51.obj": "580920469fb1f71bd86b6a946d828371bfc5b74fe19475832342f76eac9b1cd5",
+    "basket_v3/collision_52.obj": "1ec0e5508b6925e5f022d58963edd0aa9f586580aaa75af7e8a9ee74f90d3756",
+    "basket_v3/collision_53.obj": "df896895bccf0f88221e88ed4f28e7f087a71ec33b0e941f5f4658b1a0b1511d",
+    "basket_v3/collision_54.obj": "02f8f2c58d22123b7ce73e6a683e2e9ffdb6dc17b677beea06eaa60679d3676a",
+    "basket_v3/collision_55.obj": "b0f1f7336cea1c1503878337abe6f9ddd633302e5c14826d1a140be168ab30db",
+    "basket_v3/collision_56.obj": "b59a1723ad786b4da052242ac66ba8ff2adc9ce2a4154745a832b41853996ae1",
+    "basket_v3/collision_57.obj": "9ccb711c51036bffb772a21ac0af3d05e0c157569b17d4c41997a6cef6d20790",
+    "basket_v3/collision_58.obj": "918051200148cdab74650a1513942779cb1adfdebfcabe75f388064d08c5a7e0",
+    "basket_v3/collision_59.obj": "a8e3654a7a89823167044ecdf89a10b0e7f7b97f5b1a2575a9320993f0ee0a49",
+    "basket_v3/collision_60.obj": "d8be652f1007a0d1d1dbde2a22ea5aa07d6f9544cec41412d059c20a3e455b0e",
+    "basket_v3/collision_61.obj": "b3ded1cb4bc98d3b833a1adcd5809ba6c4f323365f78ff6bc065d77d70b5573c",
+    "basket_v3/collision_62.obj": "fae923244b3eec941b134276ff9d39cbf33b8baf18cb7711d0bf857a70856d51",
+    "basket_v3/collision_63.obj": "9d4ee44be95574bd607a187683e71e5b84984cd51bfa23cb5c84a7cc9a19c0bc",
+    "basket_v3/collision_64.obj": "a389fe3470438c7e357ef3f562c38d3071c81c3b33a7eecf7b53ea106131b4b3",
+    "basket_v3/collision_65.obj": "fecf77d3e60680a9c22555a287459eb72f214a38efcfc73e3c3084cf65a41977",
+    "basket_v3/collision_66.obj": "0658326da4c82637d3d2abf3777230c51fad4519f5c97ecd81d530d2dce7f0fd",
+    "basket_v3/collision_67.obj": "c0a2204a31d11ab7e63c1610a190ad4876379b2f4975bdd56c2c447afbce3d2b",
+    "basket_v3/collision_68.obj": "2360d4513cbdcda4843161d77732bd274a9b6c66823f6083f95834551306b5e3",
+    "basket_v3/collision_69.obj": "f00ff86fa3743d98a401fd606a9fdd1910e53e7ed6dfad851e7cb4fe8b586c63",
+    "basket_v3/collision_70.obj": "97e4708132b05a6d6ca646b89158cc43b063fa8fe4063c7d4884144404a0824a",
+    "basket_v3/collision_71.obj": "ee52ff7700c141beb3a7894ca93f2fc27f317ecd541e112cc4b7715ec46ab414",
+    "basket_v3/collision_72.obj": "f802095762dd8c7d4099b9b975895f76e7232a0347234706fc7f642854fb9452",
+    "basket_v3/collision_73.obj": "e9972c92f882c170011fcc2211a84c041c2ef1cd2fa24c8405b6a2db729d887e",
+    "basket_v3/collision_74.obj": "520d66f6f92e16919f88d9c60b5eb7a6b9bfb89ccaaaa60617784e586c52840e",
+    "basket_v3/collision_75.obj": "be063c13759b18d0aaa493e70e37db97e23f3bd5111d6f3762729a86e2e764fc",
+    "basket_v3/collision_76.obj": "119eeb3b68c1e2679fbe574144dd86506a6afc20bf674a513e9b367579be67ad",
+    "basket_v3/collision_77.obj": "cb9ed1ad04fae56b5ea841d89e0a937ab9a6b7fff90965a208e3e5995b4af1ef",
+    "basket_v3/collision_78.obj": "5096661097b32b774d58a9e93cea270ae79c599b244e350339430d4058a478f0",
+    "basket_v3/collision_79.obj": "e9db1585a95fa624f288e0bfefbae2fed29e81bbce891f3d5d542dfe7e0ee788",
+    "basket_v3/collision_80.obj": "54cb3bd1333909296fb59c7d4c42bcca3de2e773d0fea25ce8c8c3459b597bec",
+    "basket_v3/collision_81.obj": "1d7a6961f703f56e537689d48296bdea2c7acb956f03e6934429ef82e0fab6e6",
+    "basket_v3/collision_82.obj": "382c6df72c7a1aa6a9419004a29232382feae8ae37cd4375d43c36b464e928d5",
+    "basket_v3/collision_83.obj": "320231b629bcdaf1be96f45257b67f737b9895711fa341570d2d7b26b87f1b1d",
+    "basket_v3/collision_84.obj": "7b5f5d60da06dc58b8893657580da03215166bd5d78e011800ccc2448ea3968c",
+    "basket_v3/collision_85.obj": "74a81f509ae1f3a250410befe90c2713fefdd6101ad7db2848d8b8ffe4bc31d8",
+    "basket_v3/collision_86.obj": "be8fa3191aaae81184eb8d81213144a48d713b2f46e915a9b57d632af5cae0c0",
+    "basket_v3/collision_87.obj": "c7377be497d368578e28049f9f8f6a9dabffe79c9a14cb7d0be48f0e4c0e84e8",
+    "basket_v3/collision_88.obj": "ea756f52bf060bfa93df0e5222e671a7c50cf3b8b4f8e82f643ae8c2ad99f642",
+    "basket_v3/collision_89.obj": "6101febb67f1deb30e6b432112d1cffc5388eeb9e4299011255b1800ec8192b5",
+    "basket_v3/collision_90.obj": "3c916024beb77f9656c88908c4aae4f7f7755144f96facc6c6cb3e239586c65a",
+    "basket_v3/collision_91.obj": "b735a4ccf37fda6278b14d641cfc3ab29af203679fd273a5d3e6cdad92638a75",
+    "basket_v3/collision_92.obj": "60ccc3b945ffc58aa5bd2b16684c678327d2c686f6435935d6e1a5af1e5284c7",
+    "basket_v3/collision_93.obj": "f2e0b970ebf1acfe07e0b1ecaffcb87c1d51bd8b24ba2bd63dafa59c03687ca2",
+    "basket_v3/collision_94.obj": "7a617e5224013eed013b7d53d95f3dbe07914302835fd80987d53cadcd5e2608",
+    "basket_v3/collision_95.obj": "635e59a68e69d4d331a4bdf1c6bca6029ca1bef618d88df7c3297fc7f5753bf1",
+    "basket_v3/collision_96.obj": "4bbfade1b5379c80ad7ad488e5f644028c43b8bccd6ed64aceb0f548006f3fc9",
+    "basket_v3/collision_97.obj": "93fdb8ddba5300652d3e9b773f162e5353b6a93b0ccc0b5da1434f4f08f08d93",
+    "basket_v3/collision_98.obj": "1dda9df4f840b7304f6ad514652f35031d1afa76079c080a2eae5597602056ad",
+    "basket_v3/collision_99.obj": "fd43849f97d252a0cf22209472bf32c59f67cb555439a6e2095f919b49de3979"
+  }
+}

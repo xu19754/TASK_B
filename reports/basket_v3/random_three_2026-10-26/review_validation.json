@@ -1,0 +1,15 @@
+{
+  "cases": 12,
+  "protected_files": 116,
+  "protected_files_unchanged": true,
+  "runner_snapshot_matches": true,
+  "actual_pose_trace_consistent": true,
+  "finite_poses": true,
+  "all_initial_layouts_contained_and_nonoverlapping": true,
+  "original_trajectory_duration_unchanged": true,
+  "accepted_step_joint_limits_preserved": true,
+  "all_motion_stops_have_recorded_rejection": true,
+  "inline_replay_bytes": 556118,
+  "complete_unloading_cases": 2,
+  "guarded_cases": 7
+}
