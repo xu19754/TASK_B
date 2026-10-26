@@ -1,6 +1,6 @@
 # Task B：B2 + Z1 物体收集作业
 
-项目接手请先读 [HANDOFF.md](HANDOFF.md)：包含当前实现、验证边界、随机物料与速度超限结论，以及示范采集 → DP3 → 残差 PPO 的待办顺序。智能体工作约束见 [AGENTS.md](AGENTS.md)。
+项目接手请先读 [handoff.md](handoff.md)：包含当前实现、验证边界、随机物料与速度超限结论，以及示范采集 → DP3 → 残差 PPO 的待办顺序。智能体工作约束见 [AGENTS.md](AGENTS.md)。
 
 本工程是学生作业的基础工程，仅包含 Task B。指定机器人为 **Unitree B2 + Z1**，任务 ID 为 `Student-TaskB-B2Z1-v0`。
 

@@ -1,6 +1,6 @@
 # TaskB 项目接手说明
 
-先阅读 `HANDOFF.md`，再阅读 `README.md` 与 `docs/示范采集准备.md`。交接说明区分已实现、已验证和待完成事项；不要把方案讨论当成已交付功能。
+先阅读 `handoff.md`，再阅读 `README.md` 与 `docs/示范采集准备.md`。交接说明区分已实现、已验证和待完成事项；不要把方案讨论当成已交付功能。
 
 - 正式场景入口为 `scripts/run_taskb.sh` → `scripts/play_taskb.py` → `TaskBEnvCfg`。采集复用该入口和现有前视／腕部相机。
 - 策略接口为 `AlgSolution.predicts(obs, current_score)`，返回 19 维绝对关节位置目标（rad）与 `giveup`。顺序为 12 腿关节、6 臂关节、1 夹爪关节。
