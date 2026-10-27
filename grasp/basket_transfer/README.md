@@ -19,3 +19,5 @@ source grasp/experiments/mink_wholebody/runtime.sh
 ```
 
 Initial task grasp uses a known target and independent evaluation. During the successful trial, native jaw forces remained above 26 N through carry; after release, recorded retention was 6.04 s; sampled minimum object-bottom clearance over basket rim during the turn was about 8.8 mm; TCP azimuth changed 178.9 degrees. These measurements are specific to this run. Robot self-collision and general trajectory safety remain unverified.
+
+Successful trial video: [`evidence/attempt_10_sugar_basket.mp4`](evidence/attempt_10_sugar_basket.mp4). The video documents one known-target simulation; see the independent checks and limitations above.
