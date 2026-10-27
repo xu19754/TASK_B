@@ -11,6 +11,7 @@ dependencies = ["numpy", "torch", "trimesh", "gymnasium", "Pillow"]
 
 [project.optional-dependencies]
 test = ["pytest"]
+video = ["imageio>=2.31", "imageio-ffmpeg>=0.4.9"]
 
 [tool.setuptools]
 packages = ["taskb_student", "demo"]

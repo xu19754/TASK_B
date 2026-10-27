@@ -226,19 +226,27 @@ class Traversal:
 
     def confirm_pickup(self):
         """仅在已停靠且外部确认抓取成功后调用；返回被移除物品的原始索引。"""
+        return self._confirm_arrival(remove_obstacle=True)
+
+    def confirm_visit(self):
+        """仅确认导航访问，保留物品障碍；用于不执行抓取的遍历测试。"""
+        return self._confirm_arrival(remove_obstacle=False)
+
+    def _confirm_arrival(self, remove_obstacle):
         if (self.completed or self.blocked_reason or not self.awaiting_pickup or not self._at_pose()
                 or not self._map.segment_clear(_xy(self.localization.position),
                                                _xy(self.localization.position), self._active)):
             raise RuntimeError("Pickup can only be confirmed while stopped at the current target pose.")
         index = self.target_index
-        self._active.remove(index)
+        if remove_obstacle:
+            self._active.remove(index)
         self.target_index += 1
         self.awaiting_pickup = False
         self.replan()
         return index
 
-    def plan_remaining(self):
-        """返回剩余各段规划，不修改进度；假设每段到位后成功拾取该物品。"""
+    def plan_remaining(self, remove_after_visit=True):
+        """规划剩余路径；默认假设到位后拾取，导航测试可保留全部障碍。"""
         start = _xy(self.localization.position)
         active = self._active.copy()
         result = []
@@ -249,7 +257,8 @@ class Traversal:
             except NoPathError as error:
                 raise NoPathError(f"Target {index}: {error}") from error
             result.append(PlannedLeg(index, pose, path))
-            active.remove(index)
+            if remove_after_visit:
+                active.discard(index)
             start = pose[:2]
         return tuple(result)
 
@@ -302,3 +311,12 @@ def plan_traversal(current_position, target_poses, obstacle_positions, **options
     x, y = _xy(current_position)
     localization = Localization((x, y, 0.0))
     return Traversal(localization, target_poses, obstacle_positions, **options).plan_remaining()
+
+
+def plan_path(current_position, target_position, obstacle_positions, *,
+              obstacle_radii=0.2, robot_radius=0.6, safety_margin=0.1,
+              bounds=(-20.0, 0.0, -20.0, 0.0), grid_resolution=0.2):
+    """在保留所有物品的地图上规划单段路径，供导航停靠点选择和测试使用。"""
+    obstacle_map = _ObstacleMap(obstacle_positions, obstacle_radii, robot_radius,
+                                safety_margin, bounds, grid_resolution)
+    return obstacle_map.plan(current_position, target_position, set(range(len(obstacle_map.positions))))

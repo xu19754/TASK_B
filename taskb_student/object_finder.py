@@ -293,3 +293,45 @@ class ObjectFinder:
                 draw.line((x - dx, y - dy, x + dx, y + dy), fill="black", width=2)
         canvas.save(directory / "object_map.png")
         return directory / "objects.json"
+
+    def save_object_images(self, directory, *, confirmed_only=False):
+        """每个扫描 ID 保存一张最大可见裁剪图，文件名包含类别、分数及位置。"""
+        from PIL import Image, ImageDraw
+
+        directory = Path(directory)
+        directory.mkdir(parents=True, exist_ok=True)
+        best = {}
+        for sector, rgb, boxes in self._snapshots:
+            height, width = rgb.shape[:2]
+            for object_id, bbox in boxes:
+                left, top, right, bottom = (int(value) for value in bbox)
+                left, top = max(0, left), max(0, top)
+                right, bottom = min(width, right), min(height, bottom)
+                area = (right - left) * (bottom - top)
+                if right <= left or bottom <= top:
+                    continue
+                if object_id not in best or area > best[object_id][0]:
+                    best[object_id] = (area, sector, rgb, (left, top, right, bottom))
+        records = []
+        for item in self.objects:
+            if confirmed_only and not item.confirmed:
+                continue
+            if item.object_id not in best:
+                continue
+            _, sector, rgb, bbox = best[item.object_id]
+            x, y, z = item.position
+            filename = (f"item_{item.object_id:02d}_{item.class_name}_conf{item.confidence:.2f}"
+                        f"_x{x:.2f}_y{y:.2f}_z{z:.2f}.png")
+            crop = Image.fromarray(rgb).crop(bbox)
+            # 放大较小物品便于检查，但不声称提高原始识别分辨率。
+            scale = min(4.0, max(1.0, 160.0 / max(crop.size)))
+            crop = crop.resize((max(1, round(crop.width * scale)), max(1, round(crop.height * scale))))
+            canvas = Image.new("RGB", (max(280, crop.width), crop.height + 44), "white")
+            canvas.paste(crop, ((canvas.width - crop.width) // 2, 0))
+            draw = ImageDraw.Draw(canvas)
+            draw.text((5, crop.height + 4), f"#{item.object_id} {item.class_name} score={item.confidence:.2f}", fill="black")
+            draw.text((5, crop.height + 20), f"XYZ=({x:.2f}, {y:.2f}, {z:.2f}) m", fill="black")
+            canvas.save(directory / filename)
+            records.append({**asdict(item), "image": filename, "source_view": sector, "source_bbox": bbox})
+        (directory / "index.json").write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
+        return records
