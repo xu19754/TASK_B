@@ -1,0 +1,62 @@
+"""Experimental known-target grasp to basket controller; not a task policy."""
+import numpy as np
+from scipy.spatial.transform import Rotation
+from experiments.mink_wholebody.controller import GraspController
+from experiments.mink_wholebody.kinematics import quat_matrix,transform,wxyz
+from taskb_student.constants import CONTROL_DT
+
+class BasketTransferController(GraspController):
+    def __init__(self,config,ik,mode='grasp'):
+        super().__init__(config,ik,mode)
+        self.grasp_confirmed=False
+        self.transfer_stages=['CARRY_RETRACT','CARRY_RAISE','CARRY_SIDE','CARRY_BASKET','RELEASE','VERIFY_BASKET']
+        self.carry_start=None
+        self.segment_start=None
+    def change(self,state,reason=''):
+        if self.state=='HOLD' and state=='DONE':
+            if not self.grasp_confirmed:
+                return super().change('FAIL','independent_grasp_check_failed')
+            self.ik.ee_task.set_orientation_cost(0.)
+            return super().change('CARRY_RETRACT','grasp_confirmed')
+        return super().change(state,reason)
+    def step(self,p):
+        if self.state not in self.transfer_stages:
+            return super().step(p)
+        self.time+=CONTROL_DT;self.age+=CONTROL_DT;self.active_time+=CONTROL_DT
+        q=np.asarray(p['joint_pos']).reshape(19);base=np.asarray(p['root_position']);quat=np.asarray(p['base_quat']).reshape(4);rot=quat_matrix(quat)
+        tilt=float(np.rad2deg(np.arccos(np.clip(-np.asarray(p['projected_gravity']).reshape(3)[2],-1,1))))
+        if tilt>self.cfg['thresholds']['tilt_deg'] or np.linalg.norm(base[:2]-self.baseline[:2])>self.cfg['thresholds']['drift_m'] or p.get('illegal_contact',False):
+            self.fail('carry_stability_limit');return self.target.copy()
+        tcp=self.ik.fk.frames(q)['link06']@transform(self.cfg['tcp_offset_link06']);actual=base+rot@tcp[:3,3]
+        if self.carry_start is None:
+            self.carry_start=actual.copy();self.segment_start=actual.copy()
+            self.carry_base=base.copy();self.carry_rot=rot.copy();self.carry_z=float(base[2]+.13+.16+.15)
+            front=base+rot@np.array([.46,0.,0.]);side=base+rot@np.array([0.,.30,0.]);basket=base+rot@np.array([-.20,.06,0.])
+            self.goals={'CARRY_RETRACT':np.array([front[0],front[1],actual[2]]),'CARRY_RAISE':np.array([front[0],front[1],self.carry_z]),'CARRY_SIDE':np.array([side[0],side[1],self.carry_z]),'CARRY_BASKET':np.array([basket[0],basket[1],self.carry_z])}
+        if self.state in self.goals:
+            goal=self.goals[self.state];duration={'CARRY_RETRACT':8.,'CARRY_RAISE':15.,'CARRY_SIDE':18.,'CARRY_BASKET':18.}[self.state]
+            u=min(self.age/duration,1.);u=u*u*(3.-2.*u);goal=(1.-u)*self.segment_start+u*goal
+        else: goal=self.goals['CARRY_BASKET']
+        body=self.baseline.copy();body[2]=self.cfg['lift_body_height'];ee=(goal,wxyz(rot@tcp[:3,:3]))
+        candidate,info=self.ik.solve(base,quat,q,body,self.body_quat,ee,max_iters=12)
+        info['body_goal']=body.tolist();info['carry_goal']=goal.tolist();info['actual_position_error']=float(np.linalg.norm(actual-goal));self.last_ik=info
+        if not info['success']:
+            self.failures+=1
+            if self.failures>=20:self.fail('carry_ik_failure')
+            return self.target.copy()
+        self.failures=0
+        self.target[:12]+=np.clip(candidate[:12]-self.target[:12],-.6*CONTROL_DT,.6*CONTROL_DT)
+        self.target[12:18]+=np.clip(candidate[12:18]-self.target[12:18],-.4*CONTROL_DT,.4*CONTROL_DT)
+        if self.state in self.goals:
+            self.target[18]=0.
+            if self.age>=duration and np.linalg.norm(actual-self.goals[self.state])<.025:
+                previous=self.state;self.segment_start=actual.copy();index=self.transfer_stages.index(previous);self.change(self.transfer_stages[index+1])
+            elif self.age>duration+12.: self.fail(self.state.lower()+'_timeout')
+        elif self.state=='RELEASE':
+            self.target[18]=self.cfg['gripper_open']
+            if abs(q[18]-self.target[18])<.04 and self.age>=6.: self.change('VERIFY_BASKET')
+            elif self.age>12.: self.fail('release_timeout')
+        elif self.state=='VERIFY_BASKET':
+            self.target[18]=self.cfg['gripper_open']
+            if self.age>=6.: self.change('DONE','basket_observation_complete')
+        return self.target.copy()

@@ -1,0 +1,92 @@
+[
+  {
+    "attempt": 1,
+    "state": "FAIL",
+    "reason": "physical_grasp_lost_during_transfer",
+    "physical_grasp_success": true,
+    "basket_max_stable_s": 0.0,
+    "success": false,
+    "output_path": "/root/grasp-validation/basket-physical-01"
+  },
+  {
+    "attempt": 2,
+    "state": "FAIL",
+    "reason": "carry_ik_failure",
+    "physical_grasp_success": true,
+    "basket_max_stable_s": 0.0,
+    "success": false,
+    "output_path": "/root/grasp-validation/basket-physical-02"
+  },
+  {
+    "attempt": 3,
+    "state": "FAIL",
+    "reason": "physical_grasp_lost_during_transfer",
+    "physical_grasp_success": true,
+    "basket_max_stable_s": 0.0,
+    "success": false,
+    "output_path": "/root/grasp-validation/basket-physical-03"
+  },
+  {
+    "attempt": 4,
+    "state": "FAIL",
+    "reason": "physical_grasp_lost_during_transfer",
+    "physical_grasp_success": true,
+    "basket_max_stable_s": 0.0,
+    "success": false,
+    "output_path": "/root/grasp-validation/basket-physical-04"
+  },
+  {
+    "attempt": 5,
+    "state": "FAIL",
+    "reason": "carry_ik_failure",
+    "physical_grasp_success": true,
+    "basket_max_stable_s": 0.0,
+    "success": false,
+    "output_path": "/root/grasp-validation/basket-physical-05"
+  },
+  {
+    "attempt": 6,
+    "state": "FAIL",
+    "reason": "carry_ik_failure",
+    "physical_grasp_success": true,
+    "basket_max_stable_s": 0.0,
+    "success": false,
+    "output_path": "/root/grasp-validation/basket-physical-06"
+  },
+  {
+    "attempt": 7,
+    "state": "FAIL",
+    "reason": "carry_ik_failure",
+    "physical_grasp_success": true,
+    "basket_max_stable_s": 0.0,
+    "success": false,
+    "output_path": "/root/grasp-validation/basket-physical-07"
+  },
+  {
+    "attempt": 8,
+    "state": "FAIL",
+    "reason": "carry_ik_failure",
+    "physical_grasp_success": true,
+    "basket_max_stable_s": 0.0,
+    "success": false,
+    "output_path": "/root/grasp-validation/basket-physical-08"
+  },
+  {
+    "attempt": 9,
+    "state": "FAIL",
+    "reason": "carry_ik_failure",
+    "physical_grasp_success": true,
+    "basket_max_stable_s": 0.0,
+    "success": false,
+    "output_path": "/root/grasp-validation/basket-physical-09"
+  },
+  {
+    "attempt": 10,
+    "state": "DONE",
+    "reason": "basket_observation_complete",
+    "physical_grasp_success": true,
+    "basket_max_stable_s": 6.039999999999959,
+    "success": true,
+    "output_path": "/root/grasp-validation/basket-physical-10"
+  }
+]
