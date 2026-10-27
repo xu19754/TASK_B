@@ -25,6 +25,7 @@ def run(args, app):
         obs, _ = env.reset(seed=args.seed)
         solution = AlgSolution(scan_output_dir=None)
         solution.reset()
+        solution.object_finder.record_rgbd = True
         started = time.monotonic()
         with (directory / "scan_log.jsonl").open("w", encoding="utf-8") as log:
             while app.is_running():

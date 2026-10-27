@@ -96,29 +96,79 @@ class Detection:
 
 
 def classify_component(points, colors):
-    """启发式分数，不是训练模型概率；没有明显证据时保留低分/未知类别。"""
+    """颜色比例结合离地高度分类；分数是启发式证据，不是模型概率。
+
+    points 的 z 须已校正到地面。白色反光不等于糖盒标签，瓶背面也不一定
+    能看到红/蓝商标；低矮弯曲香蕉不要求每一帧都有很高的 PCA 长宽比。
+    """
     colors = np.asarray(colors, dtype=float) / 255.0
     r, g, b = colors.T
     high, low = colors.max(axis=1), colors.min(axis=1)
     saturation = (high - low) / np.maximum(high, 1e-6)
-    yellow = float(np.mean((r > 0.35) & (g > 0.25) & (b < 0.65 * g) & (r > 0.85 * g)))
-    white = float(np.mean((low > 0.5) & (saturation < 0.25)))
+    yellow = float(np.mean((r > 0.25) & (g > 0.18) & (b < 0.78 * np.minimum(r, g))
+                           & (r > 0.85 * g) & (g > 0.55 * r)))
+    white = float(np.mean((low > 0.5) & (saturation < 0.18)))
     blue = float(np.mean((b > 0.25) & (b > 1.25 * r) & (b > 1.1 * g)))
     red = float(np.mean((r > 0.3) & (r > 1.5 * g) & (r > 1.5 * b)))
-    extent = np.ptp(points, axis=0)
+    low_point, high_point = np.percentile(points, (2, 98), axis=0)
+    extent = high_point - low_point
     eig = np.linalg.eigvalsh(np.cov(points[:, :2].T))
     elongation = math.sqrt(max(eig[-1], 1e-9) / max(eig[0], 1e-9))
     scores = dict.fromkeys(CLASS_NAMES, 0.1)
-    # 糖盒：白色面/蓝色印刷；芥末瓶：黄色瓶身和红/蓝标签。
-    if white > 0.15 and (blue > 0.005 or yellow > 0.1):
-        scores["sugar_box"] = 0.8
-    if yellow > 0.35 and (red > 0.01 or blue > 0.02) and white < 0.15:
-        scores["mustard_bottle"] = 0.8
-    # 香蕉基线只接受低矮、细长、以黄色为主且没有瓶身标签的点云。
-    if yellow > 0.65 and red < 0.01 and blue < 0.01 and white < 0.08:
-        if extent[2] < 0.10 and elongation > 2.2:
-            scores["banana"] = 0.75
+    # 高的黄色瓶身：允许白色背标、蓝色浅色商标，以及完全看不到商标的侧面。
+    if high_point[2] > 0.105 and extent[2] > 0.085 and yellow > 0.30 and yellow > 0.9 * white:
+        scores["mustard_bottle"] = 0.88
+    # 低矮、黄色占主导的物体：少量白色高光或棕色果柄不会否定香蕉。
+    elif (high_point[2] < 0.10 and extent[2] < 0.085 and extent[:2].max() > 0.07
+          and yellow > 0.48 and yellow > 1.15 * white):
+        scores["banana"] = 0.85 if elongation > 1.4 else 0.80
+    elif white > 0.18 and white > 0.65 * yellow and (blue > 0.005 or yellow > 0.04):
+        scores["sugar_box"] = 0.85
+    elif high_point[2] > 0.10 and yellow > 0.40 and (red > 0.015 or blue > 0.02):
+        # 部分遮挡的瓶身仍可利用商标，但不把低矮香蕉的果柄当作红色标签。
+        scores["mustard_bottle"] = 0.75
     return scores
+
+
+def estimate_ground_plane(points, region):
+    """从 RGB-D 的大面积地面拟合 z=a*x+b*y+c，容忍高度和小幅姿态误差。
+
+    RANSAC 不使用场景坐标真值；固定随机序列仅为离线回放可复现。
+    点数/覆盖范围/内点比例不足时返回 None，不将小物体表面当成地面。
+    """
+    sample = points[region & (points[..., 2] > -0.35) & (points[..., 2] < 0.35)]
+    if len(sample) < 200:
+        return None
+    if len(sample) > 6000:
+        sample = sample[np.linspace(0, len(sample) - 1, 6000, dtype=int)]
+    origin = np.median(sample[:, :2], axis=0)
+    xy = sample[:, :2] - origin
+    design = np.column_stack((xy, np.ones(len(sample))))
+    z = sample[:, 2]
+    best, count = None, 0
+    rng = np.random.default_rng(0)
+    for _ in range(48):
+        indices = rng.choice(len(sample), 3, replace=False)
+        triangle = design[indices]
+        if abs(np.linalg.det(triangle)) < 0.05:
+            continue
+        plane = np.linalg.solve(triangle, z[indices])
+        if np.linalg.norm(plane[:2]) > 0.25:
+            continue
+        inliers = np.abs(design @ plane - z) < 0.006
+        support = int(inliers.sum())
+        if support > count:
+            best, count = inliers, support
+    if count < max(200, 0.35 * len(sample)):
+        return None
+    for _ in range(3):
+        plane = np.linalg.lstsq(design[best], z[best], rcond=None)[0]
+        best = np.abs(design @ plane - z) < 0.006
+        if int(best.sum()) < max(200, 0.35 * len(sample)):
+            return None
+    if np.linalg.norm(plane[:2]) > 0.25 or np.linalg.eigvalsh(np.cov(xy[best].T))[0] < 0.02:
+        return None
+    return np.array((plane[0], plane[1], plane[2] - plane[:2] @ origin))
 
 
 class RGBDGeometryDetector:
@@ -128,7 +178,7 @@ class RGBDGeometryDetector:
     分割依靠离地高度及三维相邻点距离；分类在遮挡/无纹理侧面可能为未知。
     """
 
-    def __init__(self, stride=2, min_points=8, search_bounds=(-15.5, -4.5, -15.5, -4.5)):
+    def __init__(self, stride=1, min_points=8, search_bounds=(-15.5, -4.5, -15.5, -4.5)):
         if not isinstance(stride, int) or stride < 1 or min_points < 3:
             raise ValueError("Invalid sampling stride or minimum cluster size.")
         bounds = np.asarray(search_bounds, dtype=float)
@@ -136,25 +186,33 @@ class RGBDGeometryDetector:
             raise ValueError("Invalid search_bounds.")
         self.stride, self.min_points = stride, min_points
         self.search_bounds = tuple(bounds)
+        self.last_diagnostics = {}
 
     def detect(self, rgb, depth, intrinsics, base_position, base_quaternion):
+        intrinsics = np.asarray(intrinsics, dtype=float)
         points = project_head_depth(depth, intrinsics, base_position, base_quaternion, self.stride)
         colors = rgb[::self.stride, ::self.stride]
         xmin, xmax, ymin, ymax = self.search_bounds
         finite = np.isfinite(points).all(axis=-1)
         region = (finite & (points[..., 0] >= xmin) & (points[..., 0] <= xmax)
                   & (points[..., 1] >= ymin) & (points[..., 1] <= ymax))
-        # 用主要地面高度补偿原地步态造成的机身高度估计误差，不拟合物品真实位置。
-        floor_samples = points[..., 2][region & (points[..., 2] > -0.25) & (points[..., 2] < 0.25)]
-        if len(floor_samples) >= 200:
-            histogram, edges = np.histogram(floor_samples, bins=100, range=(-0.25, 0.25))
-            peak = int(histogram.argmax())
-            if histogram[peak] > 0.1 * len(floor_samples):
-                near_floor = floor_samples[np.abs(floor_samples - (edges[peak] + 0.0025)) < 0.015]
-                points[..., 2] -= float(np.median(near_floor))
+        # 单个高度直方图无法去除略倾斜的地面，会在搜索区域边缘留下假物体。
+        plane = estimate_ground_plane(points, region)
+        if plane is not None:
+            points[..., 2] -= points[..., 0] * plane[0] + points[..., 1] * plane[1] + plane[2]
+        self.last_diagnostics = {"ground_plane": None if plane is None else plane.tolist(),
+                                 "foreground_pixels": 0, "rejected_flat_components": 0}
         distance = np.linalg.norm(points[..., :2] - np.asarray(base_position)[:2], axis=-1)
-        mask = (region & (points[..., 2] > 0.018) & (points[..., 2] < 0.4)
+        # 保留香蕉约 1 cm 高的边缘，减少低分辨率、远距离下的碎片和漏检。
+        mask = (region & (points[..., 2] > 0.009) & (points[..., 2] < 0.4)
                 & (distance > 0.75) & (distance < 12.0))
+        self.last_diagnostics["foreground_pixels"] = int(mask.sum())
+        camera = np.asarray(base_position) + quaternion_matrix(base_quaternion) @ np.array((0.4, 0.0, 0.12))
+        camera_height = camera[2] if plane is None else camera[2] - (camera[:2] @ plane[:2] + plane[2])
+        # 俯视角很小时，相邻像素在低矮物体表面的间距可能超过固定的 7 cm。
+        # 由距离和像素角度估算采样间距，仅在相邻点高度一致时放宽，且上限 14 cm。
+        sampling_gap = distance**2 * self.stride / (intrinsics[1, 1] * np.maximum(camera_height - points[..., 2], 0.15))
+        flat_limits = np.clip(1.2 * sampling_gap, 0.07, 0.14)
         # 八邻域连通分量，同时限制三维间距，分开前后遮挡的物品。
         visited = np.zeros(mask.shape, dtype=bool)
         height, width = mask.shape
@@ -170,7 +228,10 @@ class RGBDGeometryDetector:
                 for dr, dc in ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)):
                     nr, nc = r + dr, c + dc
                     if 0 <= nr < height and 0 <= nc < width and mask[nr, nc] and not visited[nr, nc]:
-                        if np.linalg.norm(points[r, c] - points[nr, nc]) <= 0.07:
+                        limit = 0.07
+                        if abs(points[r, c, 2] - points[nr, nc, 2]) < 0.008:
+                            limit = max(flat_limits[r, c], flat_limits[nr, nc])
+                        if np.linalg.norm(points[r, c] - points[nr, nc]) <= limit:
                             visited[nr, nc] = True
                             pending.append((nr, nc))
             if len(component) < self.min_points:
@@ -178,10 +239,15 @@ class RGBDGeometryDetector:
             rr, cc = np.asarray(component).T
             cloud = points[rr, cc]
             extent = np.ptp(cloud, axis=0)
-            if extent.max() > 0.45 or extent.max() < 0.035:
+            if extent.max() > 0.45 or extent.max() < 0.035 or np.percentile(cloud[:, 2], 98) < 0.018:
+                continue
+            scores = classify_component(cloud, colors[rr, cc])
+            # 当地面不足以拟合时，仍拒绝无任何类别证据、几乎零厚度的平面碎片。
+            if extent[2] < 0.004 and max(scores.values()) < 0.65:
+                self.last_diagnostics["rejected_flat_components"] += 1
                 continue
             box = (int(cc.min() * self.stride), int(rr.min() * self.stride),
                    min(rgb.shape[1] - 1, int((cc.max() + 1) * self.stride)),
                    min(rgb.shape[0] - 1, int((rr.max() + 1) * self.stride)))
-            detections.append(Detection(cloud, classify_component(cloud, colors[rr, cc]), box))
+            detections.append(Detection(cloud, scores, box))
         return detections

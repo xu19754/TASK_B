@@ -15,7 +15,7 @@ from pathlib import Path
 import numpy as np
 
 from .constants import CONTROL_DT
-from .rgbd_perception import CLASS_NAMES, Detection, RGBDGeometryDetector, quaternion_matrix, read_head_frame
+from .rgbd_perception import CLASS_NAMES, Detection, RGBDGeometryDetector, as_numpy, quaternion_matrix, read_head_frame
 
 
 @dataclass(frozen=True)
@@ -29,6 +29,9 @@ class ObjectEstimate:
     views: int
     confirmed: bool
     orientation_ambiguous: bool = True
+    candidate_class: str | None = None
+    classification_views: int = 0
+    unknown_reason: str | None = None
 
 
 @dataclass
@@ -49,6 +52,13 @@ class _Track:
         confidence = float(np.mean(votes)) * sum(votes) / total if votes else 0.0
         confirmed = len(self.views) >= 2 and len(votes) >= 2 and confidence >= 0.65
         class_name = winner if confirmed else "unknown"
+        reason = None
+        if not votes:
+            reason = "insufficient_color_or_geometry_evidence"
+        elif len(votes) < 2:
+            reason = "class_seen_in_fewer_than_two_views"
+        elif not confirmed:
+            reason = "conflicting_class_evidence"
         yaw = None
         # 至少三个独立方向、20 度视角跨度才尝试输出水平轴，始终保留 180 度歧义。
         angles = np.asarray(self.view_angles)
@@ -59,7 +69,8 @@ class _Track:
                 axis = vectors[:, -1]
                 yaw = float(math.atan2(axis[1], axis[0]) % math.pi)
         return ObjectEstimate(self.object_id, class_name, position, size, yaw,
-                              confidence, len(self.views), confirmed)
+                              confidence, len(self.views), confirmed, candidate_class=winner if votes else None,
+                              classification_views=len(votes), unknown_reason=reason)
 
 
 class ObjectMap:
@@ -131,7 +142,7 @@ class ObjectFinder:
     """
 
     def __init__(self, localization, detector=None, *, scan_views=24, yaw_rate=0.4,
-                 settle_time=0.3, max_duration=90.0):
+                 settle_time=0.3, max_duration=90.0, record_rgbd=False):
         if not isinstance(scan_views, int) or scan_views < 8:
             raise ValueError("scan_views must be an integer >= 8.")
         if not math.isfinite(yaw_rate) or not 0.1 < yaw_rate <= 0.6:
@@ -144,6 +155,7 @@ class ObjectFinder:
         self.detector = detector if detector is not None else RGBDGeometryDetector()
         self.scan_views, self.yaw_rate = scan_views, yaw_rate
         self.settle_time, self.max_duration = settle_time, max_duration
+        self.record_rgbd = record_rgbd
         self.reset()
 
     def reset(self):
@@ -157,6 +169,8 @@ class ObjectFinder:
         self._settled = 0.0
         self._seen_frames = set()
         self._snapshots = []
+        self._rgbd_frames = []
+        self._view_diagnostics = []
         self.repeated_frames = 0
 
     @property
@@ -216,30 +230,58 @@ class ObjectFinder:
             self.status, self.blocked_reason = "waiting_for_camera", str(error)
             return stop
         self.blocked_reason = None
-        fingerprint = hashlib.sha256(rgb.tobytes() + depth.tobytes()).digest()
-        if fingerprint in self._seen_frames:
-            self.repeated_frames += 1
-        else:
-            try:
-                detections = self.detector.detect(rgb, depth, intrinsics, self.localization.position, quaternion)
-                object_ids = self.object_map.update(detections, self._sector, yaw)
-            except ValueError as error:
-                return self._fail(f"Invalid detector result: {error}")
-            self._seen_frames.add(fingerprint)
-            self._snapshots.append((self._sector, rgb.copy(), [(object_id, detection.bbox)
-                                    for object_id, detection in zip(object_ids, detections)]))
+        try:
+            self.ingest_frame(rgb, depth, intrinsics, self.localization.position, quaternion, self._sector)
+        except ValueError as error:
+            return self._fail(f"Invalid detector result: {error}")
         if self._sector == self.scan_views:
-            estimates = self.objects
-            counts = {name: sum(item.confirmed and item.class_name == name for item in estimates) for name in CLASS_NAMES}
-            reliable_tracks = sum(item.views >= 2 for item in estimates)
-            complete = all(count == 6 for count in counts.values()) and reliable_tracks == 18
-            self.status = "complete" if complete else "incomplete"
-            if not complete:
-                self.blocked_reason = "Scan finished without 18 unambiguous items (six per class); inspect the report or rescan."
+            self.finish_scan()
             return stop
         self._sector += 1
         self._settled = 0.0
         return stop
+
+    def ingest_frame(self, rgb, depth, intrinsics, base_position, base_quaternion, view_id):
+        """处理实测帧或离线记录；不生成机器人运动，不读取仿真场景真值。"""
+        rgb, depth, intrinsics = read_head_frame({"image": {
+            "head_rgb": rgb, "head_depth": depth, "head_intrinsics": intrinsics,
+        }})
+        rotation = quaternion_matrix(base_quaternion)
+        yaw = math.atan2(rotation[1, 0], rotation[0, 0])
+        # 相机原始深度为 float32，统一精度保证 NPZ 保存/回放具有相同去重行为。
+        depth = depth.astype(np.float32)
+        fingerprint = hashlib.sha256(rgb.tobytes() + depth.tobytes()).digest()
+        if fingerprint in self._seen_frames:
+            self.repeated_frames += 1
+            return
+        detections = self.detector.detect(rgb, depth, intrinsics, base_position, base_quaternion)
+        object_ids = self.object_map.update(detections, view_id, yaw)
+        self._seen_frames.add(fingerprint)
+        rgb = rgb.copy()
+        self._snapshots.append((view_id, rgb, [(object_id, detection.bbox)
+                                for object_id, detection in zip(object_ids, detections)]))
+        self._view_diagnostics.append({
+            "view_id": view_id, "yaw": yaw, **getattr(self.detector, "last_diagnostics", {}),
+            "detections": [{"object_id": object_id, "bbox": list(detection.bbox),
+                            "class_scores": detection.class_scores, "point_count": len(detection.points_world),
+                            "height_range": np.percentile(detection.points_world[:, 2], (2, 98)).tolist()}
+                           for object_id, detection in zip(object_ids, detections)],
+        })
+        if self.record_rgbd:
+            self._rgbd_frames.append({"view_id": view_id, "rgb": rgb, "depth": depth.copy(),
+                                     "intrinsics": intrinsics.copy(),
+                                     "base_position": np.array(base_position, dtype=float),
+                                     "base_quaternion": as_numpy(base_quaternion).astype(float).reshape(4)})
+
+    def finish_scan(self):
+        """一周采集完成后检查证据；不按期望数量截断或强行分配类别。"""
+        estimates = self.objects
+        counts = {name: sum(item.confirmed and item.class_name == name for item in estimates) for name in CLASS_NAMES}
+        reliable_tracks = sum(item.views >= 2 for item in estimates)
+        complete = all(count == 6 for count in counts.values()) and reliable_tracks == 18
+        self.status = "complete" if complete else "incomplete"
+        self.blocked_reason = None if complete else (
+            "Scan finished without 18 unambiguous items (six per class); inspect the report or rescan.")
 
     def report(self):
         estimates = self.objects
@@ -247,7 +289,9 @@ class ObjectFinder:
         return {
             "status": self.status, "ready": self.ready, "reason": self.blocked_reason,
             "expected_count": 18, "confirmed_count": sum(item.confirmed for item in estimates),
+            "candidate_count": len(estimates), "stable_candidate_count": sum(item.views >= 2 for item in estimates),
             "counts_by_class": counts, "missing_by_class": {name: max(0, 6 - count) for name, count in counts.items()},
+            "excess_by_class": {name: max(0, count - 6) for name, count in counts.items()},
             "total_yaw_radians": self.total_yaw, "captured_views": len(self._snapshots),
             "repeated_frames": self.repeated_frames,
             "position_reference": "estimated visible-surface bounding-box center in world coordinates, meters",
@@ -263,6 +307,12 @@ class ObjectFinder:
         directory = Path(directory)
         directory.mkdir(parents=True, exist_ok=True)
         (directory / "objects.json").write_text(json.dumps(self.report(), indent=2, ensure_ascii=False), encoding="utf-8")
+        (directory / "detection_log.json").write_text(json.dumps(self._view_diagnostics, indent=2), encoding="utf-8")
+        if self._rgbd_frames:
+            frame_directory = directory / "rgbd"
+            frame_directory.mkdir(exist_ok=True)
+            for frame in self._rgbd_frames:
+                np.savez_compressed(frame_directory / f"frame_{frame['view_id']:02d}.npz", **frame)
         estimates = {item.object_id: item for item in self.objects}
         palette = {"sugar_box": "cyan", "mustard_bottle": "orange", "banana": "yellow", "unknown": "red"}
         for sector, rgb, boxes in self._snapshots:

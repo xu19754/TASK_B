@@ -95,7 +95,7 @@ class ObjectFinderTests(unittest.TestCase):
         self.assertAlmostEqual(float(np.median(objects[0].points_world[:, 0])), -7.6)
 
     def test_classifier_keeps_ambiguous_colors_unknown(self):
-        cloud = detection().points_world
+        cloud = detection(center=(-12, -10, 0.04)).points_world
         yellow = np.tile((220, 180, 20), (len(cloud), 1))
         scores = classify_component(cloud, yellow)
         self.assertEqual(max(scores, key=scores.get), "banana")
@@ -103,7 +103,10 @@ class ObjectFinderTests(unittest.TestCase):
         self.assertLess(max(classify_component(cloud, gray).values()), 0.65)
         mustard = yellow.copy()
         mustard[0] = (180, 10, 10)
-        self.assertEqual(max(classify_component(cloud, mustard), key=classify_component(cloud, mustard).get), "mustard_bottle")
+        bottle = detection(center=(-12, -10, 0.10)).points_world.copy()
+        bottle[:, 2] = (bottle[:, 2] - 0.10) * 2.5 + 0.10
+        scores = classify_component(bottle, mustard)
+        self.assertEqual(max(scores, key=scores.get), "mustard_bottle")
 
     def test_multiview_fusion_dedup_and_principal_axis_uncertainty(self):
         mapping = ObjectMap()

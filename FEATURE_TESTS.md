@@ -36,6 +36,8 @@ runs/recognition_test/<日期时间_运行编号>/
 │   └── index.json            # 图片名称、物品 ID、类别、坐标和原始图片位置
 ├── candidates/               # 识别未完成时保存全部候选，包括 unknown
 ├── objects.json              # 多视角融合结果与缺失类别统计
+├── detection_log.json        # 地面拟合、逐帧类别分数、检测框和高度范围
+├── rgbd/frame_00.npz ...     # 原始 RGB-D、内参、估计位置和实测四元数，供离线回放
 ├── object_map.png            # 世界 XY 分布图
 ├── view_00.png ...           # 全景扫描中各方向的框选标注图
 ├── scan_log.jsonl            # 扫描进度、实际累计转角
@@ -48,6 +50,19 @@ runs/recognition_test/<日期时间_运行编号>/
 识别成功时 `items/` 中应有 18 张 PNG；若漏检，只保存实际确认的数量，退出码为 2，
 可查看 `candidates/`、`objects.json` 和 `summary.json` 排查。
 这测试的是现有识别流程，没有读取物品真实标签计算准确率；图片用于人工检查。
+
+`objects.json` 中的 `candidate_count` 是全部候选数，`confirmed_count` 才是已确认物品数。
+`candidate_class`、`classification_views`、`unknown_reason` 可以解释为何一个候选仍是 `unknown`。
+不会通过截断候选数量或强行按每类 6 件分配来让测试通过。
+
+新版记录的原始帧可在普通 Python 环境（NumPy、Pillow）中离线重跑识别：
+
+```bash
+python scripts/replay_object_recognition.py --input runs/recognition_test/<日期时间_运行编号>
+```
+
+结果另存到 `runs/recognition_replay/<新运行编号>/`。旧版本只有图片和 JSON 的结果无法回放，
+需重新运行扫描测试生成深度数据。回放不启动 Isaac，不产生机器人运动。
 
 ## 3. 测试遍历并保存视频
 

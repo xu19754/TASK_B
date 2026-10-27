@@ -55,6 +55,8 @@ def spawn_lidar(prim_path, cfg, translation=None, orientation=None, **kwargs):
     xform.AddTranslateOp().Set(Gf.Vec3d(*(translation or (0.0, 0.0, 0.0))))
     if orientation is not None:
         xform.AddOrientOp().Set(Gf.Quatf(float(orientation[0]), Gf.Vec3f(*orientation[1:])))
+    if not sim_utils.standardize_xform_ops(prim):
+        raise RuntimeError(f"Cannot standardize lidar transform: {prim_path}")
     return prim
 
 

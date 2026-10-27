@@ -15,6 +15,7 @@ bash scripts/run_taskb.sh --enable_cameras --steps 5000
 - `objects.json`：物品 ID、类别、估计位置、主轴、确认状态、缺失数量和扫描状态。
 - `view_00.png` 等：RGB 图像上的物品框、ID 和类别。
 - `object_map.png`：世界 XY 物品地图。
+- `detection_log.json`：每个方向的地面平面、检测框、类别分数和高度范围。
 
 ## 输入与坐标约定
 
@@ -32,14 +33,24 @@ bash scripts/run_taskb.sh --enable_cameras --steps 5000
 
 ## 识别与结果含义
 
-当前仓库没有已训练的物品识别权重，因此默认 `RGBDGeometryDetector` 是初版基线：
+当前仓库没有已训练的物品识别权重，因此默认 `RGBDGeometryDetector` 是几何/颜色基线：
 深度反投影 → 地面剔除 → 三维连通分量 → 颜色/形状分类 → 多视角空间关联。
 它只覆盖糖盒 `sugar_box`、芥末瓶 `mustard_bottle`、香蕉 `banana`。
 默认搜索区域为公开的物品散布区域扩展 `[-15.5, -4.5] × [-15.5, -4.5]`。
 
+地面用 RANSAC 平面拟合剔除，补偿机身高度误差及采图姿态不同步产生的小幅倾斜。
+相比只减去一个地面高度，这能避免把远处地面和搜索区域边界碎片当成物品。
+默认使用全部像素（`stride=1`），前景高度门槛为 9 mm，保留低矮香蕉边缘；
+低矮同高度邻点的连接距离随像素对应的三维间距调整，上限 14 cm。
+分类同时使用离地高度、黄色/白色比例和形状：白色反光不直接否定香蕉，
+黄色高瓶身可以在看不到商标时识别，避免把白色背标当成糖盒。
+
 每个物品至少在两个独立采图方向获得一致的分类证据，才标为 `confirmed`。
 `confidence` 是启发式一致性分数，不是校准后的统计概率。
 相同 RGB-D 帧不会增加独立视角数量；不会强制将物品分配成每类六件。
+`candidate_count` 是全部候选数，`stable_candidate_count` 是至少两个方向看到的候选数，
+均不同于 `confirmed_count`。候选还包含 `candidate_class`、`classification_views`、
+`unknown_reason`，用于区分证据不足、只在一个方向分类成功和不同方向分类冲突。
 
 **当前输出不是完整 6D 物体姿态：**
 
@@ -48,10 +59,28 @@ bash scripts/run_taskb.sh --enable_cameras --steps 5000
 - `yaw_axis`：有足够视角和长轴证据时输出的水平主轴，单位弧度，模 π；否则为 `null`。
 - `orientation_ambiguous=true`：始终保留长轴正反向歧义。roll/pitch 和 CAD 朝向未知。
 
-这版仅完成扫描、候选标记和融合流程，未在真实 Isaac RGB-D 数据上标定分类阈值或测量识别率。
+已用用户提供的扫描裁剪图及旧几何摘要做分类回归，并用合成 RGB-D 检查地面剔除。
+旧结果没有原始深度，尚不能据此声称真实整轮扫描达到 18/18 或测得识别准确率。
 香蕉与无标签的黄色瓶身、遮挡、光照、图像分辨率都会影响识别。
 原地一周也无法看到被其他物品遮住或位于相机近处盲区的物品。
 `ready=True` 表示满足当前算法的数量和分类检查，并不证明实际识别无误。
+
+## 原始数据与离线回放
+
+`scripts/test_object_recognition.py` 会额外保存 `rgbd/frame_XX.npz`，包括未标注的 RGB、
+米制深度、相机内参、积分位置和实测机体四元数。普通 demo 默认不记录这部分数据；
+需要时在扫描前设置 `solution.object_finder.record_rgbd = True`。
+仅保存停稳采集的方向帧，不保存每个控制步。
+
+新扫描结果可以在不安装 Isaac、不启动机器人时重新运行感知：
+
+```bash
+python scripts/replay_object_recognition.py --input runs/recognition_test/<运行编号>
+```
+
+需要 NumPy 和 Pillow，输出在 `runs/recognition_replay/<新运行编号>/`，不覆盖原始数据。
+离线回放沿用采集时的位姿，只验证感知和融合，不验证运动、相机时序或定位漂移。
+旧的 PNG/JSON 目录不能恢复原始深度，需要重新扫描。
 
 ## 状态与后续遍历
 
