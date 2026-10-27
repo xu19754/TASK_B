@@ -1,0 +1,10 @@
+{
+  "primary_playback_verified": true,
+  "scenario_switch_verified": true,
+  "time_slider_verified": true,
+  "success_case_verified": 20261227,
+  "guarded_case_verified": 20261027,
+  "guarded_replay_end_s": 51.398,
+  "native_replay_settling_reproduces_record": true,
+  "paused_replay_does_not_move": true
+}

@@ -16,9 +16,10 @@ RELEASE_NAME = "TaskB_v3_2026-10-23"
 def release_files():
     # An explicit allowlist keeps new experimental files out of future releases.
     names = {
-        "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "pyproject.toml",
+        "README.md", "handoff.md", "AGENTS.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "pyproject.toml",
         "scripts/run_taskb.sh", "scripts/play_taskb.py", "scripts/check_package.py",
         "scripts/build_release.py", "scripts/verify_release.py",
+        "scripts/inspect_recording.py", "docs/示范采集准备.md",
         "assets/b2z1/SOURCE.json", "assets/b2z1/b2z1_0815.urdf",
         "assets/b2z1/b2z1_0815_with_basket_v3.urdf",
         "tools/vendor/sldprt/LICENSE", "tools/vendor/sldprt/SOURCE.txt",

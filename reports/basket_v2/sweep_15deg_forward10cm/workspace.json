@@ -1,0 +1,1259 @@
+[
+  {
+    "q_rad": [
+      -0.5481218401913424,
+      1.6804626542168513,
+      -4.739999999999999,
+      -1.0291899289182505,
+      -0.7221494552521045,
+      0.8816030035986197,
+      -1.35
+    ],
+    "position_error_m": 0.030156044923070963,
+    "orientation_error_rad": 0.7749555566237812,
+    "min_contact_distance_m": 1.0,
+    "collision_pairs": [],
+    "tool_center_basket_m": [
+      0.1802626671779851,
+      0.013021172285215973,
+      0.19539725314348602
+    ],
+    "target_basket_m": [
+      0.19,
+      0,
+      0.17
+    ],
+    "phi_rad": -3.141592653589793
+  },
+  {
+    "q_rad": [
+      -0.3565276535405138,
+      1.4601249795187288,
+      -4.739999999999999,
+      -0.6346960315718588,
+      -0.5608261352654458,
+      1.120311285334076,
+      -1.35
+    ],
+    "position_error_m": 0.025579542189964735,
+    "orientation_error_rad": 0.722760474479635,
+    "min_contact_distance_m": 1.0,
+    "collision_pairs": [],
+    "tool_center_basket_m": [
+      0.08455066886049015,
+      0.008562631187145037,
+      0.15850168892676794
+    ],
+    "target_basket_m": [
+      0.1,
+      0,
+      0.14
+    ],
+    "phi_rad": -3.141592653589793
+  },
+  {
+    "q_rad": [
+      -0.2718616748372927,
+      1.1291192801130405,
+      -4.739999999999999,
+      -0.09703642122315653,
+      -0.5229728710958708,
+      1.2765021630713753,
+      -1.35
+    ],
+    "position_error_m": 0.022276624999195367,
+    "orientation_error_rad": 0.5804577731502095,
+    "min_contact_distance_m": 1.0,
+    "collision_pairs": [],
+    "tool_center_basket_m": [
+      -0.018681112305800992,
+      0.006357302370823978,
+      0.10033676791549191
+    ],
+    "target_basket_m": [
+      0,
+      0,
+      0.09
+    ],
+    "phi_rad": -3.141592653589793
+  },
+  {
+    "q_rad": [
+      -0.16907900126953843,
+      0.687948636316125,
+      -4.739999999999999,
+      0.8801091407899981,
+      -0.3201120244477895,
+      1.5593007145125586,
+      -1.35
+    ],
+    "position_error_m": 0.014977432835295273,
+    "orientation_error_rad": 0.15392553648201676,
+    "min_contact_distance_m": 1.0,
+    "collision_pairs": [],
+    "tool_center_basket_m": [
+      -0.11475052081851614,
+      0.002519790142100367,
+      0.07062951374732926
+    ],
+    "target_basket_m": [
+      -0.1,
+      0,
+      0.07
+    ],
+    "phi_rad": -3.141592653589793
+  },
+  {
+    "q_rad": [
+      -0.0798626525811856,
+      0.562531186792149,
+      -4.374934234542056,
+      0.6708011264598454,
+      -0.07986490751805203,
+      1.5707950346091615,
+      -1.35
+    ],
+    "position_error_m": 5.244971578223658e-07,
+    "orientation_error_rad": 9.525437180604079e-06,
+    "min_contact_distance_m": 1.0,
+    "collision_pairs": [],
+    "tool_center_basket_m": [
+      -0.2000005052060459,
+      2.764988563802584e-08,
+      0.07000013820131556
+    ],
+    "target_basket_m": [
+      -0.2,
+      0,
+      0.07
+    ],
+    "phi_rad": -3.141592653589793
+  },
+  {
+    "q_rad": [
+      -0.07008575597481725,
+      0.4337781793327388,
+      -3.9378830870287036,
+      0.3625049180047562,
+      -0.07008772752261243,
+      1.570795360506429,
+      -1.35
+    ],
+    "position_error_m": 4.66975708769507e-07,
+    "orientation_error_rad": 7.592512823540719e-06,
+    "min_contact_distance_m": 1.0,
+    "collision_pairs": [],
+    "tool_center_basket_m": [
+      -0.2700004525743628,
+      2.194548235495697e-08,
+      0.08000011296528038
+    ],
+    "target_basket_m": [
+      -0.27,
+      0,
+      0.08
+    ],
+    "phi_rad": -3.141592653589793
+  },
+  {
+    "q_rad": [
+      -0.7421482738647464,
+      1.1094122146726053,
+      -4.739999999999999,
+      -1.7039999999999988,
+      -1.6869999999996772,
+      -0.7998572619139679,
+      -1.35
+    ],
+    "position_error_m": 0.029002793610947215,
+    "orientation_error_rad": 0.7704762808116917,
+    "min_contact_distance_m": -0.026851066106200278,
+    "collision_pairs": [
+      [
+        -0.008851265903682041,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_10"
+        ]
+      ],
+      [
+        -0.0005111049734753737,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.00048730169539376865,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.007866790683525757,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_28"
+        ]
+      ],
+      [
+        -0.005853291392332007,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_10"
+        ]
+      ],
+      [
+        -0.0007902781244454865,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_10"
+        ]
+      ],
+      [
+        -0.02558337065386788,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.025631347391298704,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.026777035206491856,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_28"
+        ]
+      ],
+      [
+        -0.026851066106200278,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_28"
+        ]
+      ]
+    ],
+    "tool_center_basket_m": [
+      0.1754405278611458,
+      0.02331646070140453,
+      0.17924805215366932
+    ],
+    "target_basket_m": [
+      0.19,
+      0,
+      0.17
+    ],
+    "phi_rad": -2.85
+  },
+  {
+    "q_rad": [
+      -0.6113476796252014,
+      0.8798611363380315,
+      -4.493279342359511,
+      -1.7039999999999869,
+      -1.6869999999999998,
+      -0.7936793718164833,
+      -1.35
+    ],
+    "position_error_m": 0.027616613505180885,
+    "orientation_error_rad": 0.8954453930877289,
+    "min_contact_distance_m": -0.027585716569770758,
+    "collision_pairs": [
+      [
+        -0.007194799844235067,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_3"
+        ]
+      ],
+      [
+        -0.021465996007610955,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.020612630423154362,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_28"
+        ]
+      ],
+      [
+        -0.017408167383979847,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_3"
+        ]
+      ],
+      [
+        -0.02680092226575355,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.02686223035080335,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.027569063078349682,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_28"
+        ]
+      ],
+      [
+        -0.027585716569770758,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_28"
+        ]
+      ]
+    ],
+    "tool_center_basket_m": [
+      0.11740704164219412,
+      0.021299031116239694,
+      0.1375457147128111
+    ],
+    "target_basket_m": [
+      0.1,
+      0,
+      0.14
+    ],
+    "phi_rad": -2.85
+  },
+  {
+    "q_rad": [
+      -0.4692156519783107,
+      0.5494960768733829,
+      -3.924045778959915,
+      -1.7039999999999997,
+      -1.6869999999999998,
+      -0.6051025153064566,
+      -1.35
+    ],
+    "position_error_m": 0.025069341007279092,
+    "orientation_error_rad": 1.0509401594033296,
+    "min_contact_distance_m": -0.026684792046877223,
+    "collision_pairs": [
+      [
+        -0.013798146028400633,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_3"
+        ]
+      ],
+      [
+        -0.014464195181977599,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.026684792046877223,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_3"
+        ]
+      ],
+      [
+        -0.026649088137919816,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_3"
+        ]
+      ],
+      [
+        -0.025593566995219558,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.025555878751155288,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_25"
+        ]
+      ]
+    ],
+    "tool_center_basket_m": [
+      0.014777507655184825,
+      0.020095062291638002,
+      0.0874928906016315
+    ],
+    "target_basket_m": [
+      0,
+      0,
+      0.09
+    ],
+    "phi_rad": -2.85
+  },
+  {
+    "q_rad": [
+      -0.10455208731727511,
+      0.416324826199373,
+      -4.739999999999999,
+      1.5142046954050687,
+      -0.11464874821330605,
+      1.6107814901565847,
+      -1.35
+    ],
+    "position_error_m": 0.002671966043371503,
+    "orientation_error_rad": 0.04180628086718319,
+    "min_contact_distance_m": -0.01974698524012596,
+    "collision_pairs": [
+      [
+        -0.004455953857695095,
+        [
+          "collision_link03_1",
+          "collision_base_0"
+        ]
+      ],
+      [
+        -0.01974698524012596,
+        [
+          "collision_link03_1",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.0117868660343038,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.0010592075272164245,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.0010310496287079679,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.0014290425844606111,
+        [
+          "collision_gripperMover_1",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.00257859258930176,
+        [
+          "collision_gripperMover_2",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.0017584222702847394,
+        [
+          "collision_gripperMover_2",
+          "collision_tail_basket_0"
+        ]
+      ]
+    ],
+    "tool_center_basket_m": [
+      -0.10258674796649143,
+      0.0002804478723696241,
+      0.069392145999712
+    ],
+    "target_basket_m": [
+      -0.1,
+      0,
+      0.07
+    ],
+    "phi_rad": -2.85
+  },
+  {
+    "q_rad": [
+      -0.07854034908104043,
+      0.35777290075640106,
+      -4.279029796027739,
+      1.072103214864023,
+      -0.07522111509725622,
+      1.5934174949063367,
+      -1.35
+    ],
+    "position_error_m": 5.839086976685152e-07,
+    "orientation_error_rad": 5.518963825324821e-06,
+    "min_contact_distance_m": -0.03578299583215183,
+    "collision_pairs": [
+      [
+        -0.03578299583215183,
+        [
+          "collision_link03_1",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.006036486320234191,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_0"
+        ]
+      ]
+    ],
+    "tool_center_basket_m": [
+      -0.20000057626971218,
+      3.020119139496291e-08,
+      0.07000008916543124
+    ],
+    "target_basket_m": [
+      -0.2,
+      0,
+      0.07
+    ],
+    "phi_rad": -2.85
+  },
+  {
+    "q_rad": [
+      -0.06906487231291203,
+      0.24090479352997002,
+      -3.8242186467377994,
+      0.7339681680617799,
+      -0.06614744167270528,
+      1.5906799719295583,
+      -1.35
+    ],
+    "position_error_m": 5.381288856917638e-07,
+    "orientation_error_rad": 4.2526767922037695e-06,
+    "min_contact_distance_m": -0.040482198454536794,
+    "collision_pairs": [
+      [
+        -0.0018469993581054578,
+        [
+          "collision_link03_0",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.040482198454536794,
+        [
+          "collision_link03_1",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.00013251532584962727,
+        [
+          "collision_gripperMover_1",
+          "collision_tail_basket_1"
+        ]
+      ],
+      [
+        -0.0006114094314188154,
+        [
+          "collision_gripperMover_1",
+          "collision_tail_basket_9"
+        ]
+      ],
+      [
+        -0.0006114094731396659,
+        [
+          "collision_gripperMover_1",
+          "collision_tail_basket_23"
+        ]
+      ],
+      [
+        -0.00013252267213527343,
+        [
+          "collision_gripperMover_2",
+          "collision_tail_basket_1"
+        ]
+      ],
+      [
+        -0.0006114167658627913,
+        [
+          "collision_gripperMover_2",
+          "collision_tail_basket_9"
+        ]
+      ],
+      [
+        -0.0006114168075836405,
+        [
+          "collision_gripperMover_2",
+          "collision_tail_basket_23"
+        ]
+      ]
+    ],
+    "tool_center_basket_m": [
+      -0.2700005320511719,
+      2.5556939085846775e-08,
+      0.08000007649242409
+    ],
+    "target_basket_m": [
+      -0.27,
+      0,
+      0.08
+    ],
+    "phi_rad": -2.85
+  },
+  {
+    "q_rad": [
+      -0.7375807038084746,
+      1.1266688528625153,
+      -4.739999999999999,
+      -1.7039999999999942,
+      -1.6869999999999998,
+      -0.8981151843197366,
+      -1.35
+    ],
+    "position_error_m": 0.027034935160538932,
+    "orientation_error_rad": 0.8657313360091445,
+    "min_contact_distance_m": -0.024214476200854824,
+    "collision_pairs": [
+      [
+        -0.010027084898784611,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_10"
+        ]
+      ],
+      [
+        -0.01002702412949406,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.009131730553955851,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_28"
+        ]
+      ],
+      [
+        -0.004271646618578196,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_10"
+        ]
+      ],
+      [
+        -0.022899740296283284,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.022938410824188144,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.024149870851476248,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_28"
+        ]
+      ],
+      [
+        -0.024214476200854824,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_28"
+        ]
+      ]
+    ],
+    "tool_center_basket_m": [
+      0.17593137940600292,
+      0.020887393002818652,
+      0.1798325198836569
+    ],
+    "target_basket_m": [
+      0.19,
+      0,
+      0.17
+    ],
+    "phi_rad": -2.55
+  },
+  {
+    "q_rad": [
+      -0.6019337622213073,
+      0.8933080817220569,
+      -4.479707563652847,
+      -1.7039999999708024,
+      -1.6869999999999998,
+      -0.91967050945605,
+      -1.35
+    ],
+    "position_error_m": 0.024029742910013318,
+    "orientation_error_rad": 0.9711767477078288,
+    "min_contact_distance_m": -0.025071323359645785,
+    "collision_pairs": [
+      [
+        -0.0030101749545409853,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_3"
+        ]
+      ],
+      [
+        -0.02354017695319857,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.022768404344866114,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_28"
+        ]
+      ],
+      [
+        -0.011884634317741215,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_3"
+        ]
+      ],
+      [
+        -0.02426353886004843,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.024271046751211375,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.02503797950692773,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_28"
+        ]
+      ],
+      [
+        -0.025071323359645785,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_28"
+        ]
+      ]
+    ],
+    "tool_center_basket_m": [
+      0.11453465372422143,
+      0.019079625348273815,
+      0.13853702973105456
+    ],
+    "target_basket_m": [
+      0.1,
+      0,
+      0.14
+    ],
+    "phi_rad": -2.55
+  },
+  {
+    "q_rad": [
+      -0.4632525060935073,
+      0.5633957498577571,
+      -3.92009734998512,
+      -1.7039999999999997,
+      -1.6869999999999998,
+      -0.7681838591371295,
+      -1.35
+    ],
+    "position_error_m": 0.02165407689521985,
+    "orientation_error_rad": 1.0944152130510474,
+    "min_contact_distance_m": -0.023892300190582545,
+    "collision_pairs": [
+      [
+        -0.016276162239282223,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_3"
+        ]
+      ],
+      [
+        -0.016937822129078534,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.023892300190582545,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_3"
+        ]
+      ],
+      [
+        -0.02387281293255063,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_3"
+        ]
+      ],
+      [
+        -0.02279412973878013,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_25"
+        ]
+      ],
+      [
+        -0.022772487391358717,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_25"
+        ]
+      ]
+    ],
+    "tool_center_basket_m": [
+      0.012243747184940295,
+      0.017758242823681533,
+      0.08809356015816804
+    ],
+    "target_basket_m": [
+      0,
+      0,
+      0.09
+    ],
+    "phi_rad": -2.55
+  },
+  {
+    "q_rad": [
+      -0.11988698782300934,
+      0.38499955909936723,
+      -4.66759254305611,
+      1.5299999999999998,
+      -0.16369377599041038,
+      1.6107067824527406,
+      -1.35
+    ],
+    "position_error_m": 0.009297421378307254,
+    "orientation_error_rad": 0.21398444586766538,
+    "min_contact_distance_m": -0.013763204571425467,
+    "collision_pairs": [
+      [
+        -0.013763204571425467,
+        [
+          "collision_link03_1",
+          "collision_base_0"
+        ]
+      ],
+      [
+        -0.006894037557415935,
+        [
+          "collision_link03_0",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.011927113430807336,
+        [
+          "collision_link03_1",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.013658509414147984,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.0007284249019001224,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.0006901083221505848,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.00034314114700629113,
+        [
+          "collision_gripperMover_1",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.0013798229289599465,
+        [
+          "collision_gripperMover_2",
+          "collision_tail_basket_0"
+        ]
+      ]
+    ],
+    "tool_center_basket_m": [
+      -0.10858640314916547,
+      0.0007330095117310462,
+      0.07348975963377391
+    ],
+    "target_basket_m": [
+      -0.1,
+      0,
+      0.07
+    ],
+    "phi_rad": -2.55
+  },
+  {
+    "q_rad": [
+      -0.07479218990732879,
+      0.11478633126724992,
+      -3.9587915540536085,
+      1.295302549596008,
+      -0.06206573153617501,
+      1.6125615127693336,
+      -1.35
+    ],
+    "position_error_m": 6.050003732230507e-07,
+    "orientation_error_rad": 2.5946224360413337e-06,
+    "min_contact_distance_m": -0.06971690258070083,
+    "collision_pairs": [
+      [
+        -0.01885165021561498,
+        [
+          "collision_link03_0",
+          "collision_base_0"
+        ]
+      ],
+      [
+        -0.06971690258070083,
+        [
+          "collision_link03_1",
+          "collision_base_0"
+        ]
+      ],
+      [
+        -0.005446512551571293,
+        [
+          "collision_link02_1",
+          "collision_tail_basket_17"
+        ]
+      ],
+      [
+        -0.00539477389509172,
+        [
+          "collision_link02_1",
+          "collision_tail_basket_19"
+        ]
+      ],
+      [
+        -0.03167265408266658,
+        [
+          "collision_link03_0",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.04120831070575941,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.02162413157613082,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.021547426400137876,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.004260720994624648,
+        [
+          "collision_gripperMover_0",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.011325358824959456,
+        [
+          "collision_gripperMover_1",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.01329430687703712,
+        [
+          "collision_gripperMover_2",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.01186297111782668,
+        [
+          "collision_gripperMover_2",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.009649757380479011,
+        [
+          "collision_gripperMover_4",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.009653025100845881,
+        [
+          "collision_gripperMover_4",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.009651636556643027,
+        [
+          "collision_gripperMover_4",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.009648165422248545,
+        [
+          "collision_gripperMover_4",
+          "collision_tail_basket_0"
+        ]
+      ]
+    ],
+    "tool_center_basket_m": [
+      -0.20000060347830614,
+      3.0300632003488204e-08,
+      0.07000003035222112
+    ],
+    "target_basket_m": [
+      -0.2,
+      0,
+      0.07
+    ],
+    "phi_rad": -2.55
+  },
+  {
+    "q_rad": [
+      -0.06427785720518554,
+      0.04000000000000001,
+      -3.5400579952804763,
+      0.8789142829497624,
+      -0.04757983164979906,
+      1.592408504943489,
+      -1.35
+    ],
+    "position_error_m": 0.0029328838720127414,
+    "orientation_error_rad": 0.07301694715386298,
+    "min_contact_distance_m": -0.0247680906245942,
+    "collision_pairs": [
+      [
+        -0.0030298795203482286,
+        [
+          "collision_link03_0",
+          "collision_base_0"
+        ]
+      ],
+      [
+        -0.0247680906245942,
+        [
+          "collision_link03_1",
+          "collision_base_0"
+        ]
+      ],
+      [
+        -0.0038022983134080946,
+        [
+          "collision_link02_1",
+          "collision_tail_basket_17"
+        ]
+      ],
+      [
+        -0.005082006467299613,
+        [
+          "collision_link02_1",
+          "collision_tail_basket_17"
+        ]
+      ],
+      [
+        -0.005846199081950771,
+        [
+          "collision_link02_1",
+          "collision_tail_basket_17"
+        ]
+      ],
+      [
+        -0.005356054117204761,
+        [
+          "collision_link02_1",
+          "collision_tail_basket_17"
+        ]
+      ],
+      [
+        -0.003394781444257305,
+        [
+          "collision_link02_1",
+          "collision_tail_basket_19"
+        ]
+      ],
+      [
+        -0.004548449444236899,
+        [
+          "collision_link02_1",
+          "collision_tail_basket_19"
+        ]
+      ],
+      [
+        -0.005438309168688503,
+        [
+          "collision_link02_1",
+          "collision_tail_basket_19"
+        ]
+      ],
+      [
+        -0.005359098533608887,
+        [
+          "collision_link02_1",
+          "collision_tail_basket_19"
+        ]
+      ],
+      [
+        -0.02019989303468759,
+        [
+          "collision_link03_0",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.022823335797055616,
+        [
+          "collision_link06_0",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.004483193976121674,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.004412324583067438,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_0"
+        ]
+      ],
+      [
+        -0.00810925224259954,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_1"
+        ]
+      ],
+      [
+        -0.00854508221479254,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_9"
+        ]
+      ],
+      [
+        -0.008545082251343069,
+        [
+          "collision_gripperStator_5",
+          "collision_tail_basket_23"
+        ]
+      ],
+      [
+        -0.001279653077763994,
+        [
+          "collision_gripperMover_2",
+          "collision_tail_basket_1"
+        ]
+      ],
+      [
+        -0.0028299136841799877,
+        [
+          "collision_gripperMover_2",
+          "collision_tail_basket_9"
+        ]
+      ],
+      [
+        -0.0015279782670596864,
+        [
+          "collision_gripperMover_2",
+          "collision_tail_basket_23"
+        ]
+      ],
+      [
+        -0.002511243419563589,
+        [
+          "collision_gripperMover_4",
+          "collision_tail_basket_1"
+        ]
+      ],
+      [
+        -0.004061507339584946,
+        [
+          "collision_gripperMover_4",
+          "collision_tail_basket_9"
+        ]
+      ],
+      [
+        -0.0027595639849263536,
+        [
+          "collision_gripperMover_4",
+          "collision_tail_basket_23"
+        ]
+      ]
+    ],
+    "tool_center_basket_m": [
+      -0.2676088124221985,
+      -0.0001613422041698634,
+      0.08169056158350821
+    ],
+    "target_basket_m": [
+      -0.27,
+      0,
+      0.08
+    ],
+    "phi_rad": -2.55
+  }
+]

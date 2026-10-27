@@ -1,0 +1,7 @@
+newmtl basket_plastic_blue
+Ka 0.06 0.10 0.14
+Kd 0.10 0.48 0.75
+Ks 0.12 0.12 0.12
+Ns 40
+d 1
+illum 2

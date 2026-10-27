@@ -1,0 +1,161 @@
+{
+  "source": "/Users/yxh/Desktop/share_wind/零件2.SLDPRT",
+  "source_sha256": "75ff5e19bf2b46551fd26042d03f5224faa94e827795f2acbb84448dda3fbb25",
+  "variant": "/Users/yxh/Desktop/5810/TaskB/assets/b2z1/b2z1_0815_with_basket_v3.urdf",
+  "variant_sha256": "eb54aefe9c7b34ae18adb3599a6772d20c48b58358a0fd89dfa6ce4cc837e413",
+  "converter": "XRTC5/sldprt-export 9c91ea0fd94090ce88efd6d37b61ba091243c715",
+  "dimensions_m": [
+    0.45000001788139343,
+    0.25,
+    0.15999999642372137
+  ],
+  "wall_thickness_m": 0.0015,
+  "source_mesh_vertices": 92,
+  "source_mesh_triangles": 180,
+  "cad_mesh_closed": true,
+  "crc_verified": true,
+  "rear_sill_m": 0.015,
+  "rear_clear_width_m": 0.21,
+  "front_sill_m": 0.08,
+  "front_clear_width_m": 0.247,
+  "front_window_clear_height_m": 0.07999999642372137,
+  "shell_volume_m3": 0.0004610710828290565,
+  "mass_kg": 0.2,
+  "mass_assumption": "Previous requested 0.2 kg retained; not measured",
+  "com_m": [
+    -0.0007114689230501292,
+    1.5952039853657957e-05,
+    0.04126864978665993
+  ],
+  "inertia_kg_m2": [
+    [
+      0.002459777088775389,
+      -1.7561034689996743e-07,
+      -8.664485065158007e-05
+    ],
+    [
+      -1.7561034690033488e-07,
+      0.004747164040198693,
+      1.177530031775914e-07
+    ],
+    [
+      -8.66448506515801e-05,
+      1.1775300317739622e-07,
+      0.0062170963904738365
+    ]
+  ],
+  "source_to_basket_rotation": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      1,
+      0
+    ]
+  ],
+  "source_to_basket_translation_m": [
+    0.07500000298023224,
+    0.0,
+    5.551115123125783e-17
+  ],
+  "collision_tetrahedra": 229,
+  "collision_convex_parts": 103,
+  "collision_volume_m3": 0.0004610710828290559,
+  "collision_visual_random_samples": 30000,
+  "collision_visual_mismatches": 0,
+  "front_and_rear_aperture_samples_clear": true,
+  "fixed_mount_xyz_m": [
+    -0.3,
+    0,
+    0.13
+  ],
+  "unchanged_controllable_joints": 19,
+  "display_mesh_limit": "Checks validate saved planar tessellation, not a licensed CAD B-rep reconstruction",
+  "floor_profile_xz_m": [
+    [
+      -0.2250000089,
+      0.014999999664723929
+    ],
+    [
+      -0.2242500037,
+      0.014999999664723929
+    ],
+    [
+      -0.2234999985,
+      0.014999999664723929
+    ],
+    [
+      -0.2134949234,
+      0.008723563401651436
+    ],
+    [
+      -0.2033038586,
+      0.0028397459536791403
+    ],
+    [
+      -0.2025145115,
+      0.0024716725866631858
+    ],
+    [
+      -0.2017240375,
+      0.002103073755279239
+    ],
+    [
+      -0.2008828206,
+      0.0018776693421510115
+    ],
+    [
+      -0.2000403255,
+      0.0016519224736840088
+    ],
+    [
+      -0.1991727583,
+      0.0015760206207317692
+    ],
+    [
+      -0.1983038336,
+      0.0015000000130385716
+    ],
+    [
+      -0.1867361467,
+      0.0015000000130385716
+    ],
+    [
+      -0.1749251783,
+      0.0015000000130385716
+    ],
+    [
+      0.0242874101,
+      0.0015000000130385716
+    ],
+    [
+      0.2234999985,
+      0.0015000000130385716
+    ]
+  ],
+  "bounds_m": [
+    [
+      -0.22500000894069672,
+      -0.125,
+      0.0
+    ],
+    [
+      0.22500000894069672,
+      0.125,
+      0.15999999642372137
+    ]
+  ],
+  "revision": "v3",
+  "source_snapshot": "/Users/yxh/Desktop/5810/TaskB/reports/basket_v3/source/零件2.SLDPRT",
+  "rear_main_ramp_angle_deg": 30.000014515131717,
+  "rear_floor_transition_start_x_m": -0.1983038336,
+  "model_label": "零件2 最新设计 v3"
+}

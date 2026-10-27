@@ -21,6 +21,24 @@ from .geometry import sample_object_positions
 from .lidar import LidarCfg, lidar_observation
 from .mdp import ObjectsInTarget, all_objects_in_target, camera_intrinsics
 from .robot import B2Z1_CFG
+from .sensor_contract import CAMERAS, CAMERA_COMMON
+
+
+def existing_camera_cfg(name):
+    """Use the original mounts and optics for evaluation and recording alike."""
+    mount, optics = CAMERAS[name], CAMERA_COMMON
+    return CameraCfg(
+        prim_path=f"{{ENV_REGEX_NS}}/Robot/{mount['parent']}/{name}_camera",
+        update_period=optics["update_period"], height=optics["height"], width=optics["width"],
+        data_types=["rgb", optics["depth_type"]],
+        spawn=sim_utils.PinholeCameraCfg(
+            focal_length=optics["focal_length"], horizontal_aperture=optics["horizontal_aperture"],
+            clipping_range=optics["clipping_range"],
+        ),
+        offset=CameraCfg.OffsetCfg(
+            pos=mount["pos"], rot=optics["rot_wxyz"], convention=optics["convention"],
+        ),
+    )
 
 
 @configclass
@@ -45,28 +63,8 @@ class TaskBSceneCfg(InteractiveSceneCfg):
     contact_sensor = ContactSensorCfg(
         prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=3, update_period=0.02,
     )
-    head_camera = CameraCfg(
-        prim_path="{ENV_REGEX_NS}/Robot/base/head_camera",
-        update_period=0.1, height=480, width=640,
-        data_types=["rgb", "distance_to_image_plane"],
-        spawn=sim_utils.PinholeCameraCfg(
-            focal_length=15.0, horizontal_aperture=20.955, clipping_range=(0.05, 50.0),
-        ),
-        offset=CameraCfg.OffsetCfg(
-            pos=(0.4, 0.0, 0.12), rot=(1.0, 0.0, 0.0, 0.0), convention="world",
-        ),
-    )
-    ee_camera = CameraCfg(
-        prim_path="{ENV_REGEX_NS}/Robot/link06/ee_camera",
-        update_period=0.1, height=480, width=640,
-        data_types=["rgb", "distance_to_image_plane"],
-        spawn=sim_utils.PinholeCameraCfg(
-            focal_length=15.0, horizontal_aperture=20.955, clipping_range=(0.05, 50.0),
-        ),
-        offset=CameraCfg.OffsetCfg(
-            pos=(0.03, 0.0, 0.07), rot=(1.0, 0.0, 0.0, 0.0), convention="world",
-        ),
-    )
+    head_camera = existing_camera_cfg("head")
+    ee_camera = existing_camera_cfg("ee")
 
 
 @configclass
