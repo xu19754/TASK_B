@@ -1,0 +1,37 @@
+{
+  "expected_commit": "76c51c4c08e5762d00c75f36cb07aa3e525d6990",
+  "files": [
+    {
+      "file": "ik_mink.fixed_commit.py",
+      "sha256": "85e8861f33d8326f3835afb7c5674386067e037e950c921919274dc8200b8514"
+    },
+    {
+      "file": "state_machine.fixed_commit.py",
+      "sha256": "b14cfa5833d5fc1afeb1ffcb5dec9deac7fb1488676ce9d95ac044fb7e21b475"
+    },
+    {
+      "file": "z1_floating.xml",
+      "sha256": "4e20340258aa98e240bd16a9a19d14b03dc93c0b3fed83962f4cdc2c843e17b5"
+    },
+    {
+      "file": "ik_mink.py",
+      "sha256": "85e8861f33d8326f3835afb7c5674386067e037e950c921919274dc8200b8514"
+    },
+    {
+      "file": "scene_floating.xml",
+      "sha256": "29591beb9eb31e9da1158756e11338cc0144da3174959be5c8af4318ead44de9"
+    },
+    {
+      "file": "state_machine.py",
+      "sha256": "b14cfa5833d5fc1afeb1ffcb5dec9deac7fb1488676ce9d95ac044fb7e21b475"
+    },
+    {
+      "file": "LICENSE.BinWalker",
+      "sha256": "036f13c31abacb402f81ad8af971b6014b382c9fb742b9f1c68b74bddf344577"
+    }
+  ],
+  "fixed_commit_download_succeeded": true,
+  "ik_matches_fixed_commit": true,
+  "state_machine_matches_fixed_commit": true,
+  "license_matches_fixed_commit": null
+}

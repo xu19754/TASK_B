@@ -1,0 +1,8 @@
+numpy==1.26.0
+scipy==1.15.3
+torch==2.7.0+cu128
+typing_extensions==4.12.2
+qpsolvers==4.8.2
+Pillow==11.3.0
+imageio==2.37.0
+imageio-ffmpeg==0.6.0

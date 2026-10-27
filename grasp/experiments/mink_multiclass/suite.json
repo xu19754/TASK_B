@@ -1,0 +1,71 @@
+{
+  "title": "3 objects x 3 yaw angles, exactly one attempt each",
+  "angles_deg": [
+    0,
+    -45,
+    45
+  ],
+  "root_xy": [
+    0.55,
+    0.0
+  ],
+  "navigation": false,
+  "distance_sweep": false,
+  "case_count": 9,
+  "cases": [
+    {
+      "case_id": "mustard_yaw_p00",
+      "object": "mustard",
+      "yaw_deg": 0,
+      "config": "experiments/mink_multiclass/configs/mustard_yaw_p00.json"
+    },
+    {
+      "case_id": "sugar_yaw_p00",
+      "object": "sugar",
+      "yaw_deg": 0,
+      "config": "experiments/mink_multiclass/configs/sugar_yaw_p00.json"
+    },
+    {
+      "case_id": "banana_yaw_p00",
+      "object": "banana",
+      "yaw_deg": 0,
+      "config": "experiments/mink_multiclass/configs/banana_yaw_p00.json"
+    },
+    {
+      "case_id": "mustard_yaw_m45",
+      "object": "mustard",
+      "yaw_deg": -45,
+      "config": "experiments/mink_multiclass/configs/mustard_yaw_m45.json"
+    },
+    {
+      "case_id": "sugar_yaw_m45",
+      "object": "sugar",
+      "yaw_deg": -45,
+      "config": "experiments/mink_multiclass/configs/sugar_yaw_m45.json"
+    },
+    {
+      "case_id": "banana_yaw_m45",
+      "object": "banana",
+      "yaw_deg": -45,
+      "config": "experiments/mink_multiclass/configs/banana_yaw_m45.json"
+    },
+    {
+      "case_id": "mustard_yaw_p45",
+      "object": "mustard",
+      "yaw_deg": 45,
+      "config": "experiments/mink_multiclass/configs/mustard_yaw_p45.json"
+    },
+    {
+      "case_id": "sugar_yaw_p45",
+      "object": "sugar",
+      "yaw_deg": 45,
+      "config": "experiments/mink_multiclass/configs/sugar_yaw_p45.json"
+    },
+    {
+      "case_id": "banana_yaw_p45",
+      "object": "banana",
+      "yaw_deg": 45,
+      "config": "experiments/mink_multiclass/configs/banana_yaw_p45.json"
+    }
+  ]
+}

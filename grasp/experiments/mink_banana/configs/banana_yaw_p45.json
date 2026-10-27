@@ -1,0 +1,72 @@
+{
+  "title": "\u9999\u8549\u6293\u53d6\u4fee\u590d\uff1a\u5b9e\u9645\u5939\u722a\u89d2\u5ea6\u4e0e\u53cc\u6307\u4e2d\u5fc3\u534f\u8c03",
+  "object_asset": "011_banana.usd",
+  "object_xy": [
+    0.55,
+    0.0
+  ],
+  "object_quat_wxyz": [
+    0.6532814824381883,
+    -0.6532814824381883,
+    -0.2705980500730985,
+    0.2705980500730985
+  ],
+  "tcp_offset_link06": [
+    0.23,
+    0.0,
+    -0.009
+  ],
+  "grasp_world": [
+    0.571920310216783,
+    0.013435028842544402,
+    0.0145
+  ],
+  "grasp_rpy": [
+    0.7853981633974483,
+    1.5707963267948966,
+    0.0
+  ],
+  "pregrasp_up": 0.12,
+  "lift_up": 0.15,
+  "arm_speed_rad_s": 0.4,
+  "gripper_open": -1.0,
+  "stage_limits_s": {
+    "SETTLE": 6.0,
+    "OPEN": 9.0,
+    "PREGRASP": 18.0,
+    "APPROACH": 14.0,
+    "CLOSE": 10.0,
+    "LIFT": 15.0,
+    "HOLD": 4.0,
+    "SQUAT": 14.0
+  },
+  "thresholds": {
+    "ik_position_m": 0.005,
+    "ik_orientation_deg": 5.0,
+    "rise_m": 0.1,
+    "bottom_m": 0.02,
+    "hold_s": 3.0,
+    "tilt_deg": 15.0,
+    "drift_m": 0.1
+  },
+  "max_sim_s": 100.0,
+  "max_wall_s": 300.0,
+  "notes": "Original flat banana, original 4/1 solver, original force/speed/preload/materials. Based on recorded slip, shift the hand 25mm along banana length so the fixed-jaw contact is closer to the object mass center instead of 33mm behind it. Proprioceptive dynamic pinch frame; no object feedback. Independent success thresholds unchanged. Same fixed configuration, rigid yaw rotation of object and grasp target only; each angle is run once.",
+  "grasp_local_point": [
+    0.025,
+    0.0,
+    -0.006
+  ],
+  "history_initialization": "100 repeated initial measured standing observations, required by supplied deployment manifest",
+  "body_height": 0.3,
+  "lift_body_height": 0.36,
+  "body_pitch_rad": 0.1,
+  "squat_duration_s": 8.0,
+  "handover_s": 2.0,
+  "case_id": "banana_yaw_p45",
+  "object_class": "banana",
+  "object_yaw_deg": 45,
+  "distance_tested": false,
+  "root_distance_m": 0.55,
+  "repeat_count": 1
+}
