@@ -1,0 +1,1709 @@
+[
+  {
+    "view_id": 0,
+    "camera": "head",
+    "yaw": -0.004795648332516189,
+    "ground_plane": [
+      -0.012673713920642666,
+      -0.005099064421631775,
+      -0.13262603113542262
+    ],
+    "foreground_pixels": 0,
+    "rejected_flat_components": 0,
+    "detections": []
+  },
+  {
+    "view_id": 1,
+    "camera": "head",
+    "yaw": 0.25803162862151774,
+    "ground_plane": [
+      0.0049508749195173,
+      0.0016555812534241113,
+      0.12759217901847147
+    ],
+    "foreground_pixels": 399,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 0,
+        "bbox": [
+          58,
+          346,
+          99,
+          359
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 399,
+        "touches_image_border": false,
+        "height_range": [
+          0.00978632995734322,
+          0.045454211578304794
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 2,
+    "camera": "head",
+    "yaw": 0.5202476403289121,
+    "ground_plane": [
+      0.002008563248925328,
+      0.0026171877363208654,
+      0.10770864894130333
+    ],
+    "foreground_pixels": 314,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 0,
+        "bbox": [
+          220,
+          342,
+          255,
+          354
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 314,
+        "touches_image_border": false,
+        "height_range": [
+          0.010233776283571023,
+          0.04552798160785172
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 3,
+    "camera": "head",
+    "yaw": 0.7824699492647281,
+    "ground_plane": [
+      0.000769849422101401,
+      0.0007652844699859163,
+      0.07697840454978137
+    ],
+    "foreground_pixels": 979,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 1,
+        "bbox": [
+          129,
+          306,
+          148,
+          313
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 104,
+        "touches_image_border": false,
+        "height_range": [
+          0.010054930072055112,
+          0.04552375636008488
+        ]
+      },
+      {
+        "object_id": 0,
+        "bbox": [
+          365,
+          342,
+          400,
+          356
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 314,
+        "touches_image_border": false,
+        "height_range": [
+          0.009978105047697047,
+          0.04549068270226753
+        ]
+      },
+      {
+        "object_id": 2,
+        "bbox": [
+          108,
+          375,
+          146,
+          396
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 561,
+        "touches_image_border": false,
+        "height_range": [
+          0.010368300392583263,
+          0.04558914713669477
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 4,
+    "camera": "head",
+    "yaw": 1.044493862889842,
+    "ground_plane": [
+      0.0024992448356337842,
+      0.006960586209070842,
+      0.15735575255029394
+    ],
+    "foreground_pixels": 971,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 1,
+        "bbox": [
+          273,
+          300,
+          290,
+          306
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 86,
+        "touches_image_border": false,
+        "height_range": [
+          0.010284677990481146,
+          0.04552093963629931
+        ]
+      },
+      {
+        "object_id": 0,
+        "bbox": [
+          520,
+          349,
+          562,
+          365
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 404,
+        "touches_image_border": false,
+        "height_range": [
+          0.01005816899348275,
+          0.0455905275144589
+        ]
+      },
+      {
+        "object_id": 2,
+        "bbox": [
+          268,
+          365,
+          303,
+          384
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 481,
+        "touches_image_border": false,
+        "height_range": [
+          0.010388540931193005,
+          0.0456774768967366
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 5,
+    "camera": "head",
+    "yaw": 1.3065116586960468,
+    "ground_plane": [
+      0.00019798034652073054,
+      0.002841235958349897,
+      0.09197075840505906
+    ],
+    "foreground_pixels": 642,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 1,
+        "bbox": [
+          408,
+          304,
+          426,
+          311
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 99,
+        "touches_image_border": false,
+        "height_range": [
+          0.010124183961074928,
+          0.0450956488608681
+        ]
+      },
+      {
+        "object_id": 2,
+        "bbox": [
+          418,
+          372,
+          457,
+          393
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 543,
+        "touches_image_border": false,
+        "height_range": [
+          0.010253750599355491,
+          0.04558197648226489
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 6,
+    "camera": "head",
+    "yaw": 1.5710438099513089,
+    "ground_plane": [
+      7.321794065476423e-07,
+      0.0010867047733743723,
+      0.07246119390886017
+    ],
+    "foreground_pixels": 864,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 1,
+        "bbox": [
+          562,
+          313,
+          586,
+          320
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 127,
+        "touches_image_border": false,
+        "height_range": [
+          0.009922775184121102,
+          0.04558161464090543
+        ]
+      },
+      {
+        "object_id": 2,
+        "bbox": [
+          594,
+          391,
+          639,
+          416
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 737,
+        "touches_image_border": true,
+        "height_range": [
+          0.010841857660829452,
+          0.04561131416564898
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 7,
+    "camera": "head",
+    "yaw": 1.8338484278295655,
+    "ground_plane": [
+      -0.0008362954343218939,
+      0.007184007647281318,
+      0.12572727607140105
+    ],
+    "foreground_pixels": 4,
+    "rejected_flat_components": 0,
+    "detections": []
+  },
+  {
+    "view_id": 8,
+    "camera": "head",
+    "yaw": 2.0963126390176425,
+    "ground_plane": [
+      -0.00094563559597437,
+      0.00239285289767506,
+      0.07636905636924468
+    ],
+    "foreground_pixels": 271,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 3,
+        "bbox": [
+          160,
+          302,
+          172,
+          329
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 271,
+        "touches_image_border": false,
+        "height_range": [
+          0.012133639650087633,
+          0.17696718309931567
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 9,
+    "camera": "head",
+    "yaw": 2.358013312091458,
+    "ground_plane": [
+      -0.0038292574935631448,
+      0.005521131378613001,
+      0.07925079856486836
+    ],
+    "foreground_pixels": 237,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 3,
+        "bbox": [
+          303,
+          297,
+          314,
+          323
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 237,
+        "touches_image_border": false,
+        "height_range": [
+          0.012692961374392627,
+          0.18003851243886795
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 10,
+    "camera": "head",
+    "yaw": 2.619804376042992,
+    "ground_plane": [
+      -0.0020248404133256,
+      0.001587739145526318,
+      0.057521067685231256
+    ],
+    "foreground_pixels": 270,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 3,
+        "bbox": [
+          444,
+          301,
+          457,
+          328
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 270,
+        "touches_image_border": false,
+        "height_range": [
+          0.01265670144639253,
+          0.18008048706900937
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 11,
+    "camera": "head",
+    "yaw": 2.8816525280238023,
+    "ground_plane": [
+      -0.009637925870676084,
+      0.0037172782468346544,
+      0.0049617647473921556
+    ],
+    "foreground_pixels": 400,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 3,
+        "bbox": [
+          610,
+          305,
+          627,
+          336
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 400,
+        "touches_image_border": false,
+        "height_range": [
+          0.011725066257744835,
+          0.17808345894996264
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 12,
+    "camera": "head",
+    "yaw": -3.1399446605289505,
+    "ground_plane": [
+      -0.007192581929964265,
+      0.000968637484877577,
+      2.576656783145892e-06
+    ],
+    "foreground_pixels": 454,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 4,
+        "bbox": [
+          93,
+          289,
+          102,
+          311
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 173,
+        "touches_image_border": false,
+        "height_range": [
+          0.013650932769353754,
+          0.17838630916137058
+        ]
+      },
+      {
+        "object_id": 5,
+        "bbox": [
+          101,
+          306,
+          112,
+          335
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 281,
+        "touches_image_border": false,
+        "height_range": [
+          0.014056816889165805,
+          0.17959472762067027
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 13,
+    "camera": "head",
+    "yaw": -2.878176303279769,
+    "ground_plane": [
+      -0.0025227569406210317,
+      -0.0003427530324291439,
+      0.03321769486882872
+    ],
+    "foreground_pixels": 581,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 4,
+        "bbox": [
+          242,
+          286,
+          249,
+          307
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 127,
+        "touches_image_border": false,
+        "height_range": [
+          0.012463189378172954,
+          0.1821107502507114
+        ]
+      },
+      {
+        "object_id": 5,
+        "bbox": [
+          253,
+          302,
+          262,
+          330
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 221,
+        "touches_image_border": false,
+        "height_range": [
+          0.011683671945405686,
+          0.18237538277455723
+        ]
+      },
+      {
+        "object_id": 6,
+        "bbox": [
+          0,
+          305,
+          7,
+          309
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 27,
+        "touches_image_border": true,
+        "height_range": [
+          0.011150262174220358,
+          0.03946429113393688
+        ]
+      },
+      {
+        "object_id": 7,
+        "bbox": [
+          0,
+          349,
+          15,
+          357
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 80,
+        "touches_image_border": true,
+        "height_range": [
+          0.009660129383226107,
+          0.036113908569749394
+        ]
+      },
+      {
+        "object_id": 8,
+        "bbox": [
+          0,
+          398,
+          16,
+          411
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 126,
+        "touches_image_border": true,
+        "height_range": [
+          0.010446536454010141,
+          0.03530030835060217
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 14,
+    "camera": "head",
+    "yaw": -2.6204314962576327,
+    "ground_plane": [
+      -0.0012481787316450633,
+      -0.0015149580357812498,
+      0.03420681510778985
+    ],
+    "foreground_pixels": 801,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 4,
+        "bbox": [
+          375,
+          288,
+          383,
+          308
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 127,
+        "touches_image_border": false,
+        "height_range": [
+          0.014596849656504221,
+          0.1764000482027799
+        ]
+      },
+      {
+        "object_id": 6,
+        "bbox": [
+          150,
+          296,
+          169,
+          301
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 81,
+        "touches_image_border": false,
+        "height_range": [
+          0.010419269727316017,
+          0.044150636681508794
+        ]
+      },
+      {
+        "object_id": 5,
+        "bbox": [
+          391,
+          304,
+          401,
+          332
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 217,
+        "touches_image_border": false,
+        "height_range": [
+          0.01307006553317557,
+          0.17951858939479232
+        ]
+      },
+      {
+        "object_id": 7,
+        "bbox": [
+          157,
+          336,
+          182,
+          345
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 110,
+        "touches_image_border": false,
+        "height_range": [
+          0.009386420762398035,
+          0.0365499274317821
+        ]
+      },
+      {
+        "object_id": 8,
+        "bbox": [
+          152,
+          381,
+          191,
+          396
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 266,
+        "touches_image_border": false,
+        "height_range": [
+          0.009225323968927269,
+          0.0367008060233417
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 15,
+    "camera": "head",
+    "yaw": -2.3584593441495643,
+    "ground_plane": [
+      -0.00528401233425824,
+      -0.010194969763869757,
+      -0.08953307084418899
+    ],
+    "foreground_pixels": 1111,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 6,
+        "bbox": [
+          289,
+          287,
+          307,
+          293
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 69,
+        "touches_image_border": false,
+        "height_range": [
+          0.01001837938960576,
+          0.04561479277374475
+        ]
+      },
+      {
+        "object_id": 4,
+        "bbox": [
+          521,
+          287,
+          530,
+          309
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 158,
+        "touches_image_border": false,
+        "height_range": [
+          0.014314652902115133,
+          0.18083670362131513
+        ]
+      },
+      {
+        "object_id": 5,
+        "bbox": [
+          545,
+          306,
+          557,
+          336
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 279,
+        "touches_image_border": false,
+        "height_range": [
+          0.012970327441445524,
+          0.18366883655424035
+        ]
+      },
+      {
+        "object_id": 7,
+        "bbox": [
+          304,
+          327,
+          327,
+          334
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 99,
+        "touches_image_border": false,
+        "height_range": [
+          0.009524312898723434,
+          0.0368668700488946
+        ]
+      },
+      {
+        "object_id": 9,
+        "bbox": [
+          119,
+          367,
+          164,
+          380
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 278,
+        "touches_image_border": false,
+        "height_range": [
+          0.009456665647608655,
+          0.03666639532572938
+        ]
+      },
+      {
+        "object_id": 8,
+        "bbox": [
+          309,
+          370,
+          344,
+          383
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 228,
+        "touches_image_border": false,
+        "height_range": [
+          0.009679272427208,
+          0.03675698919547998
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 16,
+    "camera": "head",
+    "yaw": -2.097173157719679,
+    "ground_plane": [
+      -0.002507722665502854,
+      -0.006958050365863805,
+      -0.03188290946916976
+    ],
+    "foreground_pixels": 675,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 6,
+        "bbox": [
+          423,
+          292,
+          441,
+          298
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 75,
+        "touches_image_border": false,
+        "height_range": [
+          0.010083567797132244,
+          0.04493628406694092
+        ]
+      },
+      {
+        "object_id": 7,
+        "bbox": [
+          446,
+          335,
+          472,
+          342
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 110,
+        "touches_image_border": false,
+        "height_range": [
+          0.009248518532964864,
+          0.03666317679295228
+        ]
+      },
+      {
+        "object_id": 9,
+        "bbox": [
+          276,
+          366,
+          315,
+          376
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 230,
+        "touches_image_border": false,
+        "height_range": [
+          0.009477106504492315,
+          0.0365971119869862
+        ]
+      },
+      {
+        "object_id": 8,
+        "bbox": [
+          465,
+          383,
+          502,
+          395
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 260,
+        "touches_image_border": false,
+        "height_range": [
+          0.00981602964589481,
+          0.036694819846368035
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 17,
+    "camera": "head",
+    "yaw": -1.8351398292448378,
+    "ground_plane": [
+      -0.00019686021032537556,
+      -0.002824887945622065,
+      0.031369747656997606
+    ],
+    "foreground_pixels": 807,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 6,
+        "bbox": [
+          575,
+          301,
+          599,
+          308
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 108,
+        "touches_image_border": false,
+        "height_range": [
+          0.01048452889607903,
+          0.04483585346857992
+        ]
+      },
+      {
+        "object_id": 7,
+        "bbox": [
+          617,
+          354,
+          639,
+          360
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 105,
+        "touches_image_border": true,
+        "height_range": [
+          0.01009701072993115,
+          0.036722445207281025
+        ]
+      },
+      {
+        "object_id": 9,
+        "bbox": [
+          427,
+          375,
+          468,
+          384
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 251,
+        "touches_image_border": false,
+        "height_range": [
+          0.00999006156819543,
+          0.03685028664713136
+        ]
+      },
+      {
+        "object_id": 10,
+        "bbox": [
+          127,
+          469,
+          166,
+          479
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 343,
+        "touches_image_border": true,
+        "height_range": [
+          0.03521252604508122,
+          0.0458674236058018
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 18,
+    "camera": "head",
+    "yaw": -1.5707484054457106,
+    "ground_plane": [
+      9.941850262893595e-05,
+      -0.0027240560151901294,
+      0.03520485347559835
+    ],
+    "foreground_pixels": 1068,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 11,
+        "bbox": [
+          143,
+          287,
+          154,
+          308
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 189,
+        "touches_image_border": false,
+        "height_range": [
+          0.010378163676455575,
+          0.17850575515755993
+        ]
+      },
+      {
+        "object_id": 12,
+        "bbox": [
+          0,
+          327,
+          9,
+          331
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 26,
+        "touches_image_border": true,
+        "height_range": [
+          0.009863010035587774,
+          0.029329484673898218
+        ]
+      },
+      {
+        "object_id": 9,
+        "bbox": [
+          605,
+          396,
+          639,
+          405
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 239,
+        "touches_image_border": true,
+        "height_range": [
+          0.009995432750050711,
+          0.036938459386540314
+        ]
+      },
+      {
+        "object_id": 10,
+        "bbox": [
+          308,
+          463,
+          344,
+          479
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 587,
+        "touches_image_border": true,
+        "height_range": [
+          0.04017655399085957,
+          0.04584155672255818
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 19,
+    "camera": "head",
+    "yaw": -1.310748536381789,
+    "ground_plane": [
+      0.004439969192341517,
+      -0.008788755721954714,
+      0.020633180132825474
+    ],
+    "foreground_pixels": 1055,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 11,
+        "bbox": [
+          284,
+          281,
+          294,
+          300
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 151,
+        "touches_image_border": false,
+        "height_range": [
+          0.016565208385011243,
+          0.1757337315393826
+        ]
+      },
+      {
+        "object_id": 13,
+        "bbox": [
+          1,
+          285,
+          22,
+          291
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 79,
+        "touches_image_border": true,
+        "height_range": [
+          0.010672255424036188,
+          0.04546500173701022
+        ]
+      },
+      {
+        "object_id": 14,
+        "bbox": [
+          28,
+          291,
+          42,
+          315
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 256,
+        "touches_image_border": false,
+        "height_range": [
+          0.012878476045759348,
+          0.1774370259717518
+        ]
+      },
+      {
+        "object_id": 12,
+        "bbox": [
+          153,
+          311,
+          176,
+          315
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 74,
+        "touches_image_border": false,
+        "height_range": [
+          0.011614305395701258,
+          0.03601560866728758
+        ]
+      },
+      {
+        "object_id": 15,
+        "bbox": [
+          147,
+          364,
+          184,
+          373
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 239,
+        "touches_image_border": false,
+        "height_range": [
+          0.010046045698091305,
+          0.036557349516602396
+        ]
+      },
+      {
+        "object_id": 10,
+        "bbox": [
+          483,
+          471,
+          522,
+          479
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 256,
+        "touches_image_border": true,
+        "height_range": [
+          0.04021112574157121,
+          0.045893561206552254
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 20,
+    "camera": "head",
+    "yaw": -1.0501826212685488,
+    "ground_plane": [
+      0.0032374671434575674,
+      -0.0037867891604306744,
+      0.05650231392259787
+    ],
+    "foreground_pixels": 698,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 13,
+        "bbox": [
+          163,
+          283,
+          179,
+          287
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 53,
+        "touches_image_border": false,
+        "height_range": [
+          0.011117597330255706,
+          0.04326383384720108
+        ]
+      },
+      {
+        "object_id": 11,
+        "bbox": [
+          418,
+          285,
+          429,
+          306
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 173,
+        "touches_image_border": false,
+        "height_range": [
+          0.011200584260316051,
+          0.17880353444207447
+        ]
+      },
+      {
+        "object_id": 14,
+        "bbox": [
+          189,
+          288,
+          199,
+          310
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 187,
+        "touches_image_border": false,
+        "height_range": [
+          0.013816095217604508,
+          0.1810955489316755
+        ]
+      },
+      {
+        "object_id": 12,
+        "bbox": [
+          294,
+          311,
+          315,
+          316
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 72,
+        "touches_image_border": false,
+        "height_range": [
+          0.009764326678701408,
+          0.036532544294821674
+        ]
+      },
+      {
+        "object_id": 15,
+        "bbox": [
+          299,
+          363,
+          334,
+          373
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 213,
+        "touches_image_border": false,
+        "height_range": [
+          0.009305126890982498,
+          0.03662696880395732
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 21,
+    "camera": "head",
+    "yaw": -0.7861017053074286,
+    "ground_plane": [
+      0.0019547046573946247,
+      -0.0019122865288747626,
+      0.062028714430303084
+    ],
+    "foreground_pixels": 784,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 13,
+        "bbox": [
+          300,
+          283,
+          314,
+          287
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 45,
+        "touches_image_border": false,
+        "height_range": [
+          0.009832775048949567,
+          0.04279970211633498
+        ]
+      },
+      {
+        "object_id": 14,
+        "bbox": [
+          328,
+          289,
+          338,
+          310
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 171,
+        "touches_image_border": false,
+        "height_range": [
+          0.012901941568952663,
+          0.17598650695075968
+        ]
+      },
+      {
+        "object_id": 11,
+        "bbox": [
+          573,
+          292,
+          587,
+          315
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 239,
+        "touches_image_border": false,
+        "height_range": [
+          0.012755179554771795,
+          0.1772784602894878
+        ]
+      },
+      {
+        "object_id": 12,
+        "bbox": [
+          434,
+          315,
+          457,
+          321
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 80,
+        "touches_image_border": false,
+        "height_range": [
+          0.009568529180605577,
+          0.03644467178671919
+        ]
+      },
+      {
+        "object_id": 15,
+        "bbox": [
+          451,
+          370,
+          491,
+          382
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 249,
+        "touches_image_border": false,
+        "height_range": [
+          0.010250615528740861,
+          0.03650633411495271
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 22,
+    "camera": "head",
+    "yaw": -0.5256502466342686,
+    "ground_plane": [
+      0.009338778783675943,
+      -0.0030762699157546314,
+      0.12673752375143188
+    ],
+    "foreground_pixels": 425,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 13,
+        "bbox": [
+          432,
+          282,
+          448,
+          286
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 51,
+        "touches_image_border": false,
+        "height_range": [
+          0.009482444968871614,
+          0.04213283959357483
+        ]
+      },
+      {
+        "object_id": 14,
+        "bbox": [
+          467,
+          289,
+          479,
+          311
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 196,
+        "touches_image_border": false,
+        "height_range": [
+          0.013575962278874755,
+          0.17495039380769137
+        ]
+      },
+      {
+        "object_id": 12,
+        "bbox": [
+          594,
+          322,
+          624,
+          330
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.85
+        },
+        "point_count": 114,
+        "touches_image_border": false,
+        "height_range": [
+          0.009860303503714831,
+          0.03632025329981973
+        ]
+      },
+      {
+        "object_id": 15,
+        "bbox": [
+          631,
+          386,
+          639,
+          395
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 64,
+        "touches_image_border": true,
+        "height_range": [
+          0.009640252851533969,
+          0.035697684100796816
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 23,
+    "camera": "head",
+    "yaw": -0.26178876500502407,
+    "ground_plane": [
+      0.006711674952745583,
+      -0.002039493716962895,
+      0.10891607092097548
+    ],
+    "foreground_pixels": 106,
+    "rejected_flat_components": 0,
+    "detections": [
+      {
+        "object_id": 13,
+        "bbox": [
+          586,
+          289,
+          605,
+          294
+        ],
+        "class_scores": {
+          "sugar_box": 0.85,
+          "mustard_bottle": 0.1,
+          "banana": 0.1
+        },
+        "point_count": 71,
+        "touches_image_border": false,
+        "height_range": [
+          0.00990915819241501,
+          0.0455712235563965
+        ]
+      },
+      {
+        "object_id": 14,
+        "bbox": [
+          638,
+          305,
+          639,
+          323
+        ],
+        "class_scores": {
+          "sugar_box": 0.1,
+          "mustard_bottle": 0.88,
+          "banana": 0.1
+        },
+        "point_count": 35,
+        "touches_image_border": true,
+        "height_range": [
+          0.01465858483702899,
+          0.13402963633031167
+        ]
+      }
+    ]
+  },
+  {
+    "view_id": 24,
+    "camera": "head",
+    "yaw": 0.0014032196937320313,
+    "ground_plane": [
+      0.002647901748314378,
+      -0.0002480962944522713,
+      0.08553992691266339
+    ],
+    "foreground_pixels": 0,
+    "rejected_flat_components": 0,
+    "detections": []
+  }
+]

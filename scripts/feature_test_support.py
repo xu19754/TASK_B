@@ -47,6 +47,8 @@ def build_parser(mode):
     parser.add_argument("--max-seconds", type=float, default=120.0 if mode == "recognition" else 1200.0,
                         help="Maximum simulation seconds, not wall-clock time.")
     parser.add_argument("--max-walltime-s", type=float, default=None)
+    if mode == "recognition":
+        parser.add_argument("--head-only", action="store_true", help="Disable wrist near-field scanning for comparison.")
     if mode == "traversal":
         parser.add_argument("--input", type=Path, default=None,
                             help="Recognition run folder, objects.json, or custom route.json; default: latest recognition run.")

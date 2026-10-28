@@ -1,0 +1,10 @@
+{
+  "test": "object_recognition_replay",
+  "source": "C:\\Users\\murph\\Desktop\\runs\\recognition_test\\20261028_005055_c808fb",
+  "seed": 42,
+  "success": true,
+  "reason": "complete",
+  "saved_confirmed_images": 18,
+  "candidate_count": 18,
+  "report": "objects.json"
+}

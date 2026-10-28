@@ -11,14 +11,15 @@ from taskb_student.traversal import Traversal
 
 class AlgSolution:
     def __init__(self, command=(0.0, 0.0, 0.0), target_position=None, *,
-                 scan_before_start=True, detector=None, scan_output_dir="runs/object_scan"):
+                 scan_before_start=True, detector=None, scan_output_dir="runs/object_scan", scan_use_wrist=True):
         self.controller = LowLevelController()
         self.command = command
         self.localization = Localization()
         self.motion = Motion(self.localization)
         self.target_position = target_position
         self.traversal = None
-        self.object_finder = ObjectFinder(self.localization, detector=detector) if scan_before_start else None
+        self.scan_use_wrist = scan_use_wrist
+        self.object_finder = ObjectFinder(self.localization, detector=detector, use_wrist_camera=scan_use_wrist) if scan_before_start else None
         self.scan_output_dir = Path(scan_output_dir) if scan_output_dir is not None else None
         self.scan_result_path = None
         self._scan_reported = False
@@ -50,7 +51,7 @@ class AlgSolution:
     def restart_scan(self):
         """Rescan from the current pose between control steps without resetting localization."""
         if self.object_finder is None:
-            self.object_finder = ObjectFinder(self.localization)
+            self.object_finder = ObjectFinder(self.localization, use_wrist_camera=self.scan_use_wrist)
         else:
             self.object_finder.reset()
         self._scan_reported = False
@@ -83,7 +84,7 @@ class AlgSolution:
         command = self.localization.prepare_command(command)
         action = self.controller.step(
             obs["proprio"], command,
-            ARM_Q0 if scanning else self.select_arm_target(obs, current_score),
+            self.object_finder.arm_target if scanning else self.select_arm_target(obs, current_score),
         )
         self._previous_command = command.copy()
         return {"action": action.tolist(), "giveup": False}

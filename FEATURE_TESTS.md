@@ -23,7 +23,8 @@ bash scripts/run_feature_test.sh recognition --headless --seed 42
 ```
 
 对应程序：`scripts/test_object_recognition.py`。
-它启动仿真，原地旋转一周、停稳采集 RGB-D，完成后立即保存结果并结束。
+它启动仿真，将腕部相机调整为俯视方向，停稳后原地旋转一周，同时采集头部与腕部 RGB-D。
+结束后恢复收臂并停稳，保存结果并结束。仍不下达平移命令。
 默认最多运行 120 秒仿真时间；内部扫描器的超时仍为 90 秒。
 需要观察仿真窗口时，去掉 `--headless`。
 
@@ -38,8 +39,10 @@ runs/recognition_test/<日期时间_运行编号>/
 ├── objects.json              # 多视角融合结果与缺失类别统计
 ├── detection_log.json        # 地面拟合、逐帧类别分数、检测框和高度范围
 ├── rgbd/frame_00.npz ...     # 原始 RGB-D、内参、估计位置和实测四元数，供离线回放
+├── rgbd/ee_frame_00.npz ...  # 腕部 RGB-D，额外记录实测关节角与相机外参
 ├── object_map.png            # 世界 XY 分布图
 ├── view_00.png ...           # 全景扫描中各方向的框选标注图
+├── ee_view_00.png ...        # 同方向腕部相机的框选标注图
 ├── scan_log.jsonl            # 扫描进度、实际累计转角
 └── summary.json              # seed、是否通过、保存数量及停止原因
 ```
@@ -53,6 +56,7 @@ runs/recognition_test/<日期时间_运行编号>/
 
 `objects.json` 中的 `candidate_count` 是全部候选数，`confirmed_count` 才是已确认物品数。
 `candidate_class`、`classification_views`、`unknown_reason` 可以解释为何一个候选仍是 `unknown`。
+`captured_views_by_camera` 可以检查两台相机是否都采到了图；裁剪清单的 `source_camera` 标记图片来源。
 不会通过截断候选数量或强行按每类 6 件分配来让测试通过。
 
 新版记录的原始帧可在普通 Python 环境（NumPy、Pillow）中离线重跑识别：
@@ -63,6 +67,22 @@ python scripts/replay_object_recognition.py --input runs/recognition_test/<日�
 
 结果另存到 `runs/recognition_replay/<新运行编号>/`。旧版本只有图片和 JSON 的结果无法回放，
 需重新运行扫描测试生成深度数据。回放不启动 Isaac，不产生机器人运动。
+
+为了确认不是只适配 seed 42，建议先复测当前失败的 40，再测试其他布局：
+
+```bash
+for seed in 40 42 0 1 43; do
+  bash scripts/run_feature_test.sh recognition --headless --seed "$seed"
+done
+python scripts/replay_object_recognition.py --batch-input runs/recognition_test
+```
+
+批量回放的 `summary.json` 汇总每次输入的 seed、修改前后确认数量和每台相机的帧数。
+所有场景通过才返回 0；存在未完成结果返回 2。上述批量仿真命令需在 Isaac 环境运行，
+不表示这些 seed 都已完成验证。需要与原来的头部扫描对比时，附加 `--head-only`。
+
+用户提供的旧记录中，seed 42 为 18/18、seed 40 为 16/18，二者都只有头部帧。
+新版回放保留这个事实；腕部补充视野需要重跑仿真采集，无法从旧的头部帧恢复。
 
 ## 3. 测试遍历并保存视频
 

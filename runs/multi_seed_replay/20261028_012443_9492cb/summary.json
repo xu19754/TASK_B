@@ -1,0 +1,40 @@
+{
+  "test": "object_recognition_replay_batch",
+  "success": false,
+  "runs": [
+    {
+      "source": "C:\\Users\\murph\\Desktop\\runs\\recognition_test\\20261028_005055_c808fb",
+      "result": "D:\\Robotic Workspace\\TaskB\\runs\\multi_seed_replay\\20261028_012443_9492cb\\runs\\20261028_012445_268546",
+      "seed": 42,
+      "success": true,
+      "before_confirmed": 18,
+      "after_confirmed": 18,
+      "counts_by_class": {
+        "sugar_box": 6,
+        "mustard_bottle": 6,
+        "banana": 6
+      },
+      "captured_views_by_camera": {
+        "head": 25,
+        "ee": 0
+      }
+    },
+    {
+      "source": "C:\\Users\\murph\\Desktop\\runs\\recognition_test\\20261028_005329_a8ae0c",
+      "result": "D:\\Robotic Workspace\\TaskB\\runs\\multi_seed_replay\\20261028_012443_9492cb\\runs\\20261028_012448_8f32e9",
+      "seed": 40,
+      "success": false,
+      "before_confirmed": 16,
+      "after_confirmed": 16,
+      "counts_by_class": {
+        "sugar_box": 6,
+        "mustard_bottle": 5,
+        "banana": 5
+      },
+      "captured_views_by_camera": {
+        "head": 25,
+        "ee": 0
+      }
+    }
+  ]
+}

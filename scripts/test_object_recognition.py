@@ -23,7 +23,7 @@ def run(args, app):
     try:
         env = create_environment(args)
         obs, _ = env.reset(seed=args.seed)
-        solution = AlgSolution(scan_output_dir=None)
+        solution = AlgSolution(scan_output_dir=None, scan_use_wrist=not getattr(args, "head_only", False))
         solution.reset()
         solution.object_finder.record_rgbd = True
         started = time.monotonic()
@@ -72,6 +72,8 @@ def run(args, app):
                        "reason": reason, "error": error, "sim_seconds": step * CONTROL_DT,
                        "wall_seconds": time.monotonic() - started, "saved_confirmed_images": len(records),
                        "expected_items": 18, "image_directory": "items", "report": "objects.json",
+                       "captured_views_by_camera": (solution.object_finder.report()["captured_views_by_camera"]
+                                                    if solution is not None else {}),
                        "limitations": "Recognition is heuristic; labels require visual inspection, not ground-truth accuracy scores."}
             publish_summary(directory, summary)
             print(f"[RecognitionTest] {reason}; saved {len(records)}/18 confirmed item images", flush=True)

@@ -5,6 +5,8 @@ import math
 
 import numpy as np
 
+from .camera_geometry import head_camera_transform, validate_camera_transform
+
 
 CLASS_NAMES = ("sugar_box", "mustard_bottle", "banana")
 
@@ -29,12 +31,16 @@ def quaternion_matrix(quaternion):
 
 def read_head_frame(obs):
     """接收官方单环境 tensor 或 numpy 观测，返回 HWC RGB、HW 米制深度及 K。"""
+    return read_rgbd_frame(obs, "head")
+
+
+def read_rgbd_frame(obs, camera="head"):
     group = obs.get("image", {})
-    if any(key not in group for key in ("head_rgb", "head_depth", "head_intrinsics")):
-        raise ValueError("Head RGB-D is missing; start the simulator with --enable_cameras.")
-    rgb = as_numpy(group["head_rgb"])
-    depth = as_numpy(group["head_depth"])
-    intrinsics = as_numpy(group["head_intrinsics"]).astype(float)
+    if any(f"{camera}_{key}" not in group for key in ("rgb", "depth", "intrinsics")):
+        raise ValueError(f"{camera} RGB-D is missing; start the simulator with --enable_cameras.")
+    rgb = as_numpy(group[f"{camera}_rgb"])
+    depth = as_numpy(group[f"{camera}_depth"])
+    intrinsics = as_numpy(group[f"{camera}_intrinsics"]).astype(float)
     if rgb.ndim == 4 and rgb.shape[0] == 1:
         rgb = rgb[0]
     if depth.ndim == 4 and depth.shape[0] == 1:
@@ -61,12 +67,13 @@ def read_head_frame(obs):
     return rgb, depth, intrinsics
 
 
-def project_head_depth(depth, intrinsics, base_position, base_quaternion, stride=2):
+def project_head_depth(depth, intrinsics, base_position, base_quaternion, stride=2, *, camera_transform=None):
     """反投影 distance_to_image_plane，返回采样后的世界点云 (H', W', 3)。
 
     env_cfg 中 head_camera 的平移为 (0.4, 0, 0.12)，旋转为单位四元数，
     convention='world'：+X 向前、+Z 向上。光学坐标 (右, 下, 前)
-    因此转换为机体 (前, 左, 上)=(z, -x, -y)，再加相机平移并乘机体旋转。
+    因此先转为相机 world-convention 轴 (前, 左, 上)=(z, -x, -y)，
+    再乘 camera_transform（缺省为头部固定外参），最后乘机体旋转。
     """
     if not isinstance(stride, int) or stride < 1:
         raise ValueError("stride must be a positive integer.")
@@ -83,8 +90,9 @@ def project_head_depth(depth, intrinsics, base_position, base_quaternion, stride
     d[~np.isfinite(d) | (d <= 0.05) | (d >= 50)] = np.nan
     rays = np.stack((u, v, np.ones_like(u)), axis=-1) @ np.linalg.inv(intrinsics).T
     optical = rays * d[..., None]
-    body = np.stack((optical[..., 2], -optical[..., 0], -optical[..., 1]), axis=-1)
-    body += (0.4, 0.0, 0.12)
+    mount = head_camera_transform() if camera_transform is None else validate_camera_transform(camera_transform)
+    camera_axes = np.stack((optical[..., 2], -optical[..., 0], -optical[..., 1]), axis=-1)
+    body = camera_axes @ mount[:3, :3].T + mount[:3, 3]
     return body @ quaternion_matrix(base_quaternion).T + position
 
 
@@ -188,9 +196,11 @@ class RGBDGeometryDetector:
         self.search_bounds = tuple(bounds)
         self.last_diagnostics = {}
 
-    def detect(self, rgb, depth, intrinsics, base_position, base_quaternion):
+    def detect(self, rgb, depth, intrinsics, base_position, base_quaternion, *, camera_transform=None):
         intrinsics = np.asarray(intrinsics, dtype=float)
-        points = project_head_depth(depth, intrinsics, base_position, base_quaternion, self.stride)
+        mount = head_camera_transform() if camera_transform is None else validate_camera_transform(camera_transform)
+        points = project_head_depth(depth, intrinsics, base_position, base_quaternion, self.stride,
+                                    camera_transform=mount)
         colors = rgb[::self.stride, ::self.stride]
         xmin, xmax, ymin, ymax = self.search_bounds
         finite = np.isfinite(points).all(axis=-1)
@@ -207,7 +217,7 @@ class RGBDGeometryDetector:
         mask = (region & (points[..., 2] > 0.009) & (points[..., 2] < 0.4)
                 & (distance > 0.75) & (distance < 12.0))
         self.last_diagnostics["foreground_pixels"] = int(mask.sum())
-        camera = np.asarray(base_position) + quaternion_matrix(base_quaternion) @ np.array((0.4, 0.0, 0.12))
+        camera = np.asarray(base_position) + quaternion_matrix(base_quaternion) @ mount[:3, 3]
         camera_height = camera[2] if plane is None else camera[2] - (camera[:2] @ plane[:2] + plane[2])
         # 俯视角很小时，相邻像素在低矮物体表面的间距可能超过固定的 7 cm。
         # 由距离和像素角度估算采样间距，仅在相邻点高度一致时放宽，且上限 14 cm。

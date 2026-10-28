@@ -1,0 +1,391 @@
+{
+  "status": "incomplete",
+  "ready": false,
+  "reason": "Scan finished without 18 unambiguous items (six per class); inspect the report or rescan.",
+  "expected_count": 18,
+  "confirmed_count": 16,
+  "candidate_count": 16,
+  "stable_candidate_count": 16,
+  "counts_by_class": {
+    "sugar_box": 6,
+    "mustard_bottle": 5,
+    "banana": 5
+  },
+  "missing_by_class": {
+    "sugar_box": 0,
+    "mustard_bottle": 1,
+    "banana": 1
+  },
+  "excess_by_class": {
+    "sugar_box": 0,
+    "mustard_bottle": 0,
+    "banana": 0
+  },
+  "total_yaw_radians": 6.284588526873308,
+  "captured_views": 25,
+  "captured_views_by_camera": {
+    "head": 25,
+    "ee": 0
+  },
+  "wrist_camera_enabled": false,
+  "scan_arm_target": null,
+  "coverage_note": "Head-only data: nearby floor and occluded items may be outside the image.",
+  "repeated_frames": 0,
+  "position_reference": "estimated visible-surface bounding-box center in world coordinates, meters",
+  "orientation_reference": "horizontal principal axis in radians modulo pi; roll/pitch and CAD orientation unknown",
+  "detector": "RGBDGeometryDetector",
+  "objects": [
+    {
+      "object_id": 0,
+      "class_name": "sugar_box",
+      "position": [
+        -7.645906523805221,
+        -8.14029906144551,
+        0.02757460517249822
+      ],
+      "size": [
+        0.10491720946247263,
+        0.26053168122573034,
+        0.036178803011235064
+      ],
+      "yaw_axis": 1.6902091543232562,
+      "confidence": 0.85,
+      "views": 4,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "sugar_box",
+      "classification_views": 4,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 1,
+      "class_name": "sugar_box",
+      "position": [
+        -8.01165783064972,
+        -5.912453224555325,
+        0.02764589841638063
+      ],
+      "size": [
+        0.1422962217176753,
+        0.22578545327359745,
+        0.03577160739804098
+      ],
+      "yaw_axis": 1.942501045365343,
+      "confidence": 0.85,
+      "views": 4,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "sugar_box",
+      "classification_views": 4,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 2,
+      "class_name": "sugar_box",
+      "position": [
+        -8.893979635271002,
+        -7.825571297263042,
+        0.027531236964333818
+      ],
+      "size": [
+        0.1472381198307282,
+        0.23333898957346122,
+        0.03611067135319803
+      ],
+      "yaw_axis": 1.8638804420723272,
+      "confidence": 0.85,
+      "views": 4,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "sugar_box",
+      "classification_views": 4,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 3,
+      "class_name": "mustard_bottle",
+      "position": [
+        -12.7066231233045,
+        -7.393935931779791,
+        0.09460719879624233
+      ],
+      "size": [
+        0.15713950070974292,
+        0.07707405316246607,
+        0.16637678092204505
+      ],
+      "yaw_axis": 0.40996305099899644,
+      "confidence": 0.88,
+      "views": 4,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "mustard_bottle",
+      "classification_views": 4,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 4,
+      "class_name": "mustard_bottle",
+      "position": [
+        -14.27296946767428,
+        -11.844101265227845,
+        0.09769903674343272
+      ],
+      "size": [
+        0.08369017106088883,
+        0.14322075520694355,
+        0.1687236543834416
+      ],
+      "yaw_axis": 1.7253170308676902,
+      "confidence": 0.88,
+      "views": 4,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "mustard_bottle",
+      "classification_views": 4,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 5,
+      "class_name": "mustard_bottle",
+      "position": [
+        -13.347670265126002,
+        -11.335162526837328,
+        0.09813114994527013
+      ],
+      "size": [
+        0.07795852528276548,
+        0.14022052487774417,
+        0.173028334245143
+      ],
+      "yaw_axis": 1.6833613701803898,
+      "confidence": 0.88,
+      "views": 4,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "mustard_bottle",
+      "classification_views": 4,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 6,
+      "class_name": "sugar_box",
+      "position": [
+        -13.585503345349967,
+        -13.882177613784608,
+        0.02755424007789632
+      ],
+      "size": [
+        0.12414841129941045,
+        0.23212561658132103,
+        0.034908217386963585
+      ],
+      "yaw_axis": 1.9037286023775646,
+      "confidence": 0.85,
+      "views": 5,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "sugar_box",
+      "classification_views": 4,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 7,
+      "class_name": "banana",
+      "position": [
+        -12.329435000887251,
+        -12.340507830609091,
+        0.022994802169191017
+      ],
+      "size": [
+        0.1630557206180807,
+        0.1380340486168805,
+        0.027469378751004317
+      ],
+      "yaw_axis": null,
+      "confidence": 0.85,
+      "views": 5,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "banana",
+      "classification_views": 5,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 8,
+      "class_name": "banana",
+      "position": [
+        -11.717120965512745,
+        -11.654804512289756,
+        0.02296636155049267
+      ],
+      "size": [
+        0.17021631846940544,
+        0.11948938143926569,
+        0.027596753217620174
+      ],
+      "yaw_axis": 3.0397228784804544,
+      "confidence": 0.85,
+      "views": 4,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "banana",
+      "classification_views": 4,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 9,
+      "class_name": "banana",
+      "position": [
+        -11.175555823918394,
+        -12.208229800482187,
+        0.02299067116054437
+      ],
+      "size": [
+        0.1836127012237867,
+        0.10793578341327681,
+        0.02772120324331636
+      ],
+      "yaw_axis": 2.9246582337512286,
+      "confidence": 0.85,
+      "views": 4,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "banana",
+      "classification_views": 4,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 10,
+      "class_name": "sugar_box",
+      "position": [
+        -10.009912301144212,
+        -11.592949963063006,
+        0.039478562848903914
+      ],
+      "size": [
+        0.13969829619788676,
+        0.09431779344173385,
+        0.012707514154707451
+      ],
+      "yaw_axis": 2.8854642962281942,
+      "confidence": 0.8500000000000001,
+      "views": 3,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "sugar_box",
+      "classification_views": 3,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 11,
+      "class_name": "mustard_bottle",
+      "position": [
+        -8.512989179638955,
+        -14.481672630399018,
+        0.0970929042847904
+      ],
+      "size": [
+        0.1802499173761163,
+        0.033471914883662635,
+        0.1724394304260944
+      ],
+      "yaw_axis": 3.1211862765729452,
+      "confidence": 0.88,
+      "views": 4,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "mustard_bottle",
+      "classification_views": 4,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 12,
+      "class_name": "banana",
+      "position": [
+        -7.88370762080683,
+        -13.472661867085172,
+        0.022937968572322807
+      ],
+      "size": [
+        0.23786190720501388,
+        0.05944355665958767,
+        0.02645914277117905
+      ],
+      "yaw_axis": 0.17268884878191715,
+      "confidence": 0.85,
+      "views": 5,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "banana",
+      "classification_views": 4,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 13,
+      "class_name": "sugar_box",
+      "position": [
+        -5.456124674674368,
+        -14.326623142834984,
+        0.02743662949848709
+      ],
+      "size": [
+        0.19160793201738002,
+        0.18933445369980362,
+        0.03553264994448628
+      ],
+      "yaw_axis": 0.8704221579902067,
+      "confidence": 0.85,
+      "views": 5,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "sugar_box",
+      "classification_views": 5,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 14,
+      "class_name": "mustard_bottle",
+      "position": [
+        -6.952389516020826,
+        -13.196113844671393,
+        0.0947991672560795
+      ],
+      "size": [
+        0.17134389122039106,
+        0.04889726605056666,
+        0.16323093313186945
+      ],
+      "yaw_axis": 0.18316696953596878,
+      "confidence": 0.8800000000000001,
+      "views": 5,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "mustard_bottle",
+      "classification_views": 5,
+      "unknown_reason": null
+    },
+    {
+      "object_id": 15,
+      "class_name": "banana",
+      "position": [
+        -8.70429923529538,
+        -12.219061450293793,
+        0.022901339946501842
+      ],
+      "size": [
+        0.211998202513497,
+        0.0475566435110526,
+        0.02723012860796775
+      ],
+      "yaw_axis": 0.11088423946051096,
+      "confidence": 0.8500000000000001,
+      "views": 4,
+      "confirmed": true,
+      "orientation_ambiguous": true,
+      "candidate_class": "banana",
+      "classification_views": 3,
+      "unknown_reason": null
+    }
+  ]
+}
