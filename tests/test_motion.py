@@ -51,6 +51,12 @@ class MotionTests(unittest.TestCase):
             self.motion.compute_command((1, 1))
         self.assertEqual((self.localization.position, self.localization.yaw), before)
 
+    def test_corner_approach_does_not_stop_inside_terminal_pose_tolerance(self):
+        self.assertEqual(self.motion.compute_command((0.04, 0)), (0, 0, 0))
+        command = self.motion.compute_command((0.04, 0), stop_at_target=False)
+        self.assertGreater(command[0], 0.1)
+        self.assertEqual(command[2], 0)
+
     def test_closed_loop_reaches_targets_and_handles_target_changes(self):
         for target in ((2, 0), (2, 2), (-1, -1), (-1.2, -1), (0, 0)):
             with self.subTest(target=target):

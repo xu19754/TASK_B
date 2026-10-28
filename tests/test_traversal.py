@@ -1,4 +1,6 @@
 import math
+import json
+from pathlib import Path
 import unittest
 
 from taskb_student.constants import CONTROL_DT
@@ -135,7 +137,9 @@ class TraversalTests(unittest.TestCase):
             with self.subTest(targets=targets), self.assertRaises(ValueError):
                 plan_traversal((-2, 0), targets, obstacles, **self.options)
         for changes in ({"obstacle_radii": -1}, {"robot_radius": 0}, {"grid_resolution": 0},
-                        {"bounds": (0, 0, 0, 0)}, {"obstacle_radii": [0.2, 0.3]}):
+                        {"bounds": (0, 0, 0, 0)}, {"obstacle_radii": [0.2, 0.3]},
+                        {"dwell_seconds": -1}, {"dwell_seconds": float("nan")},
+                        {"dwell_seconds": float("inf")}, {"pickup_enabled": "false"}):
             with self.subTest(changes=changes), self.assertRaises(ValueError):
                 plan_traversal((-2, 0), [(2, 0, 0)], [(0, 0)], **(self.options | changes))
         with self.assertRaises(NoPathError):
@@ -156,6 +160,100 @@ class TraversalTests(unittest.TestCase):
         nav.replan()
         self.assertFalse(nav.awaiting_pickup)
         self.assertNotEqual(nav.compute_command(), (0, 0, 0))
+
+    def test_no_pickup_waits_three_seconds_and_retains_every_obstacle(self):
+        loc = Localization((0, 0, 0.6))
+        nav = Traversal(loc, [(0, 0, 0), (0, 0, 0)], [(3, 3), (-3, -3)],
+                        pickup_enabled=False, **self.options)
+        for index in range(2):
+            self.assertEqual(nav.compute_command(), (0, 0, 0))
+            self.assertEqual(nav.status, "dwelling")
+            self.assertEqual(nav.dwell_elapsed, 0)
+            with self.assertRaisesRegex(RuntimeError, "disabled"):
+                nav.confirm_pickup()
+            for _ in range(149):
+                loc.update((0, 0, 0))
+                self.assertEqual(nav.compute_command(), (0, 0, 0))
+                self.assertEqual(nav.target_index, index)
+            loc.update((0, 0, 0))
+            self.assertEqual(nav.compute_command(), (0, 0, 0))
+            self.assertEqual(nav.target_index, index + 1)
+            self.assertEqual(nav.active_obstacle_indices, (0, 1))
+        self.assertTrue(nav.completed)
+        nav.reset()
+        self.assertEqual(nav.target_index, 0)
+        self.assertEqual(nav.dwell_elapsed, 0)
+
+    def test_dwell_restarts_if_pose_is_lost_and_zero_dwell_advances(self):
+        loc = Localization((0, 0, 0.6))
+        nav = Traversal(loc, [(0, 0, 0)], [(3, 3)], pickup_enabled=False, **self.options)
+        for _ in range(101):
+            nav.compute_command()
+        self.assertAlmostEqual(nav.dwell_elapsed, 2)
+        loc.correct_heading(0.2)
+        nav.compute_command()
+        self.assertEqual(nav.status, "navigating")
+        self.assertEqual(nav.dwell_elapsed, 0)
+        loc.correct_heading(0)
+        nav.compute_command()
+        for _ in range(149):
+            nav.compute_command()
+        self.assertFalse(nav.completed)
+        nav.compute_command()
+        self.assertTrue(nav.completed)
+        instant = Traversal(loc, [(0, 0, 0)], [(3, 3)], pickup_enabled=False,
+                            dwell_seconds=0, **self.options)
+        self.assertEqual(instant.compute_command(), (0, 0, 0))
+        self.assertTrue(instant.completed)
+        self.assertEqual(instant.active_obstacle_indices, (0,))
+
+    def test_enabled_pickup_never_auto_confirms_after_dwell(self):
+        loc = Localization((0, 0, 0.6))
+        nav = Traversal(loc, [(0, 0, 0)], [(3, 3)], pickup_enabled=True, **self.options)
+        for _ in range(201):
+            self.assertEqual(nav.compute_command(), (0, 0, 0))
+        self.assertEqual(nav.status, "awaiting_pickup")
+        self.assertEqual(nav.target_index, 0)
+        self.assertEqual(nav.active_obstacle_indices, (0,))
+        nav.confirm_pickup()
+        self.assertTrue(nav.completed)
+        self.assertEqual(nav.active_obstacle_indices, ())
+
+    def test_seed13_corner_recovers_and_all_eighteen_visits_keep_clearance(self):
+        data = json.loads((Path(__file__).parent / "fixtures/traversal_seed13.json").read_text())
+        targets = [item["target_pose"] for item in data["items"]]
+        obstacles = [item["position"] for item in data["items"]]
+        options = dict(obstacle_radii=[item["obstacle_radius"] for item in data["items"]],
+                       pickup_enabled=False, **data["navigation"])
+        # Reproduce the saved stalled state: within 5 cm of a corner, but the
+        # shortcut from this position to the final stand-off pose is obstructed.
+        loc = Localization(data["stalled_position"], data["stalled_yaw"])
+        nav = Traversal(loc, targets, obstacles, **options)
+        self.assertNotEqual(nav.compute_command(), (0, 0, 0))
+        self.assertIsNone(nav.blocked_reason)
+
+        loc = Localization()
+        nav = Traversal(loc, targets, obstacles, **options)
+        arrivals, visits = {}, []
+        for step in range(30000):
+            before = loc.position
+            command = nav.compute_command()
+            self.assertIsNone(nav.blocked_reason)
+            if nav.status == "dwelling":
+                arrivals.setdefault(nav.target_index, step * CONTROL_DT)
+            if nav.target_index > len(visits):
+                now = step * CONTROL_DT
+                self.assertGreaterEqual(now - arrivals[len(visits)] + 1e-9, 3.0)
+                self.assertLess(now - (visits[-1] if visits else 0), 120.0)
+                visits.append(now)
+            self.assertEqual(nav.active_obstacle_indices, tuple(range(18)))
+            if nav.completed:
+                break
+            loc.update(command)
+            for obstacle in obstacles:
+                self.assertGreater(segment_distance(before, loc.position, obstacle), 0.9)
+        self.assertTrue(nav.completed, nav.diagnostics())
+        self.assertEqual(len(visits), 18)
 
 
 if __name__ == "__main__":

@@ -82,6 +82,16 @@ class FeatureScriptTests(unittest.TestCase):
         self.assertEqual(self.directory.parent, Path(__file__).resolve().parent)
         self.addCleanup(self.temp.cleanup)
 
+    def test_traversal_pickup_switch_and_three_second_default(self):
+        parser = support.build_parser("traversal")
+        defaults = parser.parse_args([])
+        self.assertFalse(defaults.pickup)
+        self.assertEqual(defaults.dwell_seconds, 3.0)
+        self.assertTrue(parser.parse_args(["--pickup"]).pickup)
+        explicit = parser.parse_args(["--no-pickup", "--dwell-seconds", "5"])
+        self.assertFalse(explicit.pickup)
+        self.assertEqual(explicit.dwell_seconds, 5.0)
+
     def test_class_named_crop_export_and_unknown_filter(self):
         finder = ObjectFinder(Localization())
         cloud = np.array([(x, y, z) for x in (-12.05, -11.95) for y in (-10.02, -9.98) for z in (0.05, 0.15)])
@@ -188,14 +198,14 @@ class FeatureScriptTests(unittest.TestCase):
         fake_torch.inference_mode = contextlib.nullcontext
         fake_solution = types.ModuleType("demo.solution")
         fake_solution.AlgSolution = FakeSolution
-        for terminate in (False, True):
-            with self.subTest(terminate=terminate):
+        for terminate, pickup in ((False, False), (True, False), (False, True)):
+            with self.subTest(terminate=terminate, pickup=pickup):
                 source = route_fixture() | {"source": "synthetic-test-fixture"}
                 for item in source["items"]:
                     item["target_pose"] = [-10, -10, 0]
-                args = types.SimpleNamespace(output_dir=self.directory / str(terminate), seed=42,
+                args = types.SimpleNamespace(output_dir=self.directory / f"{terminate}-{pickup}", seed=42,
                                              source=source, fps=25, max_seconds=10, max_walltime_s=None,
-                                             per_target_timeout=5, dwell_seconds=0.04)
+                                             pickup=pickup, per_target_timeout=0.02, dwell_seconds=0.04)
                 env, writer = FakeEnvironment(), MemoryWriter()
                 factory = lambda path, fps: support.SimulationVideo(path, fps, writer_factory=lambda *a, **k: writer)
                 step_result = ({}, np.array([0.0]), np.array([terminate]), np.array([False]), {})
@@ -209,10 +219,23 @@ class FeatureScriptTests(unittest.TestCase):
                 self.assertTrue(writer.closed)
                 pointer = json.loads((args.output_dir / "latest.json").read_text())
                 summary = json.loads((Path(pointer["directory"]) / "summary.json").read_text())
-                self.assertEqual(summary["success"], not terminate)
-                self.assertEqual(summary["visited_count"], 0 if terminate else 18)
-                self.assertEqual(code, 2 if terminate else 0)
+                success = not terminate and not pickup
+                self.assertEqual(summary["success"], success)
+                self.assertEqual(summary["visited_count"], 18 if success else 0)
+                self.assertEqual(code, 0 if success else 2)
                 self.assertFalse(summary["obstacles_removed"])
+                self.assertEqual(summary["pickup_enabled"], pickup)
+                if pickup:
+                    self.assertEqual(summary["reason"], "pickup_timeout")
+                    self.assertEqual(summary["final_navigation"]["status"], "awaiting_pickup")
+                if success:
+                    run_dir = Path(pointer["directory"])
+                    visits = json.loads((run_dir / "visits.json").read_text())
+                    self.assertEqual(visits[0]["sim_time"], 0.04)
+                    self.assertEqual(visits[0]["completion"], "dwell_completed")
+                    records = [json.loads(line) for line in (run_dir / "trajectory.jsonl").read_text().splitlines()]
+                    self.assertEqual(records[0]["navigation"]["status"], "dwelling")
+                    self.assertEqual(records[-1]["navigation"]["status"], "completed")
 
     def test_recognition_runner_exports_complete_and_partial_results(self):
         fake_torch = types.ModuleType("torch")

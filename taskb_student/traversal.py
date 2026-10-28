@@ -18,6 +18,10 @@ obstacle_positions[i] 为对应物品的 (x, y) 或 (x, y, z)，高度忽略。
     if traversal.awaiting_pickup and grasp_succeeded:
         traversal.confirm_pickup()  # 只更新障碍地图，不删除仿真物体
 
+不执行夹取时，设置 pickup_enabled=False；到位对齐后停留 dwell_seconds
+（默认 3 秒仿真时间）自动前往下一点，保留所有物品障碍。每个控制步调用一次
+compute_command()；默认开启夹取只等待外部确认，本模块不实现机械臂夹取动作。
+
 机器人及障碍物尺寸是可配置的包络近似；指令积分定位的漂移会影响避障精度。
 """
 
@@ -167,22 +171,31 @@ class _ObstacleMap:
 
 
 class Traversal:
-    """有状态的逐点执行器：到位 -> 等待拾取确认 -> 移除障碍 -> 下一点。
+    """有状态的逐点执行器：到位后等待夹取确认，或停留后继续访问。
 
     默认世界边界为场地 [-20, 0] × [-20, 0]。robot_radius=0.6 m 是
     可调整的机体圆形包络，obstacle_radii=0.2 m 是物品默认包络，需按实际尺寸设置。
     路径不可达时返回停止命令，并在 blocked_reason 中说明原因。
+    pickup_enabled=False 时自动停留 3 秒并保留物品；开启时等待 confirm_pickup()。
+    awaiting_pickup 为兼容旧接口保留，关闭夹取时表示停留，status 可区分两者。
     """
 
     def __init__(self, localization, target_poses, obstacle_positions, *,
                  obstacle_radii=0.2, robot_radius=0.6, safety_margin=0.1,
                  bounds=(-20.0, 0.0, -20.0, 0.0), grid_resolution=0.2,
-                 position_tolerance=0.05, yaw_tolerance=0.03):
+                 position_tolerance=0.05, yaw_tolerance=0.03,
+                 pickup_enabled=True, dwell_seconds=3.0):
         targets = np.asarray(target_poses, dtype=float)
         if targets.ndim != 2 or targets.shape[1] != 3 or len(targets) == 0 or not np.isfinite(targets).all():
             raise ValueError("target_poses must be a non-empty list of finite (x, y, yaw) poses.")
         if not math.isfinite(yaw_tolerance) or not 0 < yaw_tolerance < math.pi:
             raise ValueError("yaw_tolerance must be between zero and pi radians.")
+        if not isinstance(pickup_enabled, bool):
+            raise ValueError("pickup_enabled must be a boolean.")
+        if not math.isfinite(dwell_seconds) or dwell_seconds < 0:
+            raise ValueError("dwell_seconds must be finite and nonnegative.")
+        self.pickup_enabled = pickup_enabled
+        self.dwell_seconds = float(dwell_seconds)
         self.localization = localization
         self.targets = tuple(tuple(float(v) for v in row) for row in targets)
         self._map = _ObstacleMap(obstacle_positions, obstacle_radii, robot_radius,
@@ -200,6 +213,7 @@ class Traversal:
         self.blocked_reason = None
         self._active = set(range(len(self.targets)))
         self._waypoints = []
+        self.dwell_elapsed = 0.0
 
     @property
     def completed(self):
@@ -213,11 +227,34 @@ class Traversal:
     def current_path(self):
         return tuple(self._waypoints)
 
+    @property
+    def status(self):
+        if self.completed:
+            return "completed"
+        if self.blocked_reason:
+            return "blocked"
+        if self.awaiting_pickup:
+            return "awaiting_pickup" if self.pickup_enabled else "dwelling"
+        return "navigating"
+
+    def diagnostics(self):
+        """到达误差和当前航点，供轨迹日志、超时报告使用。"""
+        pose = None if self.completed else self.targets[self.target_index]
+        return {
+            "status": self.status, "target_index": self.target_index,
+            "target_pose": pose, "next_waypoint": self._waypoints[0] if self._waypoints else None,
+            "position_error": None if pose is None else math.dist(self.localization.position[:2], pose[:2]),
+            "yaw_error": None if pose is None else _angle_difference(pose[2], self.localization.yaw),
+            "dwell_elapsed": self.dwell_elapsed, "dwell_seconds": self.dwell_seconds,
+            "pickup_enabled": self.pickup_enabled, "blocked_reason": self.blocked_reason,
+        }
+
     def replan(self):
         """取消等待拾取，清除阻塞和旧路径；按当前定位重试，保留已拾取进度。"""
         self.blocked_reason = None
         self.awaiting_pickup = False
         self._waypoints = []
+        self.dwell_elapsed = 0.0
 
     def _at_pose(self):
         x, y, yaw = self.targets[self.target_index]
@@ -226,6 +263,8 @@ class Traversal:
 
     def confirm_pickup(self):
         """仅在已停靠且外部确认抓取成功后调用；返回被移除物品的原始索引。"""
+        if not self.pickup_enabled:
+            raise RuntimeError("Pickup is disabled; visit-only traversal retains every obstacle.")
         return self._confirm_arrival(remove_obstacle=True)
 
     def confirm_visit(self):
@@ -245,8 +284,10 @@ class Traversal:
         self.replan()
         return index
 
-    def plan_remaining(self, remove_after_visit=True):
-        """规划剩余路径；默认假设到位后拾取，导航测试可保留全部障碍。"""
+    def plan_remaining(self, remove_after_visit=None):
+        """规划剩余路径；默认遵循夹取开关，未夹取时保留全部障碍。"""
+        if remove_after_visit is None:
+            remove_after_visit = self.pickup_enabled
         start = _xy(self.localization.position)
         active = self._active.copy()
         result = []
@@ -265,7 +306,18 @@ class Traversal:
     def compute_command(self):
         """每个 CONTROL_DT 控制步调用一次，返回 (vx, 0, yaw_rate)。"""
         stop = (0.0, 0.0, 0.0)
-        if self.completed or self.blocked_reason or self.awaiting_pickup:
+        if self.completed or self.blocked_reason:
+            return stop
+        if self.awaiting_pickup:
+            if not self.pickup_enabled:
+                # Each call follows one executed CONTROL_DT step. Arrival itself
+                # starts at zero; only subsequent stopped steps count as dwell.
+                if not self._at_pose():
+                    self.replan()
+                else:
+                    self.dwell_elapsed += CONTROL_DT
+                    if self.dwell_elapsed + 1e-9 >= self.dwell_seconds:
+                        self.confirm_visit()
             return stop
         start = _xy(self.localization.position)
         pose = self.targets[self.target_index]
@@ -278,16 +330,24 @@ class Traversal:
                 error = _angle_difference(pose[2], self.localization.yaw)
                 if abs(error) <= self.yaw_tolerance:
                     self.awaiting_pickup = True
+                    self.dwell_elapsed = 0.0
+                    if not self.pickup_enabled and self.dwell_seconds == 0:
+                        self.confirm_visit()
                     return stop
                 return (0.0, 0.0, math.copysign(min(0.6, max(0.12, 1.5 * abs(error))), error))
 
-            while len(self._waypoints) > 1 and math.dist(start, self._waypoints[0]) <= self._motion.position_tolerance:
+            # Near a corner, skipping it is only legal if the shortcut is clear.
+            # Otherwise keep approaching it. Popping it and then replanning to
+            # the same nearby point made Motion return zero forever (seed 13).
+            while (len(self._waypoints) > 1
+                   and math.dist(start, self._waypoints[0]) <= self._motion.position_tolerance
+                   and self._map.segment_clear(start, self._waypoints[1], self._active)):
                 self._waypoints.pop(0)
             waypoint = self._waypoints[0]
             if not self._map.segment_clear(start, waypoint, self._active):
                 self._waypoints = list(self._map.plan(start, pose[:2], self._active)[1:])
                 waypoint = self._waypoints[0]
-            vx, _, yaw_rate = self._motion.compute_command(waypoint)
+            vx, _, yaw_rate = self._motion.compute_command(waypoint, stop_at_target=len(self._waypoints) == 1)
             # 先转向再直行，避免圆弧跟踪切入路径拐角内侧的障碍。
             if yaw_rate:
                 return (0.0, 0.0, yaw_rate)

@@ -53,7 +53,10 @@ def build_parser(mode):
         parser.add_argument("--input", type=Path, default=None,
                             help="Recognition run folder, objects.json, or custom route.json; default: latest recognition run.")
         parser.add_argument("--fps", type=int, default=25, help="MP4 frames per simulation second (1..50).")
-        parser.add_argument("--dwell-seconds", type=float, default=1.0)
+        parser.add_argument("--pickup", action=argparse.BooleanOptionalAction, default=False,
+                            help="Wait for external confirm_pickup() when enabled. Default --no-pickup visits only; no built-in grasp controller.")
+        parser.add_argument("--dwell-seconds", type=float, default=3.0,
+                            help="Simulation seconds to stop at each pose with --no-pickup (default: 3).")
         parser.add_argument("--per-target-timeout", type=float, default=120.0)
     return parser
 

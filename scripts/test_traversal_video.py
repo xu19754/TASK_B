@@ -1,4 +1,4 @@
-"""Isaac integration test: visit 18 poses, retain all objects and record the motion."""
+"""Isaac integration test: visit 18 poses, optionally wait for pickup, record motion."""
 
 import json
 import time
@@ -20,9 +20,13 @@ def run(args, app):
     step, score, visits = 0, 0.0, []
     reason, error, exit_code = "simulation_closed", None, 2
     started = time.monotonic()
-    target_started, arrival_time = 0.0, None
+    target_started = 0.0
+    pickup_enabled = getattr(args, "pickup", False)
     try:
         route = prepare_route(args.source)
+        route["mode"] = "external_pickup_confirmation" if pickup_enabled else "visit_only_keep_all_obstacles"
+        route["pickup_enabled"] = pickup_enabled
+        route["dwell_seconds"] = args.dwell_seconds
         write_json(directory / "route.json", route)
         env = create_environment(args, video=True)
         obs, _ = env.reset(seed=args.seed)
@@ -30,8 +34,13 @@ def run(args, app):
         solution.reset()
         items = route["items"]
         solution.set_traversal([item["target_pose"] for item in items], [item["position"] for item in items],
-                               obstacle_radii=[item["obstacle_radius"] for item in items], **route["navigation"])
+                               obstacle_radii=[item["obstacle_radius"] for item in items],
+                               pickup_enabled=pickup_enabled, dwell_seconds=args.dwell_seconds, **route["navigation"])
         nav = solution.traversal
+        if pickup_enabled:
+            print("[TraversalTest] pickup ON: waiting for external confirm_pickup(); the default arm controller does not implement grasping.", flush=True)
+        else:
+            print(f"[TraversalTest] pickup OFF: dwell {args.dwell_seconds:g}s at each pose; keep all obstacles.", flush=True)
         video = SimulationVideo(directory / "traversal.mp4", fps=args.fps)
         started = time.monotonic()
         with (directory / "trajectory.jsonl").open("w", encoding="utf-8") as log:
@@ -49,7 +58,10 @@ def run(args, app):
                                           "estimated_position": solution.localization.position,
                                           "estimated_yaw": solution.localization.yaw,
                                           "command": solution._previous_command.tolist(),
-                                          "target_index": nav.target_index, "awaiting_visit": nav.awaiting_pickup,
+                                          "target_index": nav.target_index,
+                                          "awaiting_visit": nav.awaiting_pickup and not pickup_enabled,
+                                          "awaiting_pickup": nav.awaiting_pickup and pickup_enabled,
+                                          "navigation": nav.diagnostics(),
                                           "active_obstacle_count": len(nav.active_obstacle_indices)}) + "\n")
                     if nav.blocked_reason:
                         reason, error = "path_blocked", nav.blocked_reason
@@ -57,27 +69,32 @@ def run(args, app):
                             video.append(env.unwrapped.render(), sim_time,
                                          f"BLOCKED | visited {len(visits)}/18 | sim {sim_time:.2f}s")
                         break
-                    if nav.awaiting_pickup:
-                        arrival_time = sim_time if arrival_time is None else arrival_time
-                        if sim_time - arrival_time + 1e-9 >= args.dwell_seconds:
-                            index = nav.confirm_visit()  # No physical pickup: keep this obstacle on the map.
-                            visits.append({"target_index": index, "object_id": items[index]["object_id"],
-                                           "sim_time": sim_time, "estimated_position": solution.localization.position,
-                                           "estimated_yaw": solution.localization.yaw})
-                            write_json(directory / "visits.json", visits)
-                            print(f"[TraversalTest] visited {len(visits)}/18: object {items[index]['object_id']}", flush=True)
-                            arrival_time, target_started = None, sim_time
+                    # Traversal owns the dwell timer. In pickup mode only an
+                    # actual external pickup confirmation advances the index.
+                    while len(visits) < nav.target_index:
+                        index = len(visits)
+                        visits.append({"target_index": index, "object_id": items[index]["object_id"],
+                                       "sim_time": sim_time, "estimated_position": solution.localization.position,
+                                       "estimated_yaw": solution.localization.yaw,
+                                       "completion": "pickup_confirmed" if pickup_enabled else "dwell_completed"})
+                        write_json(directory / "visits.json", visits)
+                        print(f"[TraversalTest] visited {len(visits)}/18: object {items[index]['object_id']}", flush=True)
+                        target_started = sim_time
                     if video.due(sim_time) or nav.completed:
-                        caption = (f"Visit-only test | visited {len(visits)}/18 | target {min(nav.target_index + 1, 18)}/18"
-                                   f" | sim {sim_time:.2f}s | all item obstacles retained")
+                        mode = "External pickup" if pickup_enabled else f"Visit-only {args.dwell_seconds:g}s dwell"
+                        caption = (f"{mode} | visited {len(visits)}/18 | target {min(nav.target_index + 1, 18)}/18"
+                                   f" | {nav.status} | sim {sim_time:.2f}s")
                         # Retain a final completion frame, at most one frame interval after arrival.
                         frame_time = max(sim_time, video.next_time) if nav.completed else sim_time
                         video.append(env.unwrapped.render(), frame_time, caption)
                     if nav.completed:
                         reason = "completed_18_visits"
                         break
-                    if sim_time - target_started >= args.per_target_timeout:
-                        reason = "target_timeout"
+                    # Arrival ends the navigation timeout; allow a full dwell
+                    # even when arriving just before the navigation deadline.
+                    if sim_time - target_started >= args.per_target_timeout and nav.status != "dwelling":
+                        reason = "pickup_timeout" if nav.status == "awaiting_pickup" else "target_timeout"
+                        error = f"Target {nav.target_index}: {nav.status}; position error {nav.diagnostics()['position_error']:.3f} m"
                         break
                     obs, reward, terminated, truncated, _ = step_environment(env, response)
                     score += float(reward[0]) / CONTROL_DT
@@ -110,8 +127,12 @@ def run(args, app):
                 "sim_seconds": step * CONTROL_DT, "wall_seconds": time.monotonic() - started,
                 "video": "traversal.mp4" if video is not None and video.frames else None,
                 "video_frames": video.frames if video is not None else 0, "video_fps": args.fps,
-                "source": args.source["source"], "obstacles_removed": False,
-                "limitations": "Visits are judged using command-integrated localization; inspect the rendered video for physical drift. No grasping is tested.",
+                "source": args.source["source"], "pickup_enabled": pickup_enabled,
+                "dwell_seconds": args.dwell_seconds,
+                "obstacles_removed": bool(solution is not None and solution.traversal is not None
+                                          and len(solution.traversal.active_obstacle_indices) < 18),
+                "final_navigation": solution.traversal.diagnostics() if solution is not None and solution.traversal is not None else None,
+                "limitations": "Visits use command-integrated localization; inspect video for physical drift. Pickup mode requires an external grasp controller and success confirmation; the default arm controller only holds ARM_Q0.",
             })
             print(f"[TraversalTest] {reason}; visited {len(visits)}/18", flush=True)
         finally:

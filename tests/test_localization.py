@@ -143,6 +143,17 @@ class LocalizationTests(unittest.TestCase):
         self.assertFalse(navigation.traversal.completed)
         self.assertEqual(navigation.traversal.active_obstacle_indices, (0,))
 
+        # Disabling pickup works in the real demo orchestration too, including
+        # bypassing an arm hook that would otherwise attempt a grasp.
+        navigation.set_traversal([(-10, -10, 0)], [(-8, -10)], pickup_enabled=False)
+        navigation.select_arm_target = lambda *args: self.fail("Grasp arm hook ran with pickup disabled")
+        for _ in range(150):
+            navigation.predicts({'proprio': {}}, 0)
+        self.assertFalse(navigation.traversal.completed)
+        navigation.predicts({'proprio': {}}, 0)
+        self.assertTrue(navigation.traversal.completed)
+        self.assertEqual(navigation.traversal.active_obstacle_indices, (0,))
+
 
 if __name__ == '__main__':
     unittest.main()

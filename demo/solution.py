@@ -45,7 +45,10 @@ class AlgSolution:
         return self.command
 
     def set_traversal(self, target_poses, obstacle_positions, **options):
-        """Start ordered pickup navigation; confirm each pickup through self.traversal."""
+        """Start traversal. pickup_enabled=False visits each pose for dwell_seconds
+        (default 3), retains obstacles and keeps the arm folded. Otherwise an
+        external grasp controller must call self.traversal.confirm_pickup().
+        """
         self.traversal = Traversal(self.localization, target_poses, obstacle_positions, **options)
 
     def restart_scan(self):
@@ -82,9 +85,14 @@ class AlgSolution:
         else:
             command = self.select_command(obs, current_score)
         command = self.localization.prepare_command(command)
+        if scanning:
+            arm_target = self.object_finder.arm_target
+        elif self.traversal is not None and not self.traversal.pickup_enabled:
+            arm_target = ARM_Q0
+        else:
+            arm_target = self.select_arm_target(obs, current_score)
         action = self.controller.step(
-            obs["proprio"], command,
-            self.object_finder.arm_target if scanning else self.select_arm_target(obs, current_score),
+            obs["proprio"], command, arm_target,
         )
         self._previous_command = command.copy()
         return {"action": action.tolist(), "giveup": False}

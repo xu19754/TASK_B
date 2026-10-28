@@ -89,7 +89,7 @@ python scripts/replay_object_recognition.py --batch-input runs/recognition_test
 完成上一步、得到 18 件已确认物品后执行：
 
 ```bash
-bash scripts/run_feature_test.sh traversal --headless
+bash scripts/run_feature_test.sh traversal --headless --no-pickup
 ```
 
 对应程序：`scripts/test_traversal_video.py`。
@@ -107,9 +107,17 @@ bash scripts/run_feature_test.sh traversal --headless \
 并检查机器人包络、物品包络、场地边界和路径可达性。这些是**导航测试位姿，不是经过验证的抓取位姿**。
 若无法找到安全停靠点，程序报告错误，不会越过障碍。
 
-每到达一个位置并对齐朝向，停留 1 秒，然后继续下一件。
+默认关闭夹取（`--no-pickup`）。每到达一个位置并对齐朝向，停留 **3 秒仿真时间**，然后继续下一件。
 这是只访问、不抓取的测试：全部物品仍留在场地，也始终留在避障地图中。
 测试不会删除仿真物品、修改评价规则或调用教师侧真实位姿接口。
+
+使用 `--dwell-seconds 5` 可将停留改为 5 秒。导航超时不打断已经开始的到位停留，
+但全局 `--max-seconds` 和环境终止条件仍有效。停留期间若估计位姿离开容差范围，会重新到位并重新计时。
+
+`--pickup` 打开夹取确认模式：到位后等待外部夹取控制器调用 `confirm_pickup()`，
+确认后才继续并从导航地图移除该物品。**当前默认机械臂控制器仅保持收臂，没有实现自动夹取**；
+单独打开此开关不会产生抓取动作，未接入夹取控制器会报告 `pickup_timeout`。
+关闭开关时也会跳过 `select_arm_target()` 中的夹取逻辑，保持收臂。
 
 结果默认保存在：
 
@@ -117,9 +125,9 @@ bash scripts/run_feature_test.sh traversal --headless \
 runs/traversal_test/<日期时间_运行编号>/
 ├── traversal.mp4             # 1280×720 场地视角，默认 25 FPS
 ├── route.json                # 此次使用的 18 个停靠位姿、障碍位置和预规划路径
-├── trajectory.jsonl          # 每步估计位置、朝向、运动命令和当前目标
+├── trajectory.jsonl          # 每步估计位置、命令、导航状态、航点、到达误差和停留进度
 ├── visits.json               # 每个物品的访问时间及到达位姿
-└── summary.json              # 已访问数量、视频帧数、是否通过、停止原因
+└── summary.json              # 已访问数量、视频帧数、夹取开关、停止原因和最终导航诊断
 ```
 
 视频带有已访问数量、当前目标、仿真时间。按仿真时间抽帧，仿真运行慢不会让成片加速。
@@ -159,8 +167,8 @@ bash scripts/run_feature_test.sh traversal --headless --input /path/to/my_route.
 
 ```bash
 # 调整运行上限、编码帧率、到位停留时间
-bash scripts/run_feature_test.sh traversal --headless \
-  --max-seconds 1800 --fps 25 --dwell-seconds 1 --per-target-timeout 120
+bash scripts/run_feature_test.sh traversal --headless --no-pickup \
+  --max-seconds 1800 --fps 25 --dwell-seconds 3 --per-target-timeout 120
 
 # 自定义结果父目录；第二个程序使用 --input 指向其中具体的一次运行
 bash scripts/run_feature_test.sh recognition --headless --output-dir /path/to/results
@@ -168,6 +176,16 @@ bash scripts/run_feature_test.sh recognition --headless --output-dir /path/to/re
 
 `--max-seconds` 和 `--per-target-timeout` 都按仿真时间计算；`--max-walltime-s` 可另设真实时间上限。
 `--seed` 在遍历测试中一般不传；显式传入时必须与输入文件的 seed 一致。
+
+在自己的控制程序中可使用相同开关：
+
+```python
+solution.set_traversal(target_poses, object_positions,
+                       pickup_enabled=False, dwell_seconds=3.0)
+# predicts() 每 0.02 秒仿真时间调用一次，由 Traversal 自动完成到位停留和切换。
+# 开启夹取则设 pickup_enabled=True，在实际夹取成功后调用：
+# solution.traversal.confirm_pickup()
+```
 
 Windows 下在配置好的 Isaac Python 环境、项目根目录中可以直接运行：
 
@@ -184,6 +202,23 @@ D:\Robotic Workspace\TaskB\runs\traversal_test\
 ```
 
 在 Linux 服务器上部署时，目录位于服务器上的项目根目录，程序会打印完整路径。
+
+## 本次 seed 13 超时的原因与复测
+
+提供的 `20261028_123854_665312` 日志中，15.46 秒之后一直为零运动命令，
+`awaiting_visit` 从未为真，最终距第一个停靠位姿约 1.752 米。
+原因是靠近中间绕障拐点时提前切换航点，捷径碰撞检查失败后又重规划回当前拐点，
+而点控制器认为已在该拐点的 5 厘米容差内，因此持续停止。原测试本身没有执行夹取。
+
+现在只有下一段直线通过避障检查时才允许跳过拐点；否则继续靠近拐点。
+该次实际路线已加入离线回归，按指令积分能在约 386.48 秒完成 18 次访问和每次 3 秒停留，
+保留全部 18 个障碍；这是导航逻辑验证，仍需在 Isaac 中复测实际运动。
+服务器上可以直接复用失败测试保存的路线：
+
+```bash
+bash scripts/run_feature_test.sh traversal --headless --no-pickup --dwell-seconds 3 \
+  --input runs/traversal_test/20261028_123854_665312/route.json
+```
 
 ## 判断测试结果
 

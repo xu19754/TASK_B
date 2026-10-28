@@ -49,15 +49,17 @@ class Motion:
         distance, _ = self._target_error(target_position)
         return distance <= self.position_tolerance
 
-    def compute_command(self, target_position):
+    def compute_command(self, target_position, *, stop_at_target=True):
         """返回速度命令：vx 单位 m/s，yaw_rate 单位 rad/s。
 
         朝向误差超过 45 度时原地转向，否则边前进边修正航向。
         接近目标时减速；非零速度至少为 0.12，以避开底层 <=0.1 的死区。
         到达后完全停止；每帧可以传入不同目标，无需重置导航器。
+        绕障中间航点可设置 stop_at_target=False，继续靠近拐点，
+        由路径跟踪器在确认下一段安全后切换航点。
         """
         distance, heading_error = self._target_error(target_position)
-        if distance <= self.position_tolerance:
+        if stop_at_target and distance <= self.position_tolerance:
             return (0.0, 0.0, 0.0)
 
         # 小于约 1.7 度无需转向，避免微小误差导致持续左右摆动。
