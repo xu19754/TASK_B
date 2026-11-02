@@ -125,7 +125,7 @@ bash scripts/run_feature_test.sh traversal --headless \
 runs/traversal_test/<日期时间_运行编号>/
 ├── traversal.mp4             # 1280×720 场地视角，默认 25 FPS
 ├── route.json                # 此次使用的 18 个停靠位姿、障碍位置和预规划路径
-├── trajectory.jsonl          # 每步估计位置、命令、导航状态、航点、到达误差和停留进度
+├── trajectory.jsonl          # 每步估计位置、实测速度/姿态、指令推算对照、航点及停留进度
 ├── visits.json               # 每个物品的访问时间及到达位姿
 └── summary.json              # 已访问数量、视频帧数、夹取开关、停止原因和最终导航诊断
 ```
@@ -177,6 +177,18 @@ bash scripts/run_feature_test.sh recognition --headless --output-dir /path/to/re
 `--max-seconds` 和 `--per-target-timeout` 都按仿真时间计算；`--max-walltime-s` 可另设真实时间上限。
 `--seed` 在遍历测试中一般不传；显式传入时必须与输入文件的 seed 一致。
 
+`--localization proprio` 为识别和遍历的默认定位模式：用公开观测 `base_quat`
+将 `base_lin_vel` 从机体坐标转换到世界坐标，相邻帧速度作梯形积分，航向每帧取实测姿态。
+侧滑、转弯时位移及停车余速均参与 XY 定位，z 仍保留初始高度。
+初始观测只缓存速度和姿态，不积分；重置 episode 时清空历史。观测缺失或无效会报错，
+不会悄悄退回指令积分。纯离线接口 `Localization.update(command)` 仍然保留。
+
+`--localization command` 仅供与旧算法对比，会重新启用容易累计漂移的指令积分，
+不建议用于实际遍历。两种模式都会在摘要中写明 `localization_mode` 和 `completion_basis`。
+新轨迹中的 `localization` 字段记录实测机体/世界速度、四元数，以及指令推算的位置、航向与差值；
+差值用于诊断执行偏差，不是独立测量的定位误差。默认模式到位后还要求平面速度不超过
+0.05 m/s、实测航向变化率不超过 0.1 rad/s，才开始/累计停留计时。
+
 在自己的控制程序中可使用相同开关：
 
 ```python
@@ -211,7 +223,7 @@ D:\Robotic Workspace\TaskB\runs\traversal_test\
 而点控制器认为已在该拐点的 5 厘米容差内，因此持续停止。原测试本身没有执行夹取。
 
 现在只有下一段直线通过避障检查时才允许跳过拐点；否则继续靠近拐点。
-该次实际路线已加入离线回归，按指令积分能在约 386.48 秒完成 18 次访问和每次 3 秒停留，
+该次实际路线已加入离线回归，当时修复版按指令积分能在约 386.48 秒完成 18 次访问和每次 3 秒停留，
 保留全部 18 个障碍；这是导航逻辑验证，仍需在 Isaac 中复测实际运动。
 服务器上可以直接复用失败测试保存的路线：
 
@@ -220,13 +232,36 @@ bash scripts/run_feature_test.sh traversal --headless --no-pickup --dwell-second
   --input runs/traversal_test/20261028_123854_665312/route.json
 ```
 
+## 2026-11-02：后半程偏离的原因与复测
+
+提供的 seed 42 记录 `20261028_144339_c07423` 虽然报告在 394.62 秒完成 18/18，
+视频后半程机器人已远离物品区。旧导航始终积分下达的速度，未使用现有实测速度和姿态，
+因此控制执行误差会累计，而访问检查仍在同一套错误的估计坐标中通过。
+旧日志没有实测速度/姿态，无法从中精确重建实际轨迹，也不能用旧记录证明新算法的仿真效果。
+
+默认定位现已改用上述观测反馈。路径搜索、简化和航点切换也保留最多 5 cm 的额外跟踪余量，
+减少侧滑时贴近障碍边缘；这不会缩小原障碍包络。合成回归在用户的这条路线中加入
+18% 前进速度损失、22% 转向不足和侧滑：旧指令积分产生超过 1 米的到位偏差，
+反馈模式完成 18 次访问，并将该合成模型中的到位误差保持在 5 cm 内。
+这些结果验证控制逻辑，不能替代 Isaac 中的实际运动测试。
+
+服务器更新代码后可先复用本次路线进行对照：
+
+```bash
+bash scripts/run_feature_test.sh traversal --headless --no-pickup --dwell-seconds 3 \
+  --localization proprio --input runs/traversal_test/20261028_144339_c07423/route.json
+```
+
+之后建议重新运行识别测试，再使用新识别目录运行遍历；这样物品地图也会使用更新后的扫描定位。
+物品识别位置、初始位姿、速度观测偏差仍可能影响结果。新结果需结合视频检查，不能只看访问数量。
+
 ## 判断测试结果
 
 - 退出码 `0`：完成数量检查（识别 18 件，或按估计位姿访问 18 点）。
 - 退出码 `2`：未完成，如漏检、不可达、跌倒、仿真终止或时间上限。
 - 退出码 `1`：运行错误；`130`：用户中断。
 
-位置到达判定仍使用 `localization.py` 的指令积分估计，不能证明实际机器狗与目标无偏差。
+位置到达判定使用 `localization.py` 的所选定位模式，默认观测速度积分，不能证明实际机器狗与目标无偏差。
 视频和轨迹用于检查打滑、碰撞和误识别。完整物理测试需在你的 Isaac 环境执行。
 
 录制接口依据 [Isaac Lab 的 RGB-array 渲染接口](https://isaac-sim.github.io/IsaacLab/v2.3.1/source/api/lab/isaaclab.envs.html)

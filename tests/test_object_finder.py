@@ -212,7 +212,8 @@ class ObjectFinderTests(unittest.TestCase):
         module = importlib.util.module_from_spec(spec)
         with patch.dict(sys.modules, {"taskb_student.low_level": low_level}):
             spec.loader.exec_module(module)
-        alg = module.AlgSolution(command=(0.4, 0, 0), detector=FakeDetector(), scan_output_dir=None)
+        alg = module.AlgSolution(command=(0.4, 0, 0), detector=FakeDetector(), scan_output_dir=None,
+                                 localization_mode="command")
         alg.object_finder = ObjectFinder(alg.localization, FakeDetector(), scan_views=8)
         yaw = 0.0
         for frame in range(5000):

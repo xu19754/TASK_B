@@ -97,7 +97,7 @@ class LocalizationTests(unittest.TestCase):
         solution = importlib.util.module_from_spec(spec)
         with patch.dict(sys.modules, {'taskb_student.low_level': low_level}):
             spec.loader.exec_module(solution)
-        alg = solution.AlgSolution(command=[0.4, 0, 0], scan_before_start=False)
+        alg = solution.AlgSolution(command=[0.4, 0, 0], scan_before_start=False, localization_mode="command")
         seen_positions = []
 
         def select_command(obs, score):
@@ -118,7 +118,7 @@ class LocalizationTests(unittest.TestCase):
         self.assertEqual(alg.localization.position, SPAWN_POSITION)
 
         # Exercise the real target-navigation branch and automatic pose updates.
-        navigation = solution.AlgSolution(target_position=(-9.8, -10), scan_before_start=False)
+        navigation = solution.AlgSolution(target_position=(-9.8, -10), scan_before_start=False, localization_mode="command")
         navigation.predicts({'proprio': {}}, 0)
         self.assertGreater(navigation._previous_command[0], 0)
         for _ in range(500):

@@ -1,7 +1,8 @@
 from pathlib import Path
+import math
 import uuid
 
-from taskb_student.constants import ARM_Q0
+from taskb_student.constants import ARM_Q0, CONTROL_DT
 from taskb_student.localization import Localization
 from taskb_student.low_level import LowLevelController
 from taskb_student.motion import Motion
@@ -11,10 +12,15 @@ from taskb_student.traversal import Traversal
 
 class AlgSolution:
     def __init__(self, command=(0.0, 0.0, 0.0), target_position=None, *,
-                 scan_before_start=True, detector=None, scan_output_dir="runs/object_scan", scan_use_wrist=True):
+                 scan_before_start=True, detector=None, scan_output_dir="runs/object_scan", scan_use_wrist=True,
+                 localization_mode="proprio"):
+        if localization_mode not in ("proprio", "command"):
+            raise ValueError("localization_mode must be proprio or command.")
         self.controller = LowLevelController()
         self.command = command
         self.localization = Localization()
+        self.localization_mode = localization_mode
+        self.command_prediction = Localization()  # Diagnostic comparison only; never drives feedback mode.
         self.motion = Motion(self.localization)
         self.target_position = target_position
         self.traversal = None
@@ -28,6 +34,7 @@ class AlgSolution:
     def reset(self):
         self.controller.reset()
         self.localization.reset()
+        self.command_prediction.reset()
         if self.traversal is not None:
             self.traversal.reset()
         if self.object_finder is not None:
@@ -66,8 +73,13 @@ class AlgSolution:
 
     def predicts(self, obs, current_score):
         # The previous command ran for one simulation step before this observation.
+        if self.localization_mode == "proprio":
+            self.localization.update_from_proprio(obs.get("proprio", {}),
+                                                 dt=CONTROL_DT if self._previous_command is not None else 0)
         if self._previous_command is not None:
-            self.localization.update(self._previous_command)
+            self.command_prediction.update(self._previous_command)
+            if self.localization_mode == "command":
+                self.localization.update(self._previous_command)
             self._previous_command = None
         scanning = self.object_finder is not None and not self.object_finder.ready
         if scanning:
@@ -96,3 +108,10 @@ class AlgSolution:
         )
         self._previous_command = command.copy()
         return {"action": action.tolist(), "giveup": False}
+
+    def localization_diagnostics(self):
+        return {**self.localization.diagnostics(), "mode": self.localization_mode,
+                "command_predicted_position": self.command_prediction.position,
+                "command_predicted_yaw": self.command_prediction.yaw,
+                "command_position_difference": math.dist(self.localization.position[:2], self.command_prediction.position[:2]),
+                "command_yaw_difference": Localization._wrap_yaw(self.localization.yaw - self.command_prediction.yaw)}

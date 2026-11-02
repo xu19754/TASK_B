@@ -52,6 +52,9 @@ class FakeSolution:
     def reset(self):
         self.localization.reset()
 
+    def localization_diagnostics(self):
+        return self.localization.diagnostics()
+
     def set_traversal(self, targets, positions, **options):
         self.traversal = Traversal(self.localization, targets, positions, **options)
 
@@ -87,6 +90,8 @@ class FeatureScriptTests(unittest.TestCase):
         defaults = parser.parse_args([])
         self.assertFalse(defaults.pickup)
         self.assertEqual(defaults.dwell_seconds, 3.0)
+        self.assertEqual(defaults.localization, "proprio")
+        self.assertEqual(parser.parse_args(["--localization", "command"]).localization, "command")
         self.assertTrue(parser.parse_args(["--pickup"]).pickup)
         explicit = parser.parse_args(["--no-pickup", "--dwell-seconds", "5"])
         self.assertFalse(explicit.pickup)

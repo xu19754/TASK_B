@@ -47,6 +47,8 @@ def build_parser(mode):
     parser.add_argument("--max-seconds", type=float, default=120.0 if mode == "recognition" else 1200.0,
                         help="Maximum simulation seconds, not wall-clock time.")
     parser.add_argument("--max-walltime-s", type=float, default=None)
+    parser.add_argument("--localization", choices=("proprio", "command"), default="proprio",
+                        help="Default: integrate observed body velocity using measured orientation. command is legacy comparison only.")
     if mode == "recognition":
         parser.add_argument("--head-only", action="store_true", help="Disable wrist near-field scanning for comparison.")
     if mode == "traversal":

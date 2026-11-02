@@ -31,7 +31,8 @@ bash scripts/run_taskb.sh --enable_cameras --steps 5000
 头部相机使用 `head_rgb`、`head_depth`、`head_intrinsics`。
 深度是光轴距离，先反投影到光学坐标，再用相机外参 `(0.4, 0, 0.12)` 和
 机体四元数变换到世界坐标。机体横滚和俯仰也参与变换。
-扫描结束后，demo 用实际观测航向校正定位的 yaw；位置仍来自原有指令积分。
+默认 demo 每帧使用实际观测航向，并将观测机体速度转换为世界速度进行 XY 积分，
+因此扫描期间的小幅侧移也会影响相机的位置估计。`localization_mode="command"` 仅保留为旧算法对照。
 
 腕部相机使用 `ee_rgb`、`ee_depth`、`ee_intrinsics`，安装于 `link06`，偏移 `(0.03, 0, 0.07)`。
 `camera_geometry.py` 从公开 URDF 读取固定安装关系和关节轴，结合**实测关节角**做前向运动学，
@@ -84,7 +85,7 @@ seed 40 保持 16/18（缺芥末瓶、香蕉各一件），没有凭已知数量
 ## 原始数据与离线回放
 
 `scripts/test_object_recognition.py` 会额外保存 `rgbd/frame_XX.npz`，包括未标注的 RGB、
-米制深度、相机内参、积分位置和实测机体四元数。普通 demo 默认不记录这部分数据；
+米制深度、相机内参、估计位置和实测机体四元数。普通 demo 默认不记录这部分数据；
 需要时在扫描前设置 `solution.object_finder.record_rgbd = True`。
 仅保存停稳采集的方向帧，不保存每个控制步。
 腕部帧另存为 `rgbd/ee_frame_XX.npz`，额外记录实测关节角及由前向运动学得到的相机外参。

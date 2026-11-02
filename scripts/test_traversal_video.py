@@ -22,21 +22,24 @@ def run(args, app):
     started = time.monotonic()
     target_started = 0.0
     pickup_enabled = getattr(args, "pickup", False)
+    localization_mode = getattr(args, "localization", "proprio")
     try:
         route = prepare_route(args.source)
         route["mode"] = "external_pickup_confirmation" if pickup_enabled else "visit_only_keep_all_obstacles"
         route["pickup_enabled"] = pickup_enabled
         route["dwell_seconds"] = args.dwell_seconds
+        route["localization_mode"] = localization_mode
         write_json(directory / "route.json", route)
         env = create_environment(args, video=True)
         obs, _ = env.reset(seed=args.seed)
-        solution = AlgSolution(scan_before_start=False)
+        solution = AlgSolution(scan_before_start=False, localization_mode=localization_mode)
         solution.reset()
         items = route["items"]
         solution.set_traversal([item["target_pose"] for item in items], [item["position"] for item in items],
                                obstacle_radii=[item["obstacle_radius"] for item in items],
                                pickup_enabled=pickup_enabled, dwell_seconds=args.dwell_seconds, **route["navigation"])
         nav = solution.traversal
+        print(f"[TraversalTest] localization={localization_mode}; completion is judged from this pose estimate.", flush=True)
         if pickup_enabled:
             print("[TraversalTest] pickup ON: waiting for external confirm_pickup(); the default arm controller does not implement grasping.", flush=True)
         else:
@@ -57,6 +60,7 @@ def run(args, app):
                     log.write(json.dumps({"step": step, "sim_time": sim_time,
                                           "estimated_position": solution.localization.position,
                                           "estimated_yaw": solution.localization.yaw,
+                                          "localization": solution.localization_diagnostics(),
                                           "command": solution._previous_command.tolist(),
                                           "target_index": nav.target_index,
                                           "awaiting_visit": nav.awaiting_pickup and not pickup_enabled,
@@ -76,6 +80,7 @@ def run(args, app):
                         visits.append({"target_index": index, "object_id": items[index]["object_id"],
                                        "sim_time": sim_time, "estimated_position": solution.localization.position,
                                        "estimated_yaw": solution.localization.yaw,
+                                       "localization_mode": localization_mode,
                                        "completion": "pickup_confirmed" if pickup_enabled else "dwell_completed"})
                         write_json(directory / "visits.json", visits)
                         print(f"[TraversalTest] visited {len(visits)}/18: object {items[index]['object_id']}", flush=True)
@@ -83,7 +88,7 @@ def run(args, app):
                     if video.due(sim_time) or nav.completed:
                         mode = "External pickup" if pickup_enabled else f"Visit-only {args.dwell_seconds:g}s dwell"
                         caption = (f"{mode} | visited {len(visits)}/18 | target {min(nav.target_index + 1, 18)}/18"
-                                   f" | {nav.status} | sim {sim_time:.2f}s")
+                                   f" | {nav.status} | {localization_mode} odometry | sim {sim_time:.2f}s")
                         # Retain a final completion frame, at most one frame interval after arrival.
                         frame_time = max(sim_time, video.next_time) if nav.completed else sim_time
                         video.append(env.unwrapped.render(), frame_time, caption)
@@ -129,10 +134,13 @@ def run(args, app):
                 "video_frames": video.frames if video is not None else 0, "video_fps": args.fps,
                 "source": args.source["source"], "pickup_enabled": pickup_enabled,
                 "dwell_seconds": args.dwell_seconds,
+                "localization_mode": localization_mode,
+                "completion_basis": "observed_velocity_odometry" if localization_mode == "proprio" else "command_integration_only",
+                "final_localization": solution.localization_diagnostics() if solution is not None else None,
                 "obstacles_removed": bool(solution is not None and solution.traversal is not None
                                           and len(solution.traversal.active_obstacle_indices) < 18),
                 "final_navigation": solution.traversal.diagnostics() if solution is not None and solution.traversal is not None else None,
-                "limitations": "Visits use command-integrated localization; inspect video for physical drift. Pickup mode requires an external grasp controller and success confirmation; the default arm controller only holds ARM_Q0.",
+                "limitations": "Pose is integrated from the selected velocity source, not independently verified ground truth. Initial pose/map errors and velocity bias can remain. Pickup mode requires an external grasp controller; the default arm only holds ARM_Q0.",
             })
             print(f"[TraversalTest] {reason}; visited {len(visits)}/18", flush=True)
         finally:

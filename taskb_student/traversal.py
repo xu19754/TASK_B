@@ -22,7 +22,7 @@ obstacle_positions[i] 为对应物品的 (x, y) 或 (x, y, z)，高度忽略。
 （默认 3 秒仿真时间）自动前往下一点，保留所有物品障碍。每个控制步调用一次
 compute_command()；默认开启夹取只等待外部确认，本模块不实现机械臂夹取动作。
 
-机器人及障碍物尺寸是可配置的包络近似；指令积分定位的漂移会影响避障精度。
+机器人及障碍物尺寸是可配置的包络近似；速度积分定位和物品地图误差会影响避障精度。
 """
 
 from dataclasses import dataclass
@@ -110,7 +110,7 @@ class _ObstacleMap:
             raise NoPathError("Current position is inside an obstacle clearance area or outside bounds.")
         if not self.segment_clear(goal, goal, active):
             raise NoPathError("Target position is inside an obstacle clearance area or outside bounds.")
-        if self.segment_clear(start, goal, active):
+        if self.tracking_segment_clear(start, goal, active):
             return (start, goal)
 
         xmin, _, ymin, _ = self.bounds
@@ -151,7 +151,7 @@ class _ObstacleMap:
                 index = 0
                 while index < len(route) - 1:
                     next_index = len(route) - 1
-                    while not self.segment_clear(route[index], route[next_index], active):
+                    while not self.tracking_segment_clear(route[index], route[next_index], active):
                         next_index -= 1
                     simplified.append(route[next_index])
                     index = next_index
@@ -159,15 +159,25 @@ class _ObstacleMap:
             origin = point(node)
             for neighbor in [*grid_neighbors(node), goal_node]:
                 destination = point(neighbor)
-                # 给网格绕行点留少量余量，避免跟踪时贴着物品边缘。
-                extra = 0.02 if neighbor != goal_node and node != start_node else 0.0
-                if not self.segment_clear(origin, destination, active, extra):
+                if not self.tracking_segment_clear(origin, destination, active):
                     continue
                 candidate = cost + math.dist(origin, destination)
                 if candidate < costs.get(neighbor, math.inf):
                     costs[neighbor], parents[neighbor] = candidate, node
                     heapq.heappush(frontier, (candidate + math.dist(destination, goal), candidate, neighbor))
         raise NoPathError("No collision-free grid path found; check clearances, bounds or grid resolution.")
+
+    def tracking_segment_clear(self, start, end, active):
+        """规划和跳过拐点时保留最多 5 cm 跟踪余量，不以切圆的捷径消除余量。
+
+        已靠近包络的起终点仍可连接，余量以两端可用间距的一半为上限。
+        执行安全检查继续使用完整的原障碍包络，不缩小碰撞范围。
+        """
+        xmin, xmax, ymin, ymax = self.bounds
+        clearance = min(min(p[0] - xmin, xmax - p[0], p[1] - ymin, ymax - p[1]) for p in (start, end))
+        for index in active:
+            clearance = min(clearance, *(math.dist(p, self.positions[index]) - self.radii[index] for p in (start, end)))
+        return self.segment_clear(start, end, active, extra=min(0.05, max(0.0, clearance * 0.5)))
 
 
 class Traversal:
@@ -273,6 +283,7 @@ class Traversal:
 
     def _confirm_arrival(self, remove_obstacle):
         if (self.completed or self.blocked_reason or not self.awaiting_pickup or not self._at_pose()
+                or not self.localization.is_stationary
                 or not self._map.segment_clear(_xy(self.localization.position),
                                                _xy(self.localization.position), self._active)):
             raise RuntimeError("Pickup can only be confirmed while stopped at the current target pose.")
@@ -314,6 +325,8 @@ class Traversal:
                 # starts at zero; only subsequent stopped steps count as dwell.
                 if not self._at_pose():
                     self.replan()
+                elif not self.localization.is_stationary:
+                    self.dwell_elapsed = 0.0
                 else:
                     self.dwell_elapsed += CONTROL_DT
                     if self.dwell_elapsed + 1e-9 >= self.dwell_seconds:
@@ -329,6 +342,8 @@ class Traversal:
             if math.dist(start, pose[:2]) <= self._motion.position_tolerance:
                 error = _angle_difference(pose[2], self.localization.yaw)
                 if abs(error) <= self.yaw_tolerance:
+                    if not self.localization.is_stationary:
+                        return stop
                     self.awaiting_pickup = True
                     self.dwell_elapsed = 0.0
                     if not self.pickup_enabled and self.dwell_seconds == 0:
@@ -341,7 +356,7 @@ class Traversal:
             # the same nearby point made Motion return zero forever (seed 13).
             while (len(self._waypoints) > 1
                    and math.dist(start, self._waypoints[0]) <= self._motion.position_tolerance
-                   and self._map.segment_clear(start, self._waypoints[1], self._active)):
+                   and self._map.tracking_segment_clear(start, self._waypoints[1], self._active)):
                 self._waypoints.pop(0)
             waypoint = self._waypoints[0]
             if not self._map.segment_clear(start, waypoint, self._active):
